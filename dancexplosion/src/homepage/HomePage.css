@@ -1,0 +1,666 @@
+/* src/homepage/HomePage.css - Redesign Spectaculos și Ultra-Smooth */
+
+/* RESETARE STILURI GLOBALE INTERFERENTE */
+#root {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
+}
+
+.App {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* === PALETA DE CULORI & FONTURI === */
+:root {
+    --c-primary: #1A1A1A;
+    --c-secondary: #FF7033;
+    --c-background: #F8F8F8;
+    --c-accent: #D4AF37;
+    --c-text-primary: #767676;
+    --c-white: #FFFFFF;
+    
+    --transition-smooth: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    --transition-fast: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--c-background);
+    font-family: 'Georgia', serif; 
+    color: var(--c-text-primary);
+    overflow-x: hidden; 
+}
+
+h1, h2, h3 {
+    color: var(--c-primary);
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+/* === BUTOANE & CTA GENERALE === */
+.cta-primary-dark, .cta-secondary-accent, .cta-nav, .cta-lxf-gold {
+    padding: 18px 45px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border: 3px solid transparent;
+    cursor: pointer;
+    border-radius: 50px; 
+    transition: var(--transition-smooth);
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-primary-dark::before,
+.cta-secondary-accent::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.cta-primary-dark:hover::before,
+.cta-secondary-accent:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.cta-primary-dark {
+    background: linear-gradient(135deg, var(--c-primary) 0%, #2d2d2d 100%);
+    color: var(--c-white);
+    box-shadow: 0 8px 25px rgba(26, 26, 26, 0.3);
+}
+
+.cta-primary-dark:hover {
+    background: linear-gradient(135deg, var(--c-secondary) 0%, #ff8c5a 100%);
+    color: var(--c-white);
+    box-shadow: 0 12px 35px rgba(255, 112, 51, 0.6);
+    transform: translateY(-3px) scale(1.05); 
+}
+
+.cta-secondary-accent {
+    background-color: transparent;
+    color: var(--c-secondary);
+    border-color: var(--c-secondary);
+    margin-left: 25px;
+}
+
+.cta-secondary-accent:hover {
+    background-color: var(--c-secondary);
+    color: var(--c-white);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(255, 112, 51, 0.4);
+}
+
+/* === NAVIGARE (HEADER FULL WIDTH) === */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 8%; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(248, 248, 248, 0.85); 
+    backdrop-filter: blur(20px) saturate(180%); 
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08); 
+    transition: var(--transition-fast);
+    height: 70px;
+}
+
+.main-nav.scrolled {
+    padding: 12px 8%;
+    background: rgba(248, 248, 248, 0.95);
+    box-shadow: 0 6px 40px rgba(0, 0, 0, 0.12);
+    height: 65px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--c-primary);
+    letter-spacing: 0.05rem;
+    position: relative;
+    z-index: 10;
+    transition: var(--transition-fast);
+}
+
+.logo:hover {
+    color: var(--c-secondary);
+    transform: scale(1.05);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-links a {
+    color: var(--c-text-primary);
+    text-decoration: none;
+    position: relative;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: var(--transition-fast);
+}
+
+.nav-links a:hover {
+    color: var(--c-secondary);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--c-secondary), var(--c-accent));
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 2px;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.cta-nav { 
+    padding: 10px 25px;
+    font-size: 0.9rem;
+}
+
+/* === 1. HERO SECTION (CENTRAT PERFECT CU ANIMAȚII SPECTACULOASE) === */
+.hero-section {
+    position: relative;
+    width: 100vw; 
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #F8F8F8 0%, #FFFFFF 50%, #F8F8F8 100%);
+    overflow: hidden;
+    padding-top: 70px;
+}
+
+/* ANIMAȚIE LOTTIE PE FUNDAL */
+.lottie-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.3;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+}
+
+.lottie-background canvas,
+.lottie-background svg {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+}
+
+/* Particule animate în fundal */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 112, 51, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
+    animation: particleFloat 20s ease-in-out infinite;
+    z-index: 1;
+}
+
+.hero-content-wrapper {
+    z-index: 10;
+    text-align: center; 
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 5%;
+    position: relative;
+}
+
+.hero-title {
+    font-size: 7.5rem;
+    margin: 0 auto 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    line-height: 1.1;
+    display: block;
+    position: relative;
+}
+
+/* Efect de gradient pentru "ÎNCEPE" */
+.hero-title .title-word:first-child {
+    background: linear-gradient(135deg, var(--c-primary) 0%, var(--c-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    animation: gradientShift 4s ease-in-out infinite;
+}
+
+/* "MIȘCAREA TA." în gold cu efect strălucitor */
+.hero-title .accent-color-text {
+    color: var(--c-accent);
+    display: inline-block;
+    position: relative;
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+.title-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(30px) rotateX(-20deg); 
+    animation: slideInSpectacular 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards; 
+}
+
+.title-word.delay-1 { animation-delay: 0.3s; }
+.title-word.delay-2 { animation-delay: 0.5s; }
+.title-word.delay-3 { animation-delay: 0.7s; }
+
+.hero-pitch {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 40px auto 60px;
+    max-width: 700px;
+    opacity: 0;
+    animation: fadeInUp 1.5s ease-out 1.2s forwards;
+    color: var(--c-text-primary);
+    line-height: 1.7;
+}
+
+.hero-cta-group {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeInUp 1.5s ease-out 1.5s forwards;
+}
+
+/* Mesh animat în fundal */
+.background-dance-mesh {
+    position: absolute;
+    bottom: -30%; 
+    right: -20%;
+    width: 120vh; 
+    height: 120vh; 
+    background: radial-gradient(
+        circle at center, 
+        rgba(255, 112, 51, 0.08) 0%, 
+        rgba(212, 175, 55, 0.05) 40%,
+        transparent 70%
+    );
+    opacity: 1; 
+    z-index: 2;
+    border-radius: 50%; 
+    animation: meshDance 35s infinite ease-in-out; 
+    filter: blur(60px);
+}
+
+/* === 2. CLASSES SHOWCASE === */
+.classes-showcase-section {
+    padding: 120px 5%;
+    text-align: center;
+    background: linear-gradient(180deg, var(--c-background) 0%, #FFFFFF 100%);
+    position: relative;
+}
+
+.section-heading-dark {
+    font-size: 3.5rem;
+    margin-bottom: 80px;
+    position: relative;
+    color: var(--c-primary);
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+}
+
+.section-heading-dark::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 5px;
+    background: linear-gradient(90deg, var(--c-secondary), var(--c-accent));
+    margin: 20px auto 0;
+    border-radius: 3px;
+    box-shadow: 0 4px 15px rgba(255, 112, 51, 0.3);
+}
+
+.classes-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    max-width: 1400px;
+    margin: 60px auto 0; 
+}
+
+.class-showcase-card {
+    background: linear-gradient(135deg, #FFFFFF 0%, #F8F8F8 100%);
+    border-radius: 20px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transform: translateY(0);
+    transition: var(--transition-smooth);
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.class-showcase-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 112, 51, 0.1) 0%, rgba(212, 175, 55, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.6s;
+    z-index: 1;
+}
+
+.class-showcase-card:hover::before {
+    opacity: 1;
+}
+
+.class-showcase-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
+}
+
+.card-image-placeholder {
+    height: 280px;
+    background: linear-gradient(135deg, var(--c-secondary) 0%, var(--c-accent) 100%);
+    opacity: 1;
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-image-placeholder::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: cardShine 4s infinite;
+}
+
+.class-showcase-card:hover .card-image-placeholder {
+    transform: scale(1.1);
+}
+
+.card-info {
+    padding: 35px;
+    position: relative;
+    z-index: 2;
+}
+
+.card-info h3 {
+    color: var(--c-primary);
+    margin-top: 0;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.card-info p {
+    line-height: 1.7;
+}
+
+.class-tag {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 20px;
+    background: linear-gradient(135deg, var(--c-accent) 0%, #e6c350 100%);
+    color: var(--c-primary);
+    font-size: 0.85rem;
+    font-weight: 800;
+    border-radius: 25px;
+    transform: scale(1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.class-showcase-card:hover .class-tag {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+}
+
+/* === 3. LXF PROMO (Secțiune Ultra-Spectaculoasă) === */
+.lxf-promo-section {
+    padding: 140px 5%;
+    text-align: center;
+    background: linear-gradient(135deg, var(--c-secondary) 0%, #ff8c5a 100%);
+    position: relative;
+    overflow: hidden;
+    margin-top: 100px;
+}
+
+.lxf-promo-section::before,
+.lxf-promo-section::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    animation: floatBubble 20s infinite ease-in-out;
+}
+
+.lxf-promo-section::before {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    left: -100px;
+    animation-delay: 0s;
+}
+
+.lxf-promo-section::after {
+    width: 600px;
+    height: 600px;
+    bottom: -200px;
+    right: -200px;
+    animation-delay: 5s;
+}
+
+.lxf-content-dark {
+    color: var(--c-primary);
+    z-index: 10;
+    position: relative;
+}
+
+.lxf-title {
+    font-size: 5rem;
+    letter-spacing: 0.6rem;
+    margin-bottom: 30px;
+    color: var(--c-white); 
+    text-shadow: 4px 4px 10px rgba(26, 26, 26, 0.3);
+    animation: titlePulse 3s ease-in-out infinite;
+}
+
+.lxf-description {
+    font-size: 1.4rem;
+    margin-bottom: 50px;
+    font-weight: 600;
+    color: var(--c-white);
+    text-shadow: 2px 2px 5px rgba(26, 26, 26, 0.2);
+}
+
+.cta-lxf-gold {
+    background: linear-gradient(135deg, var(--c-accent) 0%, #e6c350 100%);
+    color: var(--c-primary);
+    border: 3px solid var(--c-accent);
+    animation: pulseGoldSpectacular 2.5s infinite ease-in-out;
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.5);
+}
+
+.cta-lxf-gold:hover {
+    background: linear-gradient(135deg, var(--c-white) 0%, #f5f5f5 100%);
+    border-color: var(--c-white);
+    animation: none;
+    transform: translateY(-5px) scale(1.08);
+    box-shadow: 0 15px 50px rgba(255, 255, 255, 0.6);
+}
+
+/* === ANIMAȚII SPECTACULOASE === */
+
+@keyframes slideInSpectacular {
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        filter: hue-rotate(20deg);
+    }
+}
+
+@keyframes shimmer {
+    0%, 100% {
+        text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+    }
+    50% {
+        text-shadow: 0 0 50px rgba(212, 175, 55, 0.8), 0 0 80px rgba(212, 175, 55, 0.4);
+    }
+}
+
+@keyframes particleFloat {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(30px, -30px) scale(1.1);
+    }
+}
+
+@keyframes meshDance {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    33% {
+        transform: translate(50px, -50px) rotate(120deg);
+    }
+    66% {
+        transform: translate(-30px, 30px) rotate(240deg);
+    }
+}
+
+@keyframes cardShine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+@keyframes titlePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+@keyframes pulseGoldSpectacular {
+    0% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 25px rgba(212, 175, 55, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    }
+}
+
+@keyframes floatBubble {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(50px, 50px) scale(1.1);
+    }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+    
+    .hero-pitch {
+        font-size: 1.2rem;
+    }
+    
+    .lxf-title {
+        font-size: 3rem;
+    }
+    
+    .section-heading-dark {
+        font-size: 2.5rem;
+    }
+    
+    .nav-links {
+        gap: 20px;
+    }
+    
+    .hero-cta-group {
+        flex-direction: column;
+    }
+    
+    .cta-secondary-accent {
+        margin-left: 0;
+        margin-top: 15px;
+    }
+}
