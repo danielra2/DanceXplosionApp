@@ -1,10 +1,7 @@
-// danielra2/dancexplosion/DanceXplosion-821aa754f0dd3755c517a94459d63e07d69c0fa4/dancexplosion/src/homepage/HomePage.jsx
-
 import React, { useRef, useEffect } from 'react';
 import './HomePage.css';
-// Componenta rămâne importată aici, deoarece este folosită în JSX
-// Import core carousel component from teamphotocarousel folder
-import CircularGallery from './teamphotocarousel/CircularGallery';
+// Noul carusel InfiniteMovingTeamCarousel, exportat din CircularGallery.jsx
+import InfiniteMovingTeamCarousel from './teamphotocarousel/CircularGallery';
 // Eliminat: import '../CircularGallery.css'; 
 import DXAPromoVideo from '../assets/mainvideo/DXA Promo.mp4'; 
 
@@ -17,30 +14,25 @@ function HomePage() {
 
     const videoElement = videoRef.current;
     
-    const attemptUnmutedAutoplay = async () => {
-        try {
-            await videoElement.play();
-            videoElement.muted = false; 
-        } catch (error) {
-            console.warn("Browser blocked unmuted autoplay. Video will play silently until user interaction.");
-            videoElement.muted = true;
-        }
-    };
-    
-    attemptUnmutedAutoplay();
-
+    // ATENȚIE: Am eliminat apelul videoElement.play() din useEffect.
+    // Ne bazăm exclusiv pe atributele autoPlay și muted din JSX
+    // pentru a asigura pornirea imediată.
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!entry.isIntersecting) {
-          videoElement.pause();
-        } else {
+        if (entry.isIntersecting) {
+          // Video este vizibil: reluare și UNMUTE
+          videoElement.muted = false; 
           videoElement.play().catch(error => {
-             // Reluare video
+             console.log("Eroare la reluare/unmute video:", error);
           });
+        } else {
+          // Video NU este vizibil: MUTE și PAUSE
+          videoElement.muted = true;
+          videoElement.pause();
         }
       },
-      { threshold: 0 } 
+      { threshold: 0.5 } 
     );
 
     observer.observe(heroSectionRef.current);
@@ -52,14 +44,14 @@ function HomePage() {
     };
   }, []); 
 
-  // Definim itemii pentru CircularGallery
-  const galleryItems = [
-      { image: 'https://picsum.photos/seed/salsa/800/600', text: 'Salsa & Bachata' },
-      { image: 'https://picsum.photos/seed/urban/800/600', text: 'Urban Style' },
-      { image: 'https://picsum.photos/seed/kizomba/800/600', text: 'Kizomba Flow' },
-      { image: 'https://picsum.photos/seed/contemp/800/600', text: 'Contemporary' },
-      { image: 'https://picsum.photos/seed/ballet/800/600', text: 'Ballet' },
-      { image: 'https://picsum.photos/seed/lxf/800/600', text: 'LXF Festival' },
+  // Definim datele pentru membrii echipei
+  const teamMembers = [
+      { id: 1, name: "Ana Maria", role: "Coregraf Salsa", image: 'https://picsum.photos/seed/ana/500/700' },
+      { id: 2, name: "Daniel Radu", role: "Instructor Urban", image: 'https://picsum.photos/seed/daniel/500/700' },
+      { id: 3, name: "Cristina Pop", role: "Manager Studio", image: 'https://picsum.photos/seed/cristina/500/700' },
+      { id: 4, name: "Mihai Stoica", role: "Profesor Balet", image: 'https://picsum.photos/seed/mihai/500/700' },
+      { id: 5, name: "Elena Vasiu", role: "Asistent Coregraf", image: 'https://picsum.photos/seed/elena/500/700' },
+      { id: 6, name: "Alex Tudor", role: "Instructor Acro", image: 'https://picsum.photos/seed/alex/500/700' },
   ];
 
 
@@ -85,8 +77,9 @@ function HomePage() {
             autoPlay 
             loop 
             playsInline 
-            controls 
+            muted // ESENȚIAL pentru autoplay imediat
             ref={videoRef}
+            preload="auto" // Sugerează browserului să încarce fișierul imediat
         >
             Browserul tău nu suportă elementul video.
         </video>
@@ -111,18 +104,13 @@ function HomePage() {
         </div>
       </section>
 
-      {/* === CARUSEL CIRCULAR GALLERY (Implementare OGL) === */}
+      {/* === NOU CARUSEL INFINITE MOVING TEAM CAROUSEL (FULL WIDTH) === */}
       <section className="circular-gallery-wrapper">
-          <h2 className="section-heading-dark">Momente Din Scoală</h2>
-          {/* Container cu înălțime fixă pentru OGL */}
-          <div style={{ height: '700px', position: 'relative', padding: '20px 0' }}> 
-              <CircularGallery 
-                  items={galleryItems}
-                  bend={3} 
-                  textColor="#D4AF37" // Auriu pentru textul din galerie
-                  borderRadius={0.05} 
-                  scrollEase={0.05}
-                  scrollSpeed={3}
+          <h2 className="section-heading-dark">Cunoaște Echipa Noastră</h2>
+          {/* Containerul caruselului este lăsat gol, astfel încât caruselul să poată fi Full-Width */}
+          <div className="circular-gallery-container" style={{ margin: '40px auto 0' }}> 
+              <InfiniteMovingTeamCarousel 
+                  items={teamMembers}
               />
           </div>
       </section>
@@ -144,7 +132,7 @@ function HomePage() {
           {/* Card 2 */}
           <div className="class-showcase-card">
             <div className="card-image-placeholder"></div>
-            <div className="card-info">
+            <div class="card-info">
               <h3>Contemporary</h3>
               <p>Exprimă-te prin mișcări fluide și emoționale.</p>
               <span className="class-tag">NOU</span>
@@ -152,12 +140,12 @@ function HomePage() {
           </div>
 
           {/* Card 3 */}
-          <div className="class-showcase-card">
-            <div className="card-image-placeholder"></div>
-            <div className="card-info">
+          <div class="class-showcase-card">
+            <div class="card-image-placeholder"></div>
+            <div class="card-info">
               <h3>Ballet</h3>
               <p>Eleganță și tehnică clasică pentru toate nivelurile.</p>
-              <span className="class-tag">CLASIC</span>
+              <span class="class-tag">CLASIC</span>
             </div>
           </div>
         </div>

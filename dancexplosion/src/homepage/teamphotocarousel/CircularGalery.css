@@ -1,33 +1,150 @@
-/* src/CircularGallery.css */
+/* STILURI CSS SPECTACULOASE PENTRU TEAM INFINITE MOVING CAROUSEL */
 
-.circular-gallery-container {
+/* Variabile CSS preluate din HomePage.css */
+:root {
+    --c-primary: #1A1A1A; /* Negru */
+    --c-secondary: #FF7033; /* Portocaliu */
+    --c-accent: #D4AF37; /* Auriu */
+    --c-white: #FFFFFF;
+}
+
+/* 1. Containerul exterior (pentru titlu și fundal) */
+.circular-gallery-wrapper {
+    /* Setăm width: 100% și eliminăm marginile care limitau lățimea */
+    width: 100%; 
+    padding: 80px 0 120px; 
+    background: linear-gradient(180deg, var(--c-background) 0%, #FFFFFF 100%);
+    position: relative;
+    overflow: hidden; /* Foarte important pentru mișcarea infinită */
+}
+
+/* 2. Containerul vizual al caruselului (Team Moving Carousel) */
+.infinite-carousel-container {
+    width: 100%; /* Full width */
+    height: 500px; /* Înălțimea fixă pentru carduri */
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+    /* Eliminăm padding-ul implicit al wrapper-ului pentru a fi Full-Width */
+    margin: 0; 
+}
+
+/* Animația de mișcare orizontală */
+@keyframes infinite-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); } /* Mută exact jumătate de track (după duplicare) */
+}
+
+/* 3. Track-ul de carduri (unde se aplică animația) */
+.infinite-carousel-track {
+    display: flex;
+    /* Atenție: Lățimea trebuie să fie dublul conținutului total pentru a asigura fluiditatea */
+    width: max-content; 
+    height: 100%;
+    
+    /* Aplicatia animației: linear pentru mișcare constantă, smooth. */
+    animation: infinite-scroll linear infinite;
+    animation-duration: 60s; /* Viteză implicită (se poate seta din React) */
+    animation-play-state: running;
+}
+
+.infinite-carousel-track:hover {
+    animation-play-state: paused; /* Oprește mișcarea la hover */
+}
+
+/* 4. Stilul fiecărui card de membru */
+.team-card-infinite {
+    width: 350px; 
+    height: 450px;
+    /* Ajustăm marginea pentru a nu fi tăiată la final, menținând aspectul full-width */
+    margin: 0 20px; 
+    
+    border-radius: 15px;
+    overflow: hidden;
+    background: var(--c-primary);
+    position: relative;
+    cursor: pointer;
+    
+    /* Tranziții smooth la hover */
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /* Cheie: Forțăm crearea unei plăci grafice pentru mișcare extra smooth */
+    transform: translate3d(0, 0, 0); 
+}
+
+/* Efecte Spectaculoase la Hover */
+.team-card-infinite:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(255, 112, 51, 0.5), 0 0 15px rgba(255, 112, 51, 0.3);
+    border: 3px solid var(--c-accent);
+}
+
+.card-photo-wrapper {
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    cursor: grab;
-    touch-action: none; /* Prevents default mobile scroll behavior */
+    position: relative;
 }
 
-.circular-gallery-container:active {
-    cursor: grabbing;
-}
-
-/* Stil pentru canvas, pentru a se intinde corect */
-.circular-gallery-container canvas {
+.member-photo-infinite {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
+    filter: brightness(0.7) grayscale(100%);
+    transition: all 0.4s;
 }
 
-/* Stiluri de background */
-.circular-gallery-wrapper {
-    padding: 80px 0; /* Padding pentru a separa de secțiunile de sus și de jos */
+.team-card-infinite:hover .member-photo-infinite {
+    filter: brightness(1) grayscale(0%);
+    transform: scale(1.1);
 }
-/* Fundalul caruselului (c-primary: Negru) pentru contrast cu imaginile */
+
+/* Overlay cu informații */
+.card-overlay-infinite {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 25px;
+    background: linear-gradient(0deg, rgba(26, 26, 26, 0.9) 0%, transparent 100%);
+    color: var(--c-white);
+    text-align: center;
+    transition: all 0.4s;
+}
+
+.team-card-infinite:hover .card-overlay-infinite {
+    background: linear-gradient(0deg, var(--c-secondary) 0%, rgba(26, 26, 26, 0.8) 50%, transparent 100%);
+}
+
+.member-name-infinite {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--c-accent);
+    margin-bottom: 5px;
+    text-shadow: 0 0 5px var(--c-accent);
+}
+
+.member-role-infinite {
+    font-size: 0.9rem;
+    color: var(--c-white);
+    text-transform: uppercase;
+}
+
+.cta-overlay-infinite {
+    display: block;
+    margin-top: 10px;
+    color: var(--c-accent);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: underline;
+}
+
+/* Asigură că celelalte clase vechi nu interferează */
 .circular-gallery-container {
-    background-color: var(--c-primary); 
-    border-radius: 20px;
-    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.4);
-    /* Asigură ca marginile să nu fie tăiate în mod inestetic */
-    margin: 0 5%; 
-    width: 90%;
-    max-width: 1400px;
+    background: none; 
+    border-radius: 0; 
+    box-shadow: none; 
+    margin: 0; 
+    width: 100%; 
+    height: auto;
 }
