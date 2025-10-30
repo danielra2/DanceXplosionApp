@@ -3,8 +3,6 @@
 import React, { useRef } from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import './HomePage.css';
-// Importul corect al asset-ului Lottie
-import WeddingDanceLottie from '../assets/animations/weddingoutline.lottie'; 
 
 function HomePage() {
   const dotLottieRef = useRef(null);
@@ -23,22 +21,26 @@ function HomePage() {
 
       {/* === HERO SECTION === */}
       <section className="hero-section">
-        
-        {/* INTEGRAREA ANIMAȚIEI LOTTIE CU AJUSTĂRI */}
-        <div className="lottie-background">
+        {/* ANIMAȚIE LOTTIE PE FUNDAL */}
+        <div className="lottie-background lottie-left">
           <DotLottieReact 
-            src={WeddingDanceLottie} 
-            speed={0.5} // Animație mai lentă
-            autoplay // Rulează automat la încărcare
-            loop={false} // Rulează o singură dată și rămâne pe ultimul cadru
-            style={{ width: '100%', height: '100%' }}
+            src="https://lottie.host/your-animation1.lottie" 
+            loop 
+            autoplay 
           />
         </div>
-        
-        {/* MESH ANIMAT (pentru efectul vizual subtil în fundal) */}
+        <div className="lottie-background lottie-right">
+          <DotLottieReact 
+            src="https://lottie.host/your-animation2.lottie" 
+            loop 
+            autoplay 
+          />
+        </div>
+
+        {/* MESH ANIMAT (opțional - poți păstra sau elimina) */}
         <div className="background-dance-mesh"></div>
 
-        {/* CONȚINUT HERO (Centrat și Simetric) */}
+        {/* CONȚINUT HERO */}
         <div className="hero-content-wrapper">
           <h1 className="hero-title">
             <span className="title-word delay-1">ÎNCEPE</span>{' '}
