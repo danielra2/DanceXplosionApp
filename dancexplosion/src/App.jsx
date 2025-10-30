@@ -1,14 +1,17 @@
-// src/App.jsx
+// danielra2/dancexplosion/DanceXplosion-821aa754f0dd3755c517a94459d63e07d69c0fa4/dancexplosion/src/App.jsx
 
 import React from 'react';
 import './App.css'; 
-// Importă componenta HomePage din directorul 'homepage'
+// Importă componenta HomePage
 import HomePage from './homepage/HomePage.jsx'; 
+
+// ADĂUGAT: Importăm stilurile specifice caruselului aici (global/principal)
+// Import corect către fișierul existent în folderul teamphotocarousel
+import './homepage/teamphotocarousel/CircularGalery.css';
+
 
 function App() {
   return (
-    // În mod normal, aici ar veni ruterul (de ex. <BrowserRouter>)
-    // Dar pentru un singur Home Page, o afișăm direct.
     <div className="App">
       <HomePage />
     </div>

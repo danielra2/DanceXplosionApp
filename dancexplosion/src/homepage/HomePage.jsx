@@ -2,72 +2,69 @@
 
 import React, { useRef, useEffect } from 'react';
 import './HomePage.css';
-
-// Asigură-te că acest fișier video există la calea specificată
+// Componenta rămâne importată aici, deoarece este folosită în JSX
+// Import core carousel component from teamphotocarousel folder
+import CircularGallery from './teamphotocarousel/CircularGallery';
+// Eliminat: import '../CircularGallery.css'; 
 import DXAPromoVideo from '../assets/mainvideo/DXA Promo.mp4'; 
 
 function HomePage() {
-  // Referințe pentru a accesa elementele DOM
   const heroSectionRef = useRef(null);
   const videoRef = useRef(null);
 
-  // Logica de gestionare a vizibilității (muting on scroll)
   useEffect(() => {
     if (!heroSectionRef.current || !videoRef.current) return;
 
     const videoElement = videoRef.current;
     
-    // Setăm muted la început pentru a ne asigura că autoplay-ul funcționează
-    // (Acest lucru este anulat la primul click al utilizatorului prin handleFirstInteraction)
-    videoElement.muted = true; 
+    const attemptUnmutedAutoplay = async () => {
+        try {
+            await videoElement.play();
+            videoElement.muted = false; 
+        } catch (error) {
+            console.warn("Browser blocked unmuted autoplay. Video will play silently until user interaction.");
+            videoElement.muted = true;
+        }
+    };
+    
+    attemptUnmutedAutoplay();
 
-    // Inițializăm IntersectionObserver
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Dacă secțiunea NU este vizibilă
         if (!entry.isIntersecting) {
-          // Oprim video-ul și sunetul când iese din ecran
           videoElement.pause();
         } else {
-          // Dacă secțiunea redevine vizibilă (scroll înapoi)
-          // Repornim video-ul (muted pentru a respecta politicile browserului)
           videoElement.play().catch(error => {
-             // Această eroare este normală dacă browserul blochează repornirea automată
-             // după ce utilizatorul a interacționat cu pagina.
+             // Reluare video
           });
         }
       },
-      // Pragul 0 înseamnă că observatorul se declanșează de îndată ce
-      // 1 pixel din element iese sau intră în viewport.
       { threshold: 0 } 
     );
 
-    // Începem să observăm containerul Hero
     observer.observe(heroSectionRef.current);
 
-    // Funcție de curățare (cleanup)
     return () => {
       if (heroSectionRef.current) {
         observer.unobserve(heroSectionRef.current);
       }
     };
-  }, []); // Se rulează o singură dată
+  }, []); 
 
-  // Funcția pentru a dezactiva MUTED la prima interacțiune a utilizatorului
-  // (Este aplicată pe div-ul principal al paginii)
-  const handleFirstInteraction = () => {
-    if (videoRef.current && videoRef.current.muted) {
-        // Dezactivăm muted, permițând sunetul
-        videoRef.current.muted = false;
-        // Eliminăm ascultătorul de eveniment după prima utilizare
-        document.querySelector('.homepage-container').removeEventListener('click', handleFirstInteraction);
-    }
-  };
+  // Definim itemii pentru CircularGallery
+  const galleryItems = [
+      { image: 'https://picsum.photos/seed/salsa/800/600', text: 'Salsa & Bachata' },
+      { image: 'https://picsum.photos/seed/urban/800/600', text: 'Urban Style' },
+      { image: 'https://picsum.photos/seed/kizomba/800/600', text: 'Kizomba Flow' },
+      { image: 'https://picsum.photos/seed/contemp/800/600', text: 'Contemporary' },
+      { image: 'https://picsum.photos/seed/ballet/800/600', text: 'Ballet' },
+      { image: 'https://picsum.photos/seed/lxf/800/600', text: 'LXF Festival' },
+  ];
 
 
   return (
-    // Atașăm ascultătorul de click pentru a permite sunetul la prima interacțiune
-    <div className="homepage-container" onClick={handleFirstInteraction}>
+    <div className="homepage-container">
       {/* === NAVIGARE === */}
       <header className="main-nav">
         <div className="logo">DANCE XPLOSION</div>
@@ -87,8 +84,8 @@ function HomePage() {
             src={DXAPromoVideo}
             autoPlay 
             loop 
-            playsInline // Necesar pentru autoplay pe mobile
-            controls // Permite utilizatorului să oprească/pornească sunetul
+            playsInline 
+            controls 
             ref={videoRef}
         >
             Browserul tău nu suportă elementul video.
@@ -114,9 +111,25 @@ function HomePage() {
         </div>
       </section>
 
-      {/* === CLASSES SHOWCASE === */}
+      {/* === CARUSEL CIRCULAR GALLERY (Implementare OGL) === */}
+      <section className="circular-gallery-wrapper">
+          <h2 className="section-heading-dark">Momente Din Scoală</h2>
+          {/* Container cu înălțime fixă pentru OGL */}
+          <div style={{ height: '700px', position: 'relative', padding: '20px 0' }}> 
+              <CircularGallery 
+                  items={galleryItems}
+                  bend={3} 
+                  textColor="#D4AF37" // Auriu pentru textul din galerie
+                  borderRadius={0.05} 
+                  scrollEase={0.05}
+                  scrollSpeed={3}
+              />
+          </div>
+      </section>
+
+      {/* === CLASSES SHOWCASE (RĂMÂNE ca secțiune de detalii) === */}
       <section className="classes-showcase-section">
-        <h2 className="section-heading-dark">Descoperă Clasele Noastre</h2>
+        <h2 className="section-heading-dark">Detalii Despre Clase</h2>
         <div className="classes-card-container">
           {/* Card 1 */}
           <div className="class-showcase-card">
@@ -157,7 +170,7 @@ function HomePage() {
           <p className="lxf-description">
             Cel mai mare festival de dans din Transilvania. Pregătește-te pentru spectacol!
           </p>
-          <button className="cta-lxf-gold">AFLĂ MAI MULTE.</button>
+          <button className="cta-lxf-gold">AFLĂ MAI MULTE</button>
         </div>
       </section>
     </div>

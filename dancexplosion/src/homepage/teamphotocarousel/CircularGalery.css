@@ -1,0 +1,33 @@
+/* src/CircularGallery.css */
+
+.circular-gallery-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: grab;
+    touch-action: none; /* Prevents default mobile scroll behavior */
+}
+
+.circular-gallery-container:active {
+    cursor: grabbing;
+}
+
+/* Stil pentru canvas, pentru a se intinde corect */
+.circular-gallery-container canvas {
+    display: block;
+}
+
+/* Stiluri de background */
+.circular-gallery-wrapper {
+    padding: 80px 0; /* Padding pentru a separa de secțiunile de sus și de jos */
+}
+/* Fundalul caruselului (c-primary: Negru) pentru contrast cu imaginile */
+.circular-gallery-container {
+    background-color: var(--c-primary); 
+    border-radius: 20px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.4);
+    /* Asigură ca marginile să nu fie tăiate în mod inestetic */
+    margin: 0 5%; 
+    width: 90%;
+    max-width: 1400px;
+}
