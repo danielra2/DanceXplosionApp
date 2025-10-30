@@ -1,14 +1,73 @@
-// src/homepage/HomePage.jsx
+// danielra2/dancexplosion/DanceXplosion-821aa754f0dd3755c517a94459d63e07d69c0fa4/dancexplosion/src/homepage/HomePage.jsx
 
-import React, { useRef } from 'react';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import React, { useRef, useEffect } from 'react';
 import './HomePage.css';
 
+// Asigură-te că acest fișier video există la calea specificată
+import DXAPromoVideo from '../assets/mainvideo/DXA Promo.mp4'; 
+
 function HomePage() {
-  const dotLottieRef = useRef(null);
+  // Referințe pentru a accesa elementele DOM
+  const heroSectionRef = useRef(null);
+  const videoRef = useRef(null);
+
+  // Logica de gestionare a vizibilității (muting on scroll)
+  useEffect(() => {
+    if (!heroSectionRef.current || !videoRef.current) return;
+
+    const videoElement = videoRef.current;
+    
+    // Setăm muted la început pentru a ne asigura că autoplay-ul funcționează
+    // (Acest lucru este anulat la primul click al utilizatorului prin handleFirstInteraction)
+    videoElement.muted = true; 
+
+    // Inițializăm IntersectionObserver
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Dacă secțiunea NU este vizibilă
+        if (!entry.isIntersecting) {
+          // Oprim video-ul și sunetul când iese din ecran
+          videoElement.pause();
+        } else {
+          // Dacă secțiunea redevine vizibilă (scroll înapoi)
+          // Repornim video-ul (muted pentru a respecta politicile browserului)
+          videoElement.play().catch(error => {
+             // Această eroare este normală dacă browserul blochează repornirea automată
+             // după ce utilizatorul a interacționat cu pagina.
+          });
+        }
+      },
+      // Pragul 0 înseamnă că observatorul se declanșează de îndată ce
+      // 1 pixel din element iese sau intră în viewport.
+      { threshold: 0 } 
+    );
+
+    // Începem să observăm containerul Hero
+    observer.observe(heroSectionRef.current);
+
+    // Funcție de curățare (cleanup)
+    return () => {
+      if (heroSectionRef.current) {
+        observer.unobserve(heroSectionRef.current);
+      }
+    };
+  }, []); // Se rulează o singură dată
+
+  // Funcția pentru a dezactiva MUTED la prima interacțiune a utilizatorului
+  // (Este aplicată pe div-ul principal al paginii)
+  const handleFirstInteraction = () => {
+    if (videoRef.current && videoRef.current.muted) {
+        // Dezactivăm muted, permițând sunetul
+        videoRef.current.muted = false;
+        // Eliminăm ascultătorul de eveniment după prima utilizare
+        document.querySelector('.homepage-container').removeEventListener('click', handleFirstInteraction);
+    }
+  };
+
 
   return (
-    <div className="homepage-container">
+    // Atașăm ascultătorul de click pentru a permite sunetul la prima interacțiune
+    <div className="homepage-container" onClick={handleFirstInteraction}>
       {/* === NAVIGARE === */}
       <header className="main-nav">
         <div className="logo">DANCE XPLOSION</div>
@@ -19,28 +78,26 @@ function HomePage() {
         </nav>
       </header>
 
-      {/* === HERO SECTION === */}
-      <section className="hero-section">
-        {/* ANIMAȚIE LOTTIE PE FUNDAL */}
-        <div className="lottie-background lottie-left">
-          <DotLottieReact 
-            src="https://lottie.host/your-animation1.lottie" 
+      {/* === HERO SECTION CU VIDEO FUNDAL === */}
+      <section className="hero-section" ref={heroSectionRef}>
+        
+        {/* VIDEO CA FUNDAL */}
+        <video 
+            className="hero-background-video"
+            src={DXAPromoVideo}
+            autoPlay 
             loop 
-            autoplay 
-          />
-        </div>
-        <div className="lottie-background lottie-right">
-          <DotLottieReact 
-            src="https://lottie.host/your-animation2.lottie" 
-            loop 
-            autoplay 
-          />
-        </div>
+            playsInline // Necesar pentru autoplay pe mobile
+            controls // Permite utilizatorului să oprească/pornească sunetul
+            ref={videoRef}
+        >
+            Browserul tău nu suportă elementul video.
+        </video>
+        
+        {/* OVERLAY NEGRU SEMI-TRANSPARENT PESTE VIDEO */}
+        <div className="video-overlay"></div>
 
-        {/* MESH ANIMAT (opțional - poți păstra sau elimina) */}
-        <div className="background-dance-mesh"></div>
-
-        {/* CONȚINUT HERO */}
+        {/* CONȚINUT HERO (Centrat și Simetric) */}
         <div className="hero-content-wrapper">
           <h1 className="hero-title">
             <span className="title-word delay-1">ÎNCEPE</span>{' '}
