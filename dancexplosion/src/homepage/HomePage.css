@@ -206,18 +206,23 @@ h1, h2, h3 {
 /* ANIMAȚIE LOTTIE PE FUNDAL */
 .lottie-background {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 50%;
+    left: 50%;
+    width: 120%; 
+    height: 120%; 
+    transform: translate(-50%, -50%); 
     z-index: 1;
-    opacity: 0.3;
+    
+    opacity: 0.9; 
     pointer-events: none;
     mix-blend-mode: multiply;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
-.lottie-background canvas,
-.lottie-background svg {
+.lottie-background > * { /* Vizează componenta DotLottieReact */
     width: 100% !important;
     height: 100% !important;
     object-fit: cover;
