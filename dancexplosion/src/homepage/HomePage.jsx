@@ -157,7 +157,7 @@ function HomePage() {
           <p className="lxf-description">
             Cel mai mare festival de dans din Transilvania. Pregătește-te pentru spectacol!
           </p>
-          <button className="cta-lxf-gold">AFLĂ MAI MULTE</button>
+          <button className="cta-lxf-gold">AFLĂ MAI MULTE.</button>
         </div>
       </section>
     </div>
