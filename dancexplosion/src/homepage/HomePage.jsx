@@ -4,6 +4,8 @@ import './HomePage.css';
 import InfiniteMovingTeamCarousel from './teamphotocarousel/CircularGallery';
 // Eliminat: import '../CircularGallery.css'; 
 import DXAPromoVideo from '../assets/mainvideo/DXA Promo.mp4'; 
+// Import local team photo so it can be shown in the carousel
+import newMemberPhoto from '../assets/photos/0E5A0411.JPG';
 
 function HomePage() {
   const heroSectionRef = useRef(null);
@@ -46,7 +48,8 @@ function HomePage() {
 
   // Definim datele pentru membrii echipei
   const teamMembers = [
-      { id: 1, name: "Ana Maria", role: "Coregraf Salsa", image: 'https://picsum.photos/seed/ana/500/700' },
+    // Use the local imported photo as the first gallery item
+    { id: 1, name: "Ana Maria", role: "Coregraf Salsa", image: newMemberPhoto },
       { id: 2, name: "Daniel Radu", role: "Instructor Urban", image: 'https://picsum.photos/seed/daniel/500/700' },
       { id: 3, name: "Cristina Pop", role: "Manager Studio", image: 'https://picsum.photos/seed/cristina/500/700' },
       { id: 4, name: "Mihai Stoica", role: "Profesor Balet", image: 'https://picsum.photos/seed/mihai/500/700' },
