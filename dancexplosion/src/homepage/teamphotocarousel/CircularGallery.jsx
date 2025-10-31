@@ -1,11 +1,15 @@
 import React, { useRef, useEffect } from 'react';
 import './CircularGalery.css';
 
+// ESENȚIAL: Importăm poza specifică din calea relativă
+// ATENȚIE: Asigurați-vă că 'photos' este scris exact cu aceeași capitalizare ca și folderul real.
+import newMemberPhoto from '../../assets/photos/0E5A0411.JPG'; 
+
 // Componentă: InfiniteMovingTeamCarousel (AUTO-PLAY FULL-WIDTH)
 
 const teamMembersData = [
-    // Am adăugat nume și roluri, presupunând că acestea sunt datele pentru membrii echipei
-    { id: 1, name: "Ana Maria", role: "Coregraf Salsa", image: 'https://picsum.photos/seed/ana/500/700' },
+    // MODIFICAT: Poza pentru Ana Maria folosește fișierul importat
+    { id: 1, name: "Ana Maria", role: "Coregraf Salsa", image: newMemberPhoto },
     { id: 2, name: "Daniel Radu", role: "Instructor Urban", image: 'https://picsum.photos/seed/daniel/500/700' },
     { id: 3, name: "Cristina Pop", role: "Manager Studio", image: 'https://picsum.photos/seed/cristina/500/700' },
     { id: 4, name: "Mihai Stoica", role: "Profesor Balet", image: 'https://picsum.photos/seed/mihai/500/700' },
@@ -13,7 +17,7 @@ const teamMembersData = [
     { id: 6, name: "Alex Tudor", role: "Instructor Acro", image: 'https://picsum.photos/seed/alex/500/700' },
 ];
 
-const InfiniteMovingTeamCarousel = ({ items = teamMembersData, speed = '60s' }) => {
+const InfiniteMovingTeamCarousel = ({ items = teamMembersData, speed = '30s' }) => {
     
     const duplicateItems = [...items, ...items]; // Duplicăm pentru bucla infinită CSS
     
@@ -39,6 +43,7 @@ const InfiniteMovingTeamCarousel = ({ items = teamMembersData, speed = '60s' }) 
                     >
                         <div className="card-photo-wrapper">
                             <img 
+                                // Atenție: 'item.image' este deja variabila importată
                                 src={item.image} 
                                 alt={item.name} 
                                 className="member-photo-infinite" 

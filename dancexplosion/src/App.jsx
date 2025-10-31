@@ -3,7 +3,7 @@
 import React from 'react';
 import './App.css'; 
 // Importă componenta HomePage
-import HomePage from './homepage/HomePage.jsx'; 
+import HomePage from './homepage/hero/HomePage.jsx'; 
 
 // ADĂUGAT: Importăm stilurile specifice caruselului aici (global/principal)
 // Import corect către fișierul existent în folderul teamphotocarousel

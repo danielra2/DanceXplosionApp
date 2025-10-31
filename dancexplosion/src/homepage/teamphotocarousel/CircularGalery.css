@@ -44,13 +44,11 @@
     
     /* Aplicatia animației: linear pentru mișcare constantă, smooth. */
     animation: infinite-scroll linear infinite;
-    animation-duration: 60s; /* Viteză implicită (se poate seta din React) */
+    animation-duration: 30s; /* MODIFICAT: Viteza implicită CSS (mai rapid) */
     animation-play-state: running;
 }
 
-.infinite-carousel-track:hover {
-    animation-play-state: paused; /* Oprește mișcarea la hover */
-}
+/* MODIFICAT: Am eliminat .infinite-carousel-track:hover { animation-play-state: paused; } */
 
 /* 4. Stilul fiecărui card de membru */
 .team-card-infinite {
