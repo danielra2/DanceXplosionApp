@@ -3,9 +3,10 @@ import './HomePage.css';
 // Noul carusel InfiniteMovingTeamCarousel, exportat din CircularGallery.jsx
 import InfiniteMovingTeamCarousel from '../teamphotocarousel/CircularGallery';
 // Eliminat: import '../CircularGallery.css'; 
-import DXAPromoVideo from '../assets/mainvideo/DXA Promo.mp4'; 
+// Correct asset imports (hero is one level deeper: src/homepage/hero)
+import DXAPromoVideo from '../../assets/mainvideo/DXA Promo.mp4'; 
 // Import local team photo so it can be shown in the carousel
-import newMemberPhoto from '../assets/photos/0E5A0411.JPG';
+import newMemberPhoto from '../../assets/photos/0E5A0411.JPG';
 
 function HomePage() {
   const heroSectionRef = useRef(null);
