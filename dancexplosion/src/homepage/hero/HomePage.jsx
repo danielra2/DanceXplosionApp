@@ -1,12 +1,14 @@
 import React, { useRef, useEffect } from 'react';
 import './HomePage.css';
-// CORECTAT: Cale relativă din src/homepage/hero/ către src/homepage/teamphotocarousel/
+// Importăm caruselul
 import InfiniteMovingTeamCarousel from '../teamphotocarousel/CircularGallery'; 
-// CORECTAT: Cale relativă din src/homepage/hero/ către src/homepage/classdetails/
+// Importăm componenta ClassDetails
 import ClassDetails from '../classdetails/ClassDetails'; 
-// ELIMINAT: Am eliminat importul de video de aici, deoarece se face în App.jsx
-// import DXAPromoVideo from '../../assets/mainvideo/DXA Promo.mp4'; // Această linie a fost eliminată.
 
+// Importăm imaginea logo-ului
+import DanceXplosionLogo from '../../assets/photos/dancelogo.jpg'; 
+
+// PRIMIM calea video ca prop
 function HomePage({ videoSource }) {
   const heroSectionRef = useRef(null);
   const videoRef = useRef(null);
@@ -17,7 +19,6 @@ function HomePage({ videoSource }) {
     const videoElement = videoRef.current;
     
     // Logica Video: Folosește IntersectionObserver
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -50,7 +51,10 @@ function HomePage({ videoSource }) {
     <div className="homepage-container">
       {/* === NAVIGARE (HEADER) === */}
       <header className="main-nav">
-        <div className="logo">DANCE XPLOSION</div>
+        {/* Am înlocuit textul cu imaginea logo-ului */}
+        <div className="logo">
+            <img src={DanceXplosionLogo} alt="Dance Xplosion Logo" className="logo-img" />
+        </div>
         <nav className="nav-links">
           {/* Butoanele Header-ului */}
           <a href="#clase">CLASE</a>
@@ -69,7 +73,7 @@ function HomePage({ videoSource }) {
             autoPlay 
             loop 
             playsInline 
-            muted // ESENȚIAL
+            muted // ESENȚIAL: Setat inițial muted pentru a permite autoplay
             ref={videoRef}
             preload="auto" 
         >

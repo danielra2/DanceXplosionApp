@@ -120,39 +120,33 @@ h1, h2, h3 {
     right: 0;
     width: 100%;
     z-index: 1000;
-    /* MODIFICARE: Fundal transparent */
     background: transparent; 
-    /* MODIFICARE: Eliminăm efectul de blur */
     backdrop-filter: none; 
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08); 
     transition: var(--transition-fast);
     height: 70px;
 }
 
-/* Modificăm și starea de 'scrolled' pentru consistență */
 .main-nav.scrolled {
     padding: 12px 8%;
-    /* MODIFICARE: Fundal transparent */
     background: transparent;
-    /* Eliminăm box-shadow, deoarece pe scroll ar putea trebui să apară un fundal solid pentru lizibilitate,
-       dar conform cererii, îl facem transparent/fără blur */
     box-shadow: none;
     height: 65px;
 }
 
+/* Stil pentru elementul care conține logo-ul (dacă mai e nevoie de un container) */
 .logo {
-    font-size: 1.8rem;
-    font-weight: 900;
-    color: var(--c-primary);
-    letter-spacing: 0.05rem;
-    position: relative;
-    z-index: 10;
-    transition: var(--transition-fast);
+    display: flex; /* Asigură alinierea verticală a imaginii */
+    align-items: center;
+    height: 100%; /* Ocupă înălțimea disponibilă */
 }
 
-.logo:hover {
-    color: var(--c-secondary);
-    transform: scale(1.05);
+/* ADĂUGAT: Stiluri pentru imaginea logo */
+.logo-img {
+    height: 60px; /* Ajustează înălțimea logo-ului, poți folosi și max-height */
+    width: auto; /* Păstrează proporțiile */
+    object-fit: contain; /* Asigură că imaginea este conținută fără a fi tăiată */
+    padding: 5px 0; /* Un pic de padding vertical, dacă este necesar */
 }
 
 .nav-links {
