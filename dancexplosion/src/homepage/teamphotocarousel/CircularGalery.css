@@ -8,79 +8,84 @@
     --c-white: #FFFFFF;
 }
 
-/* 1. Containerul exterior (pentru titlu și fundal) */
+/* 1. Containerul exterior (wrapper) */
 .circular-gallery-wrapper {
-    /* Setăm width: 100% și eliminăm marginile care limitau lățimea */
     width: 100%; 
     padding: 80px 0 120px; 
     background: linear-gradient(180deg, var(--c-background) 0%, #FFFFFF 100%);
     position: relative;
-    overflow: hidden; /* Foarte important pentru mișcarea infinită */
+    overflow: hidden; 
 }
 
-/* 2. Containerul vizual al caruselului (Team Moving Carousel) */
+/* 2. Containerul vizual al caruselului - Face scroll-ul manual */
 .infinite-carousel-container {
     width: 100%; /* Full width */
-    height: 500px; /* Înălțimea fixă pentru carduri */
+    height: 550px; /* Înălțimea fixă pentru carduri */
     position: relative;
-    overflow: hidden;
-    user-select: none;
-    /* Eliminăm padding-ul implicit al wrapper-ului pentru a fi Full-Width */
+    
+    /* Permite Scroll-ul manual */
+    overflow-x: scroll; 
+    overflow-y: hidden;
+    white-space: nowrap; /* Menține elementele pe o singură linie */
+    -ms-overflow-style: none; /* Ascunde bara de scroll IE and Edge */
+    scrollbar-width: none; /* Ascunde bara de scroll Firefox */
+    
+    cursor: grab; /* Cursor pentru drag */
+    /* Eliminăm marginile implicite */
     margin: 0; 
+    padding: 0 5vw; /* Padding pentru a vedea cardurile la capete */
+}
+
+/* Ascunde bara de scroll pe WebKit (Chrome, Safari) */
+.infinite-carousel-container::-webkit-scrollbar {
+    display: none;
 }
 
 /* Animația de mișcare orizontală */
 @keyframes infinite-scroll {
     from { transform: translateX(0); }
-    to { transform: translateX(-50%); } /* Mută exact jumătate de track (după duplicare) */
+    to { transform: translateX(-50%); } 
 }
 
 /* 3. Track-ul de carduri (unde se aplică animația) */
 .infinite-carousel-track {
     display: flex;
-    /* Atenție: Lățimea trebuie să fie dublul conținutului total pentru a asigura fluiditatea */
     width: max-content; 
     height: 100%;
     
-    /* Aplicatia animației: linear pentru mișcare constantă, smooth. */
+    /* Animația CSS continuă */
     animation: infinite-scroll linear infinite;
-    animation-duration: 30s; /* MODIFICAT: Viteza implicită CSS (mai rapid) */
+    animation-duration: var(--animation-duration, 30s); /* Valoare implicită 30s */
     animation-play-state: running;
 }
 
-/* MODIFICAT: Am eliminat .infinite-carousel-track:hover { animation-play-state: paused; } */
-
-/* 4. Stilul fiecărui card de membru */
+/* 4. Stilul fiecărui card de membru (DESIGN NOU) */
 .team-card-infinite {
-    width: 350px; 
-    height: 450px;
-    /* Ajustăm marginea pentru a nu fi tăiată la final, menținând aspectul full-width */
-    margin: 0 20px; 
+    width: 380px; 
+    height: 480px;
+    margin: 30px 25px; /* Margine mare pentru separare vizuală */
     
-    border-radius: 15px;
+    border-radius: 10px;
     overflow: hidden;
-    background: var(--c-primary);
+    background: rgba(255, 255, 255, 0.95);
     position: relative;
     cursor: pointer;
     
-    /* Tranziții smooth la hover */
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    /* Cheie: Forțăm crearea unei plăci grafice pentru mișcare extra smooth */
-    transform: translate3d(0, 0, 0); 
+    /* Stiluri 3D subtile și Shadow */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: perspective(1000px) rotateY(0deg) scale(0.95);
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    
+    /* Efect de sticlă pe fundal (Modern) */
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Efecte Spectaculoase la Hover */
 .team-card-infinite:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 15px 30px rgba(255, 112, 51, 0.5), 0 0 15px rgba(255, 112, 51, 0.3);
-    border: 3px solid var(--c-accent);
-}
-
-.card-photo-wrapper {
-    width: 100%;
-    height: 100%;
-    position: relative;
+    transform: perspective(1000px) rotateY(0deg) scale(1.05);
+    box-shadow: 0 20px 40px rgba(255, 112, 51, 0.7);
+    border-color: var(--c-accent);
 }
 
 .member-photo-infinite {
@@ -88,61 +93,57 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: brightness(0.7) grayscale(100%);
-    transition: all 0.4s;
+    filter: brightness(0.8);
+    transition: all 0.5s;
 }
 
 .team-card-infinite:hover .member-photo-infinite {
-    filter: brightness(1) grayscale(0%);
-    transform: scale(1.1);
+    filter: brightness(1);
+    transform: scale(1.05);
 }
 
-/* Overlay cu informații */
+/* Overlay cu informații (Curat și Clar) */
 .card-overlay-infinite {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     right: 0;
-    padding: 20px 25px;
-    background: linear-gradient(0deg, rgba(26, 26, 26, 0.9) 0%, transparent 100%);
+    bottom: 0;
+    padding: 30px;
+    background: linear-gradient(180deg, rgba(26, 26, 26, 0.8) 0%, rgba(26, 26, 26, 0.1) 40%, transparent 100%);
     color: var(--c-white);
-    text-align: center;
-    transition: all 0.4s;
-}
-
-.team-card-infinite:hover .card-overlay-infinite {
-    background: linear-gradient(0deg, var(--c-secondary) 0%, rgba(26, 26, 26, 0.8) 50%, transparent 100%);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .member-name-infinite {
-    font-size: 1.5rem;
+    font-size: 2.2rem;
     font-weight: 900;
     color: var(--c-accent);
     margin-bottom: 5px;
-    text-shadow: 0 0 5px var(--c-accent);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
 }
 
 .member-role-infinite {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     color: var(--c-white);
     text-transform: uppercase;
+    font-weight: 600;
 }
 
 .cta-overlay-infinite {
     display: block;
-    margin-top: 10px;
-    color: var(--c-accent);
-    font-weight: 700;
-    font-size: 0.85rem;
-    text-decoration: underline;
+    margin-top: 15px;
+    color: var(--c-secondary);
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s;
 }
 
-/* Asigură că celelalte clase vechi nu interferează */
-.circular-gallery-container {
-    background: none; 
-    border-radius: 0; 
-    box-shadow: none; 
-    margin: 0; 
-    width: 100%; 
-    height: auto;
+.team-card-infinite:hover .cta-overlay-infinite {
+    text-decoration: underline;
+    color: var(--c-white);
 }

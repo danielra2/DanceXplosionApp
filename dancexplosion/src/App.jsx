@@ -1,19 +1,23 @@
-// danielra2/dancexplosion/DanceXplosion-821aa754f0dd3755c517a94459d63e07d69c0fa4/dancexplosion/src/App.jsx
+// danielra2/dancexplosionapp/DanceXplosionApp-a94c15dc3de500a5513341889159fdbe9997e0bd/dancexplosion/src/App.jsx
 
 import React from 'react';
 import './App.css'; 
 // Importă componenta HomePage
+// CORECT: Calea către src/homepage/hero/
 import HomePage from './homepage/hero/HomePage.jsx'; 
 
-// ADĂUGAT: Importăm stilurile specifice caruselului aici (global/principal)
 // Import corect către fișierul existent în folderul teamphotocarousel
+// Calea din src/App.jsx către src/homepage/teamphotocarousel/
 import './homepage/teamphotocarousel/CircularGalery.css';
 
+// CORECT: Importăm asset-urile principale AICI (în App.jsx)
+import DXAPromoVideo from './assets/mainvideo/DXA Promo.mp4'; 
 
 function App() {
   return (
     <div className="App">
-      <HomePage />
+      {/* Transmitem calea video ca PROP către HomePage.jsx */}
+      <HomePage videoSource={DXAPromoVideo} />
     </div>
   );
 }

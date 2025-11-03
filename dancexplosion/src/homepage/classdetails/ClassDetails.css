@@ -1,0 +1,140 @@
+/* src/homepage/classdetails/ClassDetails.css */
+
+/* Notă: Paleta de culori și animațiile generale sunt definite în HomePage.css */
+
+/* === 2. CLASSES SHOWCASE (Mutat din HomePage.css) === */
+
+.classes-showcase-section {
+    padding: 120px 5%;
+    text-align: center;
+    background: linear-gradient(180deg, var(--c-background) 0%, var(--c-white) 100%);
+    position: relative;
+}
+
+/* Secțiunea antet: heading-dark trebuie să fie disponibilă prin context */
+.section-heading-dark {
+    font-size: 3.5rem;
+    margin-bottom: 80px;
+    position: relative;
+    color: var(--c-primary);
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+}
+
+.section-heading-dark::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 5px;
+    background: linear-gradient(90deg, var(--c-secondary), var(--c-accent));
+    margin: 20px auto 0;
+    border-radius: 3px;
+    box-shadow: 0 4px 15px rgba(255, 112, 51, 0.3);
+}
+
+.classes-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    max-width: 1400px;
+    margin: 60px auto 0; 
+}
+
+.class-showcase-card {
+    background: linear-gradient(135deg, var(--c-white) 0%, var(--c-background) 100%);
+    border-radius: 20px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transform: translateY(0);
+    transition: var(--transition-smooth);
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.class-showcase-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 112, 51, 0.1) 0%, rgba(212, 175, 55, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.6s;
+    z-index: 1;
+}
+
+.class-showcase-card:hover::before {
+    opacity: 1;
+}
+
+.class-showcase-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
+}
+
+.card-image-placeholder {
+    height: 280px;
+    background: linear-gradient(135deg, var(--c-secondary) 0%, var(--c-accent) 100%);
+    opacity: 1;
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-image-placeholder::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: cardShine 4s infinite;
+}
+
+.class-showcase-card:hover .card-image-placeholder {
+    transform: scale(1.1);
+}
+
+.card-info {
+    padding: 35px;
+    position: relative;
+    z-index: 2;
+}
+
+.card-info h3 {
+    color: var(--c-primary);
+    margin-top: 0;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.card-info p {
+    line-height: 1.7;
+}
+
+.class-tag {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 20px;
+    background: linear-gradient(135deg, var(--c-accent) 0%, #e6c350 100%);
+    color: var(--c-primary);
+    font-size: 0.85rem;
+    font-weight: 800;
+    border-radius: 25px;
+    transform: scale(1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.class-showcase-card:hover .class-tag {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+}
+
+/* Notă: Animațiile 'fadeInUp' și 'cardShine' trebuie să fie definite în HomePage.css */
