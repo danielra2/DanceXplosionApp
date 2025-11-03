@@ -1,3 +1,5 @@
+// Calea către HomePage.jsx: danielra2/dancexplosionapp/DanceXplosionApp-fe31a5a99f8644a60b8da93a535d84be9c0d1bf7/dancexplosion/src/homepage/hero/HomePage.jsx
+
 import React, { useRef, useEffect } from 'react';
 import './HomePage.css';
 // Importăm caruselul
@@ -8,7 +10,6 @@ import ClassDetails from '../classdetails/ClassDetails';
 // Importăm imaginea logo-ului
 import DanceXplosionLogo from '../../assets/photos/dancelogo.jpg'; 
 
-// PRIMIM calea video ca prop
 function HomePage({ videoSource }) {
   const heroSectionRef = useRef(null);
   const videoRef = useRef(null);
@@ -19,16 +20,15 @@ function HomePage({ videoSource }) {
     const videoElement = videoRef.current;
     
     // Logica Video: Folosește IntersectionObserver
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Video este vizibil: reluare și UNMUTE
           videoElement.muted = false; 
           videoElement.play().catch(error => {
              console.log("Eroare la reluare/unmute video:", error);
           });
         } else {
-          // Video NU este vizibil: MUTE și PAUSE
           videoElement.muted = true;
           videoElement.pause();
         }
@@ -45,8 +45,6 @@ function HomePage({ videoSource }) {
     };
   }, []); 
 
-  // ELIMINAT: Nicio definiție de date teamMembers aici.
-
   return (
     <div className="homepage-container">
       {/* === NAVIGARE (HEADER) === */}
@@ -56,8 +54,18 @@ function HomePage({ videoSource }) {
             <img src={DanceXplosionLogo} alt="Dance Xplosion Logo" className="logo-img" />
         </div>
         <nav className="nav-links">
-          {/* Butoanele Header-ului */}
-          <a href="#clase">CLASE</a>
+          {/* MODIFICARE: Implementare Meniu Dropdown simplificat la CLASE */}
+          <div className="dropdown-container">
+            <a href="#clase" className="nav-link-main">CLASE</a>
+            <div className="dropdown-menu simplified">
+                {/* O combinație logică de Salsa și Bachata */}
+                <a href="#salsa-bachata" className="class-type-main">Salsa</a>
+                <a href="#salsa-bachata" className="class-type-main">Bachata</a>
+                <a href="#kizomba" className="class-type-main">Kizomba</a>
+                <a href="#mixt" className="class-type-main mixt-link">Clasă Mixtă (Beginner)</a>
+            </div>
+          </div>
+          
           <a href="#lxf">LXF</a>
           <button className="cta-nav cta-primary-dark">LOG IN</button>
         </nav>
@@ -69,11 +77,11 @@ function HomePage({ videoSource }) {
         {/* VIDEO CU LOGICA DE AUTO-PLAY/MUTE IN JSX */}
         <video 
             className="hero-background-video"
-            src={videoSource} // FOLOSIM PROP-UL PRIMIT DIN APP.JSX
+            src={videoSource}
             autoPlay 
             loop 
             playsInline 
-            muted // ESENȚIAL: Setat inițial muted pentru a permite autoplay
+            muted
             ref={videoRef}
             preload="auto" 
         >

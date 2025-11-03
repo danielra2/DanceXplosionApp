@@ -3,41 +3,41 @@ import './ClassDetails.css'; // Importăm stilurile dedicate
 
 /**
  * Componentă pentru afișarea detaliilor despre clasele de dans.
- * Preia logica secțiunii 'Classes Showcase' din HomePage.jsx.
  */
 function ClassDetails() {
   return (
-    // Secțiunea 1: CLASSES SHOWCASE (RĂMÂNE ca secțiune de detalii)
+    // Secțiunea 1: CLASSES SHOWCASE
     <section className="classes-showcase-section">
-      <h2 className="section-heading-dark">Detalii Despre Clase</h2>
+      <h2 className="section-heading-dark">Niveluri și Clase Speciale</h2>
       <div className="classes-card-container">
-        {/* Card 1: Hip-Hop */}
+        
+        {/* Card 1: SALSA / BACHATA (NIVELURI) */}
         <div className="class-showcase-card">
           <div className="card-image-placeholder"></div>
           <div className="card-info">
-            <h3>Hip-Hop</h3>
-            <p>Energie pură și freestyle pentru toți cei care iubesc ritmurile urbane.</p>
-            <span className="class-tag">POPULAR</span>
+            <h3>Salsa & Bachata</h3>
+            <p>De la pași de bază la figuri complexe. Disponibil pe 3 niveluri: Beginner, Improver, Intermediate.</p>
+            <span className="class-tag">3 NIVELURI</span>
           </div>
         </div>
 
-        {/* Card 2: Contemporary */}
+        {/* Card 2: CLASA MIXTĂ (NOU) */}
         <div className="class-showcase-card">
           <div className="card-image-placeholder"></div>
           <div className="card-info">
-            <h3>Contemporary</h3>
-            <p>Exprimă-te prin mișcări fluide și emoționale.</p>
-            <span className="class-tag">NOU</span>
+            <h3>Mixt: Salsa & Bachata</h3>
+            <p>Clasa ideală pentru începători, combinând cele mai populare stiluri latino-americane.</p>
+            <span className="class-tag">NOU START</span>
           </div>
         </div>
 
-        {/* Card 3: Ballet */}
+        {/* Card 3: KIZOMBA (NIVELURI) */}
         <div className="class-showcase-card">
           <div className="card-image-placeholder"></div>
           <div className="card-info">
-            <h3>Ballet</h3>
-            <p>Eleganță și tehnică clasică pentru toate nivelurile.</p>
-            <span className="class-tag">CLASIC</span>
+            <h3>Kizomba</h3>
+            <p>Ritmuri lente și mișcări senzuale. Ideal pentru conexiune și fluiditate.</p>
+            <span className="class-tag">FLOW</span>
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import './CircularGalery.css';
 
 // Importul pozei locale RĂMÂNE AICI
 import newMemberPhoto from '../../assets/photos/0E5A0411.JPG'; 
+import malePhoto from '../../assets/photos/0E5A0375.JPG';
 
 // --- Funcție ajutătoare pentru a citi poziția reală a animației CSS (translateX) ---
 // Această funcție este cheia pentru a evita săritura la hover.
@@ -24,7 +25,7 @@ const getRunningTransformOffset = (element) => {
 
 const teamMembersData = [
     { id: 1, name: "Ana Maria", role: "Coregraf Salsa", image: newMemberPhoto },
-    { id: 2, name: "Daniel Radu", role: "Instructor Urban", image: 'https://picsum.photos/seed/daniel/500/700' },
+    { id: 2, name: "Daniel Radu", role: "Instructor Urban", image: malePhoto },
     { id: 3, name: "Cristina Pop", role: "Manager Studio", image: 'https://picsum.photos/seed/cristina/500/700' },
     { id: 4, name: "Mihai Stoica", role: "Profesor Balet", image: 'https://picsum.photos/seed/mihai/500/700' },
     { id: 5, name: "Elena Vasiu", role: "Asistent Coregraf", image: 'https://picsum.photos/seed/elena/500/700' },

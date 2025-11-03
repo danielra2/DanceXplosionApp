@@ -120,6 +120,7 @@ h1, h2, h3 {
     right: 0;
     width: 100%;
     z-index: 1000;
+    /* MODIFICARE FINALĂ: Fundal complet transparent, fără blur */
     background: transparent; 
     backdrop-filter: none; 
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08); 
@@ -134,19 +135,31 @@ h1, h2, h3 {
     height: 65px;
 }
 
-/* Stil pentru elementul care conține logo-ul (dacă mai e nevoie de un container) */
+/* Stil pentru elementul care conține logo-ul */
 .logo {
-    display: flex; /* Asigură alinierea verticală a imaginii */
+    display: flex; 
     align-items: center;
-    height: 100%; /* Ocupă înălțimea disponibilă */
+    height: 100%; 
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--c-primary);
+    letter-spacing: 0.05rem;
+    position: relative;
+    z-index: 10;
+    transition: var(--transition-fast);
 }
 
-/* ADĂUGAT: Stiluri pentru imaginea logo */
+/* Stiluri pentru imaginea logo */
 .logo-img {
-    height: 60px; /* Ajustează înălțimea logo-ului, poți folosi și max-height */
-    width: auto; /* Păstrează proporțiile */
-    object-fit: contain; /* Asigură că imaginea este conținută fără a fi tăiată */
-    padding: 5px 0; /* Un pic de padding vertical, dacă este necesar */
+    height: 60px; /* Ajustează înălțimea logo-ului */
+    width: auto; 
+    object-fit: contain; 
+    padding: 5px 0; 
+}
+
+.logo:hover {
+    color: var(--c-secondary);
+    transform: scale(1.05);
 }
 
 .nav-links {
@@ -155,6 +168,7 @@ h1, h2, h3 {
     gap: 40px;
 }
 
+/* Stil de bază pentru link-urile principale */
 .nav-links a {
     color: var(--c-text-primary);
     text-decoration: none;
@@ -164,8 +178,74 @@ h1, h2, h3 {
     transition: var(--transition-fast);
 }
 
-.nav-links a:hover {
+/* Noul container pentru dropdown */
+.dropdown-container {
+    position: relative;
+    height: 100%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%; 
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    
+    background-color: var(--c-white);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 15px 0;
+    min-width: 220px;
+    z-index: 1001;
+    
+    /* Ascunde meniul inițial */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+}
+
+/* Afișează meniul la HOVER */
+.dropdown-container:hover .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-menu a {
+    color: var(--c-primary);
+    padding: 12px 20px; 
+    display: block;
+    font-weight: 500;
+    font-size: 1rem; /* Mărime uniformă pentru opțiunile principale */
+    white-space: nowrap;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background-color: var(--c-background);
     color: var(--c-secondary);
+}
+
+/* Stiluri pentru tipurile principale de clasă */
+.class-type-main {
+    font-weight: 700 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.dropdown-menu a:last-child {
+    border-bottom: none;
+}
+
+/* Stil pentru clasa mixtă */
+.mixt-link {
+    color: var(--c-accent) !important; /* Evidențiem clasa mixtă în auriu */
+    font-weight: 800 !important;
+}
+.mixt-link:hover {
+    color: var(--c-primary) !important;
+    background-color: var(--c-accent);
 }
 
 .nav-links a::after {
@@ -190,7 +270,8 @@ h1, h2, h3 {
     font-size: 0.9rem;
 }
 
-/* === 1. HERO SECTION (CENTRAT PERFECT CU ANIMAȚII SPECTACULOASE) === */
+
+/* === 1. HERO SECTION (VIDEO) === */
 .hero-section {
     position: relative;
     width: 100vw; 
@@ -208,26 +289,6 @@ h1, h2, h3 {
     color: var(--c-white); 
 }
 
-/* ANIMAȚIE LOTTIE PE FUNDAL */
-.lottie-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0.3;
-    pointer-events: none;
-    mix-blend-mode: multiply;
-}
-
-.lottie-background canvas,
-.lottie-background svg {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover;
-}
-
 /* Particule animate în fundal */
 .hero-section::before {
     content: '';
@@ -236,12 +297,7 @@ h1, h2, h3 {
     left: 0;
     right: 0;
     bottom: 0;
-    /* Comentat pentru performanță
-    background-image: 
-        radial-gradient(circle at 20% 30%, rgba(255, 112, 51, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
-    animation: particleFloat 20s ease-in-out infinite;
-    */
+    /* Comentat pentru performanță */
     z-index: 1;
 }
 
@@ -317,28 +373,6 @@ h1, h2, h3 {
     animation: fadeInUp 1.5s ease-out 1.5s forwards;
 }
 
-/* Mesh animat în fundal */
-.background-dance-mesh {
-    position: absolute;
-    bottom: -30%; 
-    right: -20%;
-    width: 120vh; 
-    height: 120vh; 
-    /* Comentat pentru performanță
-    background: radial-gradient(
-        circle at center, 
-        rgba(255, 112, 51, 0.08) 0%, 
-        rgba(212, 175, 55, 0.05) 40%,
-        transparent 70%
-    );
-    opacity: 1; 
-    z-index: 2;
-    border-radius: 50%; 
-    animation: meshDance 35s infinite ease-in-out; 
-    filter: blur(60px);
-    */
-}
-
 /* Stil pentru Video-ul de Fundal */
 .hero-background-video {
     position: absolute;
@@ -368,140 +402,6 @@ h1, h2, h3 {
         rgba(0, 0, 0, 0.5) 100%
     );
     z-index: 5; /* Peste video, sub text */
-}
-
-
-/* === 2. CLASSES SHOWCASE === */
-.classes-showcase-section {
-    padding: 120px 5%;
-    text-align: center;
-    background: linear-gradient(180deg, var(--c-background) 0%, #FFFFFF 100%);
-    position: relative;
-}
-
-.section-heading-dark {
-    font-size: 3.5rem;
-    margin-bottom: 80px;
-    position: relative;
-    color: var(--c-primary);
-    opacity: 0;
-    animation: fadeInUp 1s ease-out forwards;
-    animation-timeline: view();
-    animation-range: entry 0% cover 30%;
-}
-
-.section-heading-dark::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 5px;
-    background: linear-gradient(90deg, var(--c-secondary), var(--c-accent));
-    margin: 20px auto 0;
-    border-radius: 3px;
-    box-shadow: 0 4px 15px rgba(255, 112, 51, 0.3);
-}
-
-.classes-card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 40px;
-    max-width: 1400px;
-    margin: 60px auto 0; 
-}
-
-.class-showcase-card {
-    background: linear-gradient(135deg, #FFFFFF 0%, #F8F8F8 100%);
-    border-radius: 20px;
-    overflow: hidden;
-    text-align: left;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
-    cursor: pointer;
-    transform: translateY(0);
-    transition: var(--transition-smooth);
-    position: relative;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.class-showcase-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 112, 51, 0.1) 0%, rgba(212, 175, 55, 0.1) 100%);
-    opacity: 0;
-    transition: opacity 0.6s;
-    z-index: 1;
-}
-
-.class-showcase-card:hover::before {
-    opacity: 1;
-}
-
-.class-showcase-card:hover {
-    transform: translateY(-15px) scale(1.03);
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
-}
-
-.card-image-placeholder {
-    height: 280px;
-    background: linear-gradient(135deg, var(--c-secondary) 0%, var(--c-accent) 100%);
-    opacity: 1;
-    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-.card-image-placeholder::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    animation: cardShine 4s infinite;
-}
-
-.class-showcase-card:hover .card-image-placeholder {
-    transform: scale(1.1);
-}
-
-.card-info {
-    padding: 35px;
-    position: relative;
-    z-index: 2;
-}
-
-.card-info h3 {
-    color: var(--c-primary);
-    margin-top: 0;
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-}
-
-.card-info p {
-    line-height: 1.7;
-}
-
-.class-tag {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 8px 20px;
-    background: linear-gradient(135deg, var(--c-accent) 0%, #e6c350 100%);
-    color: var(--c-primary);
-    font-size: 0.85rem;
-    font-weight: 800;
-    border-radius: 25px;
-    transform: scale(1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-}
-
-.class-showcase-card:hover .class-tag {
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
 }
 
 /* === 3. LXF PROMO (Secțiune Ultra-Spectaculoasă) === */
@@ -615,10 +515,6 @@ h1, h2, h3 {
         text-shadow: 0 0 50px rgba(212, 175, 55, 0.8), 0 0 80px rgba(212, 175, 55, 0.4);
     }
 }
-
-/* Animațiile care cauzau lag sunt acum dezactivate/comentate */
-/* @keyframes particleFloat { ... } */
-/* @keyframes meshDance { ... } */
 
 @keyframes cardShine {
     0% {
