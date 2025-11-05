@@ -15,7 +15,7 @@ function ClassDetails() {
         <div className="class-showcase-card">
           <div className="card-image-placeholder"></div>
           <div className="card-info">
-            <h3>Salsa & Bachata</h3>
+            <h3>Salsa</h3>
             <p>De la pași de bază la figuri complexe. Disponibil pe 3 niveluri: Beginner, Improver, Intermediate.</p>
             <span className="class-tag">3 NIVELURI</span>
           </div>
@@ -25,7 +25,7 @@ function ClassDetails() {
         <div className="class-showcase-card">
           <div className="card-image-placeholder"></div>
           <div className="card-info">
-            <h3>Mixt: Salsa & Bachata</h3>
+            <h3>Bachata</h3>
             <p>Clasa ideală pentru începători, combinând cele mai populare stiluri latino-americane.</p>
             <span className="class-tag">NOU START</span>
           </div>
@@ -40,6 +40,15 @@ function ClassDetails() {
             <span className="class-tag">FLOW</span>
           </div>
         </div>
+        <div className="class-showcase-card">
+          <div className="card-image-placeholder"></div>
+          <div className="card-info">
+            <h3>Salsa & Bachata</h3>
+            <p>Ritmuri lente și mișcări senzuale. Ideal pentru conexiune și fluiditate.</p>
+            <span className="class-tag">FLOW</span>
+          </div>
+        </div>
+
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-// Calea către HomePage.jsx: danielra2/dancexplosionapp/DanceXplosionApp-fe31a5a99f8644a60b8da93a535d84be9c0d1bf7/dancexplosion/src/homepage/hero/HomePage.jsx
+// Calea către HomePage.jsx: danielra2/dancexplosionapp/DanceXplosionApp-1b3954f40541e7eb886e0df514c43b3d222778e02/dancexplosion/src/homepage/hero/HomePage.jsx
 
 import React, { useRef, useEffect } from 'react';
 import './HomePage.css';
@@ -59,8 +59,8 @@ function HomePage({ videoSource }) {
             <a href="#clase" className="nav-link-main">CLASE</a>
             <div className="dropdown-menu simplified">
                 {/* O combinație logică de Salsa și Bachata */}
-                <a href="#salsa-bachata" className="class-type-main">Salsa</a>
-                <a href="#salsa-bachata" className="class-type-main">Bachata</a>
+                <a href="#salsa" className="class-type-main">Salsa</a>
+                <a href="#salsa" className="class-type-main">Bachata</a>
                 <a href="#kizomba" className="class-type-main">Kizomba</a>
                 <a href="#mixt" className="class-type-main mixt-link">Clasă Mixtă (Beginner)</a>
             </div>
