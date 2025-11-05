@@ -36,10 +36,11 @@
 
 .classes-card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 40px;
-    max-width: 1400px;
-    margin: 60px auto 0; 
+grid-template-columns: repeat(4, 1fr);
+gap: 40px;
+max-width: 1400px;
+margin: 60px auto 0;
+
 }
 
 .class-showcase-card {
