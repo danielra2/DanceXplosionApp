@@ -1,26 +1,21 @@
-// Calea către HomePage.jsx: danielra2/dancexplosionapp/DanceXplosionApp-1b3954f40541e7eb886e0df514c43b3d222778e02/dancexplosion/src/homepage/hero/HomePage.jsx
-
 import React, { useRef, useEffect } from 'react';
 import './HomePage.css';
-// Importăm caruselul
+// Importăm componentele
 import InfiniteMovingTeamCarousel from '../teamphotocarousel/CircularGallery'; 
-// Importăm componenta ClassDetails
 import ClassDetails from '../classdetails/ClassDetails'; 
-
 // Importăm imaginea logo-ului
 import DanceXplosionLogo from '../../assets/photos/dancelogo.jpg'; 
 
 function HomePage({ videoSource }) {
   const heroSectionRef = useRef(null);
   const videoRef = useRef(null);
-
+  
+  // ... (useEffect pentru video rămâne neschimbat) ...
   useEffect(() => {
     if (!heroSectionRef.current || !videoRef.current) return;
 
     const videoElement = videoRef.current;
     
-    // Logica Video: Folosește IntersectionObserver
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -44,25 +39,30 @@ function HomePage({ videoSource }) {
       }
     };
   }, []); 
-
+  
   return (
     <div className="homepage-container">
       {/* === NAVIGARE (HEADER) === */}
       <header className="main-nav">
-        {/* Am înlocuit textul cu imaginea logo-ului */}
         <div className="logo">
             <img src={DanceXplosionLogo} alt="Dance Xplosion Logo" className="logo-img" />
         </div>
         <nav className="nav-links">
-          {/* MODIFICARE: Implementare Meniu Dropdown simplificat la CLASE */}
+          {/* MODIFICARE: Implementare Meniu Dropdown cu linkuri separate Salsa/Bachata */}
           <div className="dropdown-container">
             <a href="#clase" className="nav-link-main">CLASE</a>
             <div className="dropdown-menu simplified">
-                {/* O combinație logică de Salsa și Bachata */}
+                {/* Linkuri către rutele hash gestionate în App.jsx */}
                 <a href="#salsa" className="class-type-main">Salsa</a>
-                <a href="#salsa" className="class-type-main">Bachata</a>
-                <a href="#kizomba" className="class-type-main">Kizomba</a>
-                <a href="#mixt" className="class-type-main mixt-link">Clasă Mixtă (Beginner)</a>
+                
+                {/* NOU: Link Bachata */}
+                <a href="#bachata" className="class-type-main">Bachata</a>
+
+                {/* Link Kizomba */}
+                <a href="/classes/kizomba-presentation" className="class-type-main">Kizomba</a>
+
+                {/* Clasa Mixtă */}
+                <a href="/classes/salsa-bachata-presentation?level=mixt" className="class-type-main mixt-link">Clasă Mixtă (Beginner)</a>
             </div>
           </div>
           

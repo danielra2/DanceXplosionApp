@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css'; 
 import HomePage from './homepage/hero/HomePage.jsx'; 
 import SalsaPage from './homepage/salsaPage/SalsaPage.jsx'; 
+import BachataPage from './homepage/BachataPage/BachataPage.jsx';
 import './homepage/teamphotocarousel/CircularGalery.css';
 import DXAPromoVideo from './assets/mainvideo/DXA Promo.mp4'; 
 function App() {
@@ -24,12 +25,20 @@ function App() {
   // Determină hash-ul fără '#'
   const currentHash = route.substring(1); 
   
-  // Logică de rutare simplă: dacă hash-ul este 'salsa', afișează SalsaPage
+  // Logică de rutare simplă: dacă hash-ul este 'salsa' sau 'bachata', afișează pagina corespunzătoare
   if (currentHash === 'salsa') {
     return (
         <div className="App">
             <SalsaPage />
         </div>
+    );
+  }
+
+  if (currentHash === 'bachata') {
+    return (
+      <div className="App">
+        <BachataPage />
+      </div>
     );
   }
 
