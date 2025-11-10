@@ -120,18 +120,21 @@ h1, h2, h3 {
     right: 0;
     width: 100%;
     z-index: 1000;
-    /* MODIFICARE FINALĂ: Fundal complet transparent, fără blur */
+    /* STAREA IMPLICITĂ (PE VIDEO): Transparent */
     background: transparent; 
     backdrop-filter: none; 
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08); 
-    transition: var(--transition-fast);
+    box-shadow: none; /* Eliminăm umbra în starea transparentă */
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, height 0.4s ease; /* Fluiditate */
     height: 70px;
 }
 
+/* STAREA CÂND S-A FĂCUT SCROLL (.scrolled) */
 .main-nav.scrolled {
     padding: 12px 8%;
-    background: transparent;
-    box-shadow: none;
+    /* MODIFICARE: Fundal alb solid */
+    background: var(--c-white);
+    /* ADĂUGAT: Umbră pentru a separa de conținut */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15); 
     height: 65px;
 }
 

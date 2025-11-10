@@ -1,19 +1,21 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react'; // ADĂUGAT: useState
 import './HomePage.css';
-// Importăm componentele
 import InfiniteMovingTeamCarousel from '../teamphotocarousel/CircularGallery'; 
 import ClassDetails from '../classdetails/ClassDetails'; 
-// Importăm imaginea logo-ului
+import FormularInscriere from '../FormularInscriere/FormularInscriere'; 
+
 import DanceXplosionLogo from '../../assets/photos/dancelogo.jpg'; 
 
 function HomePage({ videoSource }) {
   const heroSectionRef = useRef(null);
   const videoRef = useRef(null);
-  
-  // ... (useEffect pentru video rămâne neschimbat) ...
+  const [showModal, setShowModal] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false); // NOU: Starea pentru scroll detection
+
+  // Logica 1: Control Video/Sunet (Intersection Observer)
   useEffect(() => {
     if (!heroSectionRef.current || !videoRef.current) return;
-
+    // ... (Logica existentă a Intersection Observer-ului pentru video/mute/pause)
     const videoElement = videoRef.current;
     
     const observer = new IntersectionObserver(
@@ -39,31 +41,53 @@ function HomePage({ videoSource }) {
       }
     };
   }, []); 
-  
+
+  // Logica 2: Control Header (Scroll Event)
+  useEffect(() => {
+    const handleScroll = () => {
+      // Verificăm dacă utilizatorul a derulat mai mult de 100px (sau înălțimea video-ului)
+      // Folosim o valoare fixă de 100px pentru a fi simplu, dar ideal ar fi să folosiți înălțimea header-ului/video-ului.
+      if (window.scrollY > 100) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+
+  const handleOpenModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
+
+  // Clasa dinamică adăugată la header
+  const headerClass = isScrolled ? 'main-nav scrolled' : 'main-nav';
+
   return (
     <div className="homepage-container">
+      
+      <FormularInscriere isVisible={showModal} onClose={handleCloseModal} />
+      
       {/* === NAVIGARE (HEADER) === */}
-      <header className="main-nav">
+      <header className={headerClass}> {/* CLASA DINAMICĂ AICI */}
         <div className="logo">
             <img src={DanceXplosionLogo} alt="Dance Xplosion Logo" className="logo-img" />
         </div>
         <nav className="nav-links">
-          {/* MODIFICARE: Implementare Meniu Dropdown cu linkuri separate Salsa/Bachata */}
           <div className="dropdown-container">
             <a href="#clase" className="nav-link-main">CLASE</a>
-            <div className="dropdown-menu simplified">
-                {/* Linkuri către rutele hash gestionate în App.jsx */}
-                <a href="#salsa" className="class-type-main">Salsa</a>
-                
-                {/* NOU: Link Bachata */}
-                <a href="#bachata" className="class-type-main">Bachata</a>
-
-                {/* Link Kizomba */}
-                <a href="/classes/kizomba-presentation" className="class-type-main">Kizomba</a>
-
-                {/* Clasa Mixtă */}
-                <a href="/classes/salsa-bachata-presentation?level=mixt" className="class-type-main mixt-link">Clasă Mixtă (Beginner)</a>
-            </div>
+      <div className="dropdown-menu simplified">
+        {/* Use hash navigation handled by App.jsx */}
+        <a href="#salsa" className="class-type-main">Salsa</a>
+        <a href="#bachata" className="class-type-main">Bachata</a>
+        <a href="#kizomba" className="class-type-main">Kizomba</a>
+        <a href="#mixed" className="class-type-main mixt-link">Clasă Mixtă (Beginner)</a>
+      </div>
           </div>
           
           <a href="#lxf">LXF</a>
@@ -74,21 +98,19 @@ function HomePage({ videoSource }) {
       {/* === HERO SECTION CU VIDEO FUNDAL === */}
       <section className="hero-section" ref={heroSectionRef}>
         
-        {/* VIDEO CU LOGICA DE AUTO-PLAY/MUTE IN JSX */}
         <video 
             className="hero-background-video"
             src={videoSource}
             autoPlay 
             loop 
             playsInline 
-            muted
+            muted 
             ref={videoRef}
             preload="auto" 
         >
             Browserul tău nu suportă elementul video.
         </video>
         
-        {/* OVERLAY NEGRU SEMI-TRANSPARENT PESTE VIDEO */}
         <div className="video-overlay"></div>
 
         {/* CONȚINUT HERO (BUTOANE PRINCIPALE) */}
@@ -102,7 +124,8 @@ function HomePage({ videoSource }) {
             Academia ta de dans din Sibiu. De la primele mișcări la festivaluri naționale.
           </p>
           <div className="hero-cta-group">
-            <button className="cta-primary-dark">REZERVĂ O CLASĂ DE PROBĂ</button>
+            {/* MODIFICARE: Apelăm funcția de deschidere a modalului */}
+            <button className="cta-primary-dark" onClick={handleOpenModal}>REZERVĂ O CLASĂ DE PROBĂ</button>
             <button className="cta-secondary-accent">VEZI ORARUL</button>
           </div>
         </div>
