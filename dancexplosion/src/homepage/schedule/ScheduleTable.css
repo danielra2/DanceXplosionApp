@@ -1,0 +1,174 @@
+/* src/homepage/schedule/ScheduleTable.css */
+
+/* Preluăm variabilele de bază din HomePage.css */
+:root {
+    --c-primary: #1A1A1A;
+    --c-secondary: #FF7033; /* Portocaliu */
+    --c-accent: #D4AF37; /* Auriu */
+    --c-white: #FFFFFF;
+    --c-background: #F8F8F8;
+    --c-text-light: #f8f8f8;
+    --transition-smooth: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.schedule-section {
+    padding: 100px 5%;
+    text-align: center;
+    background-color: var(--c-white);
+}
+
+.schedule-section .section-heading-dark {
+    /* Folosim stilurile deja definite în HomePage.css */
+    margin-bottom: 30px; 
+}
+
+.schedule-subtitle {
+    font-size: 1.2rem;
+    color: var(--c-text-primary);
+    margin-bottom: 50px;
+}
+
+.schedule-table-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.day-column {
+    flex-grow: 1;
+    min-width: 250px;
+    max-width: 300px;
+    background: var(--c-background);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.day-title {
+    background: var(--c-primary);
+    color: var(--c-white);
+    padding: 15px 0;
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.class-list {
+    padding: 15px;
+}
+
+.class-card {
+    display: block;
+    background: var(--c-white);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 15px;
+    text-align: left;
+    transition: var(--transition-smooth);
+    position: relative;
+    text-decoration: none;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.class-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 112, 51, 0.2);
+    border-color: var(--c-secondary);
+}
+
+.class-time {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--c-secondary);
+    margin-bottom: 5px;
+}
+
+.class-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--c-primary);
+    margin: 0 0 5px 0;
+}
+
+.class-level {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 3px 8px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    border-radius: 5px;
+    color: var(--c-white);
+}
+
+/* Stiluri specifice pe niveluri */
+.level-beginner { background-color: #28a745; } /* Verde */
+.level-improver { background-color: #007bff; } /* Albastru */
+.level-intermediate { background-color: var(--c-secondary); } /* Portocaliu */
+.level-open { background-color: #6c757d; } /* Gri */
+
+/* Cărți cu accent (ex: clasa mixtă/promo) */
+.card-accent {
+    background: linear-gradient(135deg, var(--c-secondary) 0%, var(--c-accent) 100%);
+}
+.card-accent .class-name, .card-accent .class-time {
+    color: var(--c-primary);
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+}
+.card-accent:hover {
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+}
+
+/* Cărți gratuite */
+.card-free {
+    background-color: #e9ecef;
+    border-style: dashed;
+}
+.card-free .class-name {
+    color: #495057;
+}
+
+.schedule-cta-wrapper {
+    margin-top: 50px;
+}
+
+.cta-schedule-register {
+    /* Preluăm stilurile CTA principale, adaptate la dimensiune */
+    padding: 18px 45px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border: 3px solid transparent;
+    cursor: pointer;
+    border-radius: 50px; 
+    transition: var(--transition-smooth);
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+    
+    background: linear-gradient(135deg, var(--c-primary) 0%, #2d2d2d 100%);
+    color: var(--c-white);
+    box-shadow: 0 8px 25px rgba(26, 26, 26, 0.3);
+}
+
+.cta-schedule-register:hover {
+    background: linear-gradient(135deg, var(--c-secondary) 0%, #ff8c5a 100%);
+    color: var(--c-white);
+    box-shadow: 0 12px 35px rgba(255, 112, 51, 0.6);
+    transform: translateY(-3px) scale(1.05); 
+}
+
+@media (max-width: 600px) {
+    .schedule-table-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .day-column {
+        max-width: 100%;
+        margin: 0;
+    }
+}

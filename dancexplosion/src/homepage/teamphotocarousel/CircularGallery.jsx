@@ -1,3 +1,5 @@
+// danielra2/dancexplosionapp/DanceXplosionApp-cfe74b752bd0711afc34f894385243cbf4738075/dancexplosion/src/homepage/teamphotocarousel/CircularGallery.jsx
+
 import React, { useRef, useEffect } from 'react';
 import './CircularGalery.css';
 
@@ -5,9 +7,11 @@ import './CircularGalery.css';
 import newMemberPhoto from '../../assets/photos/0E5A0411.JPG'; 
 import malePhoto from '../../assets/photos/0E5A0375.JPG';
 import alexPhoto from '../../assets/photos/alexphoto.jpg';
+import alexandraPhoto from '../../assets/photos/alexandraphoto.jpeg';
+import adrianPhoto from '../../assets/photos/adrianPhoto.jpeg';
 
-// --- Funcție ajutătoare pentru a citi poziția reală a animației CSS (translateX) ---
-// Această funcție este cheia pentru a evita săritura la hover.
+
+// ... (Funcția ajutătoare getRunningTransformOffset rămâne neschimbată)
 const getRunningTransformOffset = (element) => {
     const style = window.getComputedStyle(element);
     const transform = style.transform;
@@ -25,12 +29,11 @@ const getRunningTransformOffset = (element) => {
 
 
 const teamMembersData = [
-    { id: 1, name: "Ana Maria", role: "Coregraf Salsa", image: newMemberPhoto },
-    { id: 2, name: "Daniel Radu", role: "Instructor Urban", image: malePhoto },
-    { id: 3, name: "Cristina Pop", role: "Manager Studio", image: alexPhoto },
-    { id: 4, name: "Mihai Stoica", role: "Profesor Balet", image: 'https://picsum.photos/seed/mihai/500/700' },
-    { id: 5, name: "Elena Vasiu", role: "Asistent Coregraf", image: 'https://picsum.photos/seed/elena/500/700' },
-    { id: 6, name: "Alex Tudor", role: "Instructor Acro", image: 'https://picsum.photos/seed/alex/500/700' },
+    { id: 1, name: "Ana Maria", slug: "ana-maria", role: "Coregraf Salsa", image: newMemberPhoto },
+    { id: 2, name: "Alex Lazar", slug: "alex-lazar", role: "Instructor Urban", image: malePhoto }, // MODIFICAT: Nume și slug
+    { id: 3, name: "Cristina Pop", slug: "cristina-pop", role: "Manager Studio", image: alexPhoto },
+    { id: 4, name: "Alexandra Ivan", slug: "alexandra-ivan", role: "Profesor Balet", image: alexandraPhoto },
+    { id: 5, name: "Adrian Rașinariu", slug: "adrian-rasinariu", role: "Asistent Coregraf", image: adrianPhoto },
 ];
 
 const InfiniteMovingTeamCarousel = ({ items = teamMembersData, initialSpeed = '30s', slowedSpeed = '120s' }) => {
@@ -41,7 +44,7 @@ const InfiniteMovingTeamCarousel = ({ items = teamMembersData, initialSpeed = '3
     const isDragging = useRef(false);
     const startX = useRef(0);
     
-    // --- Logica de Hover pentru încetinire (FĂRĂ JUMP) ---
+    // --- Logica de Hover (rămâne neschimbată) ---
     const handleMouseEnter = () => {
         const track = trackRef.current;
         if (!track) return;
@@ -111,8 +114,7 @@ const InfiniteMovingTeamCarousel = ({ items = teamMembersData, initialSpeed = '3
         if (containerRef.current) containerRef.current.style.cursor = 'default';
     };
     
-    // --- Logica de Drag/Scroll manual cu Wrapping Infinit ---
-
+    // --- Logica de Drag/Scroll manual (rămâne neschimbată) ---
     const getPositionX = (e) => e.touches ? e.touches[0].pageX : e.pageX;
 
     const handleStart = (e) => {
@@ -180,7 +182,7 @@ const InfiniteMovingTeamCarousel = ({ items = teamMembersData, initialSpeed = '3
         
     };
     
-    // Atașarea handlerilor pe container (se păstrează)
+    // Atașarea handlerilor pe container (rămâne neschimbată)
     useEffect(() => {
         const container = containerRef.current;
         if (!container) return;
@@ -204,12 +206,11 @@ const InfiniteMovingTeamCarousel = ({ items = teamMembersData, initialSpeed = '3
     }, []);
 
 
-    // Logica de click care simulează navigarea
+    // MODIFICAT: Logica de click reală pentru a folosi hash-ul
     const handleCardClick = (item) => {
-        // Înlocuiți această funcție cu logica reală de rutare (e.g., navigate(url))
-        const url = `/instructor/${item.id}/${item.name.replace(/\s/g, '-')}`;
-        console.log(`Navigare simulată către: ${url}`);
-        alert(`Navigare simulată la pagina instructorului: ${item.name}. (În realitate, ați fi redirecționat)`);
+        // Navigare la pagina de instructor folosind slug-ul
+        window.location.hash = `#instructor/${item.slug}`;
+        console.log(`Navigare la pagina instructorului: ${item.name} (${item.slug})`);
     };
 
     return (
