@@ -5,21 +5,18 @@ import SalsaPage from './homepage/salsaPage/SalsaPage.jsx';
 import BachataPage from './homepage/BachataPage/BachataPage.jsx';
 import KizombaPage from './homepage/kizombaPage/kizombaPage.jsx'; 
 import InstructorPage from './homepage/instructorPage/InstructorPage.jsx';
-
-// CORECTAT: Importurile folosesc calea corectă din directorul 'homepage/'
 import RobotCheck from './homepage/robotCheck/robotCheck.jsx'; 
 import CookieConsent from './homepage/cookieConsent/CookieConsent.jsx'; 
-
 import FormularInscriere from './homepage/formularInscriere/FormularInscriere.jsx';
 import LoginPage from './login/LoginPage'; 
 import './homepage/teamphotocarousel/CircularGalery.css';
 import DXAPromoVideo from './assets/mainvideo/DXA Promo.mp4'; 
 
-
 function App() {
   const [route, setRoute] = useState(window.location.hash);
-  // Elimină definiția duplicată (aici se presupune că ați eliminat-o din codul local)
-  const [isRobotVerified, setIsRobotVerified] = useState(localStorage.getItem('isRobotVerified') === 'true');
+  const [isRobotVerified, setIsRobotVerified] = useState(
+    localStorage.getItem('isRobotVerified') === 'true'
+  );
   
   const [showInscriere, setShowInscriere] = useState(false);
   const [showLogin, setShowLogin] = useState(false); 
@@ -43,8 +40,7 @@ function App() {
   
   // 1. Verificare Anti-Robot
   if (!isRobotVerified) {
-      // RobotCheck Component MUST be defined externally in ./homepage/robotCheck/RobotCheck.jsx
-      return <RobotCheck onVerified={setIsRobotVerified} />;
+    return <RobotCheck onVerified={setIsRobotVerified} />;
   }
 
   // 2. Rutare
@@ -63,23 +59,23 @@ function App() {
 
   return (
     <div className="App">
-        {/* Componentele Modale */}
-        <FormularInscriere isVisible={showInscriere} onClose={closeInscriere} />
-        <LoginPage isVisible={showLogin} onClose={closeLogin} /> 
+      {/* Componentele Modale */}
+      <FormularInscriere isVisible={showInscriere} onClose={closeInscriere} />
+      <LoginPage isVisible={showLogin} onClose={closeLogin} /> 
 
-        {/* Pagina curentă. Transmitem funcțiile de deschidere ca props. */}
-        {PageComponent === HomePage ? (
-            <HomePage 
-                videoSource={DXAPromoVideo} 
-                openInscriere={openInscriere}
-                openLogin={openLogin}       
-            />
-        ) : (
-            <PageComponent />
-        )}
+      {/* Pagina curentă. Transmitem funcțiile de deschidere ca props. */}
+      {PageComponent === HomePage ? (
+        <HomePage 
+          videoSource={DXAPromoVideo} 
+          openInscriere={openInscriere}
+          openLogin={openLogin}       
+        />
+      ) : (
+        <PageComponent />
+      )}
 
-        {/* Banner Cookie */}
-        <CookieConsent />
+      {/* Banner Cookie */}
+      <CookieConsent />
     </div>
   );
 }
