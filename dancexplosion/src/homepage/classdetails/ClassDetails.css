@@ -80,23 +80,15 @@ margin: 60px auto 0;
 
 .card-image-placeholder {
     height: 280px;
-    background: linear-gradient(135deg, var(--c-secondary) 0%, var(--c-accent) 100%);
+    /* Am eliminat background-ul gradient implicit pentru a lăsa poza neafectată */
     opacity: 1;
     transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
     position: relative;
     overflow: hidden;
 }
 
-.card-image-placeholder::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    animation: cardShine 4s infinite;
-}
+/* Am eliminat pseudo-elementul ::after care aplica efectul de strălucire/umbră peste imagine. */
+
 
 .class-showcase-card:hover .card-image-placeholder {
     transform: scale(1.1);
@@ -138,4 +130,3 @@ margin: 60px auto 0;
     box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
 }
 
-/* Notă: Animațiile 'fadeInUp' și 'cardShine' trebuie să fie definite în HomePage.css */

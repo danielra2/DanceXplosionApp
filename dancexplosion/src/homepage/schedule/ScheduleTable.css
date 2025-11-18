@@ -30,22 +30,54 @@
 
 .schedule-table-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* Menține-le pe o singură linie */
     justify-content: center;
     gap: 20px;
     max-width: 1300px;
     margin: 0 auto;
+    /* Eliminăm overflow-x pentru a preveni bara de scroll */
 }
 
 .day-column {
-    flex-grow: 1;
-    min-width: 250px;
-    max-width: 300px;
+    flex-grow: 1; /* Permite-i să crească */
+    flex-shrink: 1; /* Permite-i să se micșoreze agresiv */
+    flex-basis: auto; /* Lasă flexbox-ul să decidă dimensiunea de bază */
+    
+    /* Setăm o lățime țintă flexibilă și un minim mic pentru citire */
+    width: calc(20% - 16px); 
+    min-width: 180px; 
+    max-width: 240px; 
+    
     background: var(--c-background);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
+
+/* Forțăm wrap pe ecrane foarte mici dacă nu mai încap 5 coloane lizibile (opțional, dar recomandat) */
+@media (max-width: 1000px) {
+    .day-column {
+        min-width: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .schedule-table-container {
+        /* Permitem wrap sub 768px dacă nu mai încap forțat pe o singură linie,
+           dar eliminăm padding-ul de jos care fusese asociat cu scroll-ul. */
+        flex-wrap: wrap; 
+        padding: 0 5%;
+    }
+    .day-column {
+        width: calc(50% - 10px); /* Două coloane pe mobil/tabletă */
+    }
+}
+@media (max-width: 480px) {
+    .day-column {
+        width: 100%; /* O singură coloană pe mobil foarte mic */
+    }
+}
+
 
 .day-title {
     background: var(--c-primary);
@@ -113,18 +145,6 @@
 .level-intermediate { background-color: var(--c-secondary); } /* Portocaliu */
 .level-open { background-color: #6c757d; } /* Gri */
 
-/* Cărți cu accent (ex: clasa mixtă/promo) */
-.card-accent {
-    background: linear-gradient(135deg, var(--c-secondary) 0%, var(--c-accent) 100%);
-}
-.card-accent .class-name, .card-accent .class-time {
-    color: var(--c-primary);
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
-}
-.card-accent:hover {
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
-}
-
 /* Cărți gratuite */
 .card-free {
     background-color: #e9ecef;
@@ -160,15 +180,4 @@
     color: var(--c-white);
     box-shadow: 0 12px 35px rgba(255, 112, 51, 0.6);
     transform: translateY(-3px) scale(1.05); 
-}
-
-@media (max-width: 600px) {
-    .schedule-table-container {
-        flex-direction: column;
-        gap: 10px;
-    }
-    .day-column {
-        max-width: 100%;
-        margin: 0;
-    }
 }

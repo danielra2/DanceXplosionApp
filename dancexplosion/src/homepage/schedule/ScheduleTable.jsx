@@ -6,7 +6,8 @@ const scheduleData = [
     { day: "Luni", time: "19:00 - 20:00", name: "Bachata Beginner", level: "Beginner", link: "#bachata" },
     { day: "Luni", time: "20:00 - 21:00", name: "Salsa Improver", level: "Improver", link: "#salsa" },
     
-    { day: "Marți", time: "18:00 - 19:00", name: "Clasă Mixtă", level: "Beginner", link: "#mixed", accent: true },
+    // Am eliminat 'accent: true' pentru ca fundalul Clasei Mixte să fie alb (standard)
+    { day: "Marți", time: "18:00 - 19:00", name: "Clasă Mixtă", level: "Beginner", link: "#mixed" }, 
     { day: "Marți", time: "19:00 - 20:00", name: "Kizomba Beginner", level: "Beginner", link: "#kizomba" },
     
     { day: "Miercuri", time: "19:00 - 20:30", name: "Salsa Intermediate", level: "Intermediate", link: "#salsa" },
@@ -40,7 +41,8 @@ function ScheduleTable() {
                                 <a 
                                     key={index} 
                                     href={item.link ? item.link : '#contact'}
-                                    className={`class-card ${item.accent ? 'card-accent' : ''} ${item.free ? 'card-free' : ''}`}
+                                    // Am eliminat condiția 'card-accent'
+                                    className={`class-card ${item.free ? 'card-free' : ''}`}
                                 >
                                     <span className="class-time">{item.time}</span>
                                     <p className="class-name">{item.name}</p>

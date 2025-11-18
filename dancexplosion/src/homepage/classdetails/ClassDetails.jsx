@@ -1,6 +1,12 @@
 import React from 'react';
 import './ClassDetails.css'; // Importăm stilurile dedicate
 
+// Importăm imaginile din assets
+import SalsaPhoto from '../../assets/photos/salsaphoto.jpg';
+import BachataPhoto from '../../assets/photos/bachataphoto.jpg';
+import KizombaPhoto from '../../assets/photos/kizomba.jpg';
+import MixPhoto from '../../assets/photos/salsabachata.jpg';
+
 /**
  * Componentă pentru afișarea detaliilor despre clasele de dans.
  */
@@ -11,9 +17,15 @@ function ClassDetails() {
       <h2 className="section-heading-dark">Niveluri și Clase Speciale</h2>
       <div className="classes-card-container">
         
-        {/* Card 1: SALSA / BACHATA (NIVELURI) */}
+        {/* Card 1: SALSA */}
         <div className="class-showcase-card">
-          <div className="card-image-placeholder"></div>
+          <div className="card-image-placeholder">
+            <img 
+              src={SalsaPhoto} 
+              alt="Salsa Dance" 
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+            />
+          </div>
           <div className="card-info">
             <h3>Salsa</h3>
             <p>De la pași de bază la figuri complexe. Disponibil pe 3 niveluri: Beginner, Improver, Intermediate.</p>
@@ -21,9 +33,15 @@ function ClassDetails() {
           </div>
         </div>
 
-        {/* Card 2: CLASA MIXTĂ (NOU) */}
+        {/* Card 2: BACHATA */}
         <div className="class-showcase-card">
-          <div className="card-image-placeholder"></div>
+          <div className="card-image-placeholder">
+            <img 
+              src={BachataPhoto} 
+              alt="Bachata Dance" 
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+            />
+          </div>
           <div className="card-info">
             <h3>Bachata</h3>
             <p>Clasa ideală pentru începători, combinând cele mai populare stiluri latino-americane.</p>
@@ -31,17 +49,32 @@ function ClassDetails() {
           </div>
         </div>
 
-        {/* Card 3: KIZOMBA (NIVELURI) */}
+        {/* Card 3: KIZOMBA */}
         <div className="class-showcase-card">
-          <div className="card-image-placeholder"></div>
+          <div className="card-image-placeholder">
+             <img 
+              src={KizombaPhoto} 
+              alt="Kizomba Dance" 
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+            />
+          </div>
           <div className="card-info">
             <h3>Kizomba</h3>
             <p>Ritmuri lente și mișcări senzuale. Ideal pentru conexiune și fluiditate.</p>
             <span className="class-tag">FLOW</span>
           </div>
         </div>
+
+        {/* Card 4: SALSA & BACHATA (MIXT) */}
         <div className="class-showcase-card">
-          <div className="card-image-placeholder"></div>
+          <div className="card-image-placeholder">
+             {/* Folosim poza de Salsa și aici pentru clasa mixtă */}
+             <img 
+              src={MixPhoto} 
+              alt="Salsa & Bachata Mix" 
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+            />
+          </div>
           <div className="card-info">
             <h3>Salsa & Bachata</h3>
             <p>Ritmuri lente și mișcări senzuale. Ideal pentru conexiune și fluiditate.</p>
