@@ -27,7 +27,7 @@ function ScheduleTable() {
 
     return (
         <section className="schedule-section">
-            <h2 className="section-heading-dark">Orarul Claselort</h2>
+            <h2 className="section-heading-dark">Orarul Claselor</h2>
             <p className="schedule-subtitle">
                 Găsește-ți nivelul și rezervă o clasă de probă gratuită!
             </p>

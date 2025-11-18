@@ -40,7 +40,7 @@ function HomePage({ videoSource, openInscriere, openLogin }) {
     };
   }, []); 
 
-  // Logica 2: Control Header (Scroll Event)
+  // Logica 2: Control Header (Scroll Event) - Aici se detectează scroll-ul
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
