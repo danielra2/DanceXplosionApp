@@ -1,15 +1,12 @@
 /* src/homepage/bachataPage/BachataPage.css */
 
-/* Preluăm variabilele de bază din HomePage.css */
 :root {
     --c-primary: #1A1A1A;
-    --c-secondary: #FF7033; /* Portocaliu */
+    --c-secondary: #FF7033; /* Portocaliu oficial */
     --c-accent: #D4AF37; /* Auriu */
     --c-white: #FFFFFF;
     --c-background: #F8F8F8;
     --transition-smooth: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
-    /* Culoare specifică Bachata (roșu/rozaliu, diferit de Salsa) */
-    --c-bachata-accent: #E94E77; 
 }
 
 .bachata-page-container {
@@ -26,8 +23,8 @@
     position: relative;
     overflow: hidden;
     
-    /* Fundal gradient elegant */
-    background: linear-gradient(160deg, #111111 0%, #301934 100%); /* Tonuri închise/violete */
+    /* Fundal gradient elegant axat pe negru și portocaliu închis */
+    background: linear-gradient(160deg, #111111 0%, #2b1d0e 100%); 
     color: var(--c-white);
     isolation: isolate;
 }
@@ -63,8 +60,8 @@
     margin-bottom: 20px;
 }
 .accent-text-bachata {
-    color: var(--c-bachata-accent);
-    text-shadow: 0 0 15px rgba(233, 78, 119, 0.7);
+    color: var(--c-secondary); /* Portocaliu */
+    text-shadow: 0 0 15px rgba(255, 112, 51, 0.7);
 }
 
 .bachata-pitch {
@@ -77,13 +74,13 @@
 
 .cta-page-main-bachata {
     padding: 15px 40px;
-    background: var(--c-bachata-accent);
+    background: var(--c-secondary); /* Portocaliu */
     color: var(--c-white);
     border-radius: 50px;
     font-weight: 700;
     text-decoration: none;
     transition: var(--transition-smooth);
-    box-shadow: 0 5px 20px rgba(233, 78, 119, 0.5);
+    box-shadow: 0 5px 20px rgba(255, 112, 51, 0.5);
 }
 .cta-page-main-bachata:hover {
     background: var(--c-accent);
@@ -119,7 +116,7 @@
 }
 .level-card-bachata:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(233, 78, 119, 0.4);
+    box-shadow: 0 15px 40px rgba(255, 112, 51, 0.4);
 }
 .level-number {
     position: absolute;
@@ -127,13 +124,13 @@
     right: -20px;
     font-size: 6rem;
     font-weight: 900;
-    color: var(--c-bachata-accent);
+    color: var(--c-secondary); /* Portocaliu */
     opacity: 0.1;
     z-index: 0;
 }
 .level-card-bachata h3 {
     font-size: 2rem;
-    color: var(--c-bachata-accent);
+    color: var(--c-secondary); /* Portocaliu */
     margin-bottom: 15px;
 }
 .cta-level-bachata {
