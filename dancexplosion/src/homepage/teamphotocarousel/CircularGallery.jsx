@@ -29,9 +29,9 @@ const getRunningTransformOffset = (element) => {
 
 
 const teamMembersData = [
-    { id: 1, name: "Ana Maria", slug: "ana-maria", role: "Coregraf Salsa", image: newMemberPhoto },
+    { id: 1, name: "Nicoleta Cristina", slug: "nicoleta-cristina", role: "Coregraf Salsa", image: newMemberPhoto },
     { id: 2, name: "Alex Lazar", slug: "alex-lazar", role: "Instructor Urban", image: malePhoto }, // MODIFICAT: Nume și slug
-    { id: 3, name: "Cristina Pop", slug: "cristina-pop", role: "Manager Studio", image: alexPhoto },
+    { id: 3, name: "Alex Magnusson", slug: "alex-magnusson", role: "Manager Studio", image: alexPhoto },
     { id: 4, name: "Alexandra Ivan", slug: "alexandra-ivan", role: "Profesor Balet", image: alexandraPhoto },
     { id: 5, name: "Adrian Rașinariu", slug: "adrian-rasinariu", role: "Asistent Coregraf", image: adrianPhoto },
 ];

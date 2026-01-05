@@ -16,7 +16,7 @@ function SalsaPage() {
             <section className="salsa-hero-section">
                 <div className="hero-content-salsa">
                     <h1 className="salsa-title">
-                        Salsa & Bachata: <span className="accent-text">Începe Ritmul Latin.</span>
+                        Salsa <span className="accent-text">Începe Ritmul Latin.</span>
                     </h1>
                     <p className="salsa-pitch">
                         Descoperă eleganța, energia și conexiunea în cele mai populare stiluri de dans social. De la primele mișcări la ritmuri avansate.

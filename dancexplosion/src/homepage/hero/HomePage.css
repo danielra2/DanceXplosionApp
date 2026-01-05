@@ -46,8 +46,8 @@ h1, h2, h3 {
     line-height: 1.1;
 }
 
-/* === BUTOANE & CTA GENERALE === */
-.cta-primary-dark, .cta-secondary-accent, .cta-nav, .cta-lxf-gold {
+/* === BUTOANE & CTA GENERALE (Bază pentru butoanele mari: Hero & LXF) === */
+.cta-primary-dark, .cta-secondary-accent, .cta-lxf-gold {
     padding: 18px 45px;
     font-size: 1.05rem;
     font-weight: 700;
@@ -98,14 +98,6 @@ h1, h2, h3 {
     transform: translateY(-3px) scale(1.05); 
 }
 
-/* CTA LOG IN: STAREA CÂND S-A FĂCUT SCROLL (.scrolled) */
-.main-nav.scrolled .cta-primary-dark { 
-    background: linear-gradient(135deg, var(--c-primary) 0%, #2d2d2d 100%);
-    color: var(--c-white); 
-    border-color: transparent;
-    box-shadow: 0 8px 25px rgba(26, 26, 26, 0.3); 
-} 
-
 .cta-secondary-accent {
     background-color: transparent;
     color: var(--c-secondary);
@@ -133,7 +125,7 @@ h1, h2, h3 {
     width: 100%;
     z-index: 1000;
     /* STAREA IMPLICITĂ (PE VIDEO): Complet Transparent */
-    background: transparent !important;
+    background-color: transparent;
     backdrop-filter: none; 
     box-shadow: none;
     transition: background-color 0.4s ease, box-shadow 0.4s ease, height 0.4s ease;
@@ -143,17 +135,13 @@ h1, h2, h3 {
 /* STAREA CÂND S-A FĂCUT SCROLL (.scrolled) */
 .main-nav.scrolled {
     padding: 12px 8%;
-    background: var(--c-white) !important;
+    background-color: var(--c-white);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15); 
     height: 70px;
 }
 
 .main-nav.scrolled .logo-img { 
     height: 55px;
-}
-
-.main-nav.scrolled .nav-links a { 
-    color: var(--c-text-primary);
 }
 
 /* Stil pentru elementul care conține logo-ul */
@@ -190,7 +178,7 @@ h1, h2, h3 {
     z-index: 1001;
 }
 
-/* Stil de bază pentru link-urile principale */
+/* Stil de bază pentru link-urile principale - ALBE pe video */
 .nav-links a {
     color: var(--c-white);
     text-decoration: none;
@@ -199,6 +187,11 @@ h1, h2, h3 {
     font-size: 1rem;
     transition: var(--transition-fast);
     z-index: 1001;
+}
+
+/* Link-urile devin NEGRE când scrolled */
+.main-nav.scrolled .nav-links a {
+    color: var(--c-primary);
 }
 
 /* Noul container pentru dropdown */
@@ -251,7 +244,7 @@ h1, h2, h3 {
     color: var(--c-secondary);
 }
 
-/* Stiluri pentru tipurile principale de clasă */
+/* Stiluri pentru link-urile din dropdown care necesită separator și font-weight mai mare */
 .class-type-main {
     font-weight: 700 !important;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -261,7 +254,6 @@ h1, h2, h3 {
     border-bottom: none;
 }
 
-/* Stil pentru clasa mixtă */
 .mixt-link {
     color: var(--c-accent) !important;
     font-weight: 800 !important;
@@ -270,6 +262,33 @@ h1, h2, h3 {
 .mixt-link:hover {
     color: var(--c-primary) !important;
     background-color: var(--c-accent);
+}
+
+/* Butonul din navigație (mărime mică - override pe proprietăți generale de CTA) */
+.cta-nav { 
+    /* Moștenire explicită a proprietăților generale de CTA */
+    font-weight: 700;
+    border: 3px solid transparent;
+    cursor: pointer;
+    border-radius: 50px; 
+    transition: var(--transition-smooth);
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    z-index: 20;
+
+    /* Override de mărime */
+    padding: 10px 25px;
+    font-size: 0.9rem;
+}
+
+/* CTA LOG IN: STAREA CÂND S-A FĂCUT SCROLL (.scrolled) */
+.main-nav.scrolled .cta-nav.cta-primary-dark { 
+    background: linear-gradient(135deg, var(--c-primary) 0%, #2d2d2d 100%);
+    color: var(--c-white); 
+    border-color: transparent;
+    box-shadow: 0 8px 25px rgba(26, 26, 26, 0.3); 
 }
 
 .nav-links a::after {
@@ -287,11 +306,6 @@ h1, h2, h3 {
 
 .nav-links a:hover::after {
     width: 100%;
-}
-
-.cta-nav { 
-    padding: 10px 25px;
-    font-size: 0.9rem;
 }
 
 /* === 1. HERO SECTION (VIDEO) === */
@@ -389,6 +403,11 @@ h1, h2, h3 {
     pointer-events: auto;
 }
 
+.button-as-link {
+    text-decoration: none;
+    display: inline-block;
+}
+
 /* Stil pentru Video-ul de Fundal */
 .hero-background-video {
     position: absolute;
@@ -418,7 +437,7 @@ h1, h2, h3 {
     z-index: 5;
 }
 
-/* === SECȚIUNEA TEAM === */
+/* === SECȚIUNEA TEAM (Început) === */
 .circular-gallery-wrapper {
     padding: 100px 5%;
     background: var(--c-background);

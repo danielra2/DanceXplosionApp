@@ -129,4 +129,16 @@ margin: 60px auto 0;
     transform: scale(1.05);
     box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
 }
+.class-showcase-card-link {
+  text-decoration: none; /* Elimină sublinierea */
+  color: inherit; /* Păstrează culoarea textului moștenită */
+  display: block; /* Face link-ul să ocupe tot spațiul cardului */
+  /* Poți adăuga hover-ul aici */
+  transition: transform 0.3s ease;
+}
+
+.class-showcase-card-link:hover {
+  transform: translateY(-5px); /* Efect subtil de ridicare la hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
 

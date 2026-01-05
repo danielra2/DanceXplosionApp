@@ -1,0 +1,48 @@
+/* src/homepage/lxf/LXFPromo.css */
+
+.lxf-promo-section {
+    /* Stiluri care fac ca secțiunea să arate ca un footer */
+    background-color: #1a1a1a; /* Fundal închis/negru */
+    color: white; /* Textul alb */
+    padding: 80px 20px; /* Spațiere generoasă */
+    text-align: center;
+    width: 100%;
+    /* Asigură că nu există spațiu sub el */
+    margin-top: 0; 
+}
+
+.lxf-content-dark {
+    /* Container pentru conținut, dacă este necesar */
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.lxf-title {
+    font-size: 3em;
+    margin-bottom: 15px;
+    color: #ffd700; /* Culoare accent auriu pentru titlu */
+}
+
+.lxf-description {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+.cta-lxf-gold {
+    /* Stiluri pentru butonul AFLĂ MAI MULTE */
+    padding: 12px 25px;
+    background-color: #ffd700; /* Culoare aurie */
+    color: #1a1a1a; /* Text închis */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-lxf-gold:hover {
+    background-color: #ffc700;
+    transform: translateY(-2px);
+}
