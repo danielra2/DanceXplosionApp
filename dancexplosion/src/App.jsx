@@ -5,7 +5,7 @@ import SalsaPage from './homepage/salsaPage/SalsaPage.jsx';
 import BachataPage from './homepage/BachataPage/BachataPage.jsx';
 import KizombaPage from './homepage/kizombaPage/kizombaPage.jsx'; 
 import InstructorPage from './homepage/instructorPage/InstructorPage.jsx';
-import RobotCheck from './homepage/robotCheck/robotCheck.jsx'; 
+import RobotCheck from "./homepage/robotCheck/RobotCheck.jsx"; 
 import CookieConsent from './homepage/cookieConsent/CookieConsent.jsx'; 
 import FormularInscriere from './homepage/formularInscriere/FormularInscriere.jsx';
 import LoginPage from './login/LoginPage'; 
