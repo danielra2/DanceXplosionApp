@@ -52,11 +52,7 @@ function HomePage({ openInscriere, openLogin }) {
       ([entry]) => {
         if (entry.isIntersecting) {
           // Restore the user's mute preference
-          if (userUnmuted) {
-            videoElement.muted = false;
-          } else {
-            videoElement.muted = true;
-          }
+          videoElement.muted = !userUnmuted;
           videoElement.play().catch(() => {});
         } else {
           videoElement.pause();
