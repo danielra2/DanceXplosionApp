@@ -128,16 +128,20 @@ h1, h2, h3 {
     background-color: transparent;
     backdrop-filter: none; 
     box-shadow: none;
-    transition: background-color 0.4s ease, box-shadow 0.4s ease, height 0.4s ease;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, height 0.4s ease, backdrop-filter 0.4s ease;
     height: 80px;
 }
 
 /* STAREA CÂND S-A FĂCUT SCROLL (.scrolled) */
 .main-nav.scrolled {
-    padding: 12px 8%;
-    background-color: var(--c-white);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15); 
+    /* Starea când s-a făcut scroll (.scrolled) */
+.main-nav.scrolled {
+    padding: 10px 8%; /* Reducem puțin înălțimea pentru un aspect mai compact */
+    background-color: var(--c-white); /* Fundal alb solid */
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); /* Umbră pentru vizibilitate pe alb */
     height: 70px;
+    transition: var(--transition-smooth); /* Asigură o trecere fluidă */
+}
 }
 
 .main-nav.scrolled .logo-img { 
@@ -181,6 +185,7 @@ h1, h2, h3 {
 /* Stil de bază pentru link-urile principale - ALBE pe video */
 .nav-links a {
     color: var(--c-white);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
     text-decoration: none;
     position: relative;
     font-weight: 600;
@@ -191,7 +196,7 @@ h1, h2, h3 {
 
 /* Link-urile devin NEGRE când scrolled */
 .main-nav.scrolled .nav-links a {
-    color: var(--c-primary);
+    color: var(--c-primary) !important; /* Folosește culoarea neagră definită în variabile */
 }
 
 /* Noul container pentru dropdown */
@@ -285,10 +290,13 @@ h1, h2, h3 {
 
 /* CTA LOG IN: STAREA CÂND S-A FĂCUT SCROLL (.scrolled) */
 .main-nav.scrolled .cta-nav.cta-primary-dark { 
-    background: linear-gradient(135deg, var(--c-primary) 0%, #2d2d2d 100%);
-    color: var(--c-white); 
+    background: linear-gradient(135deg, #1f1f1f 0%, #2d2d2d 100%);
+    color: #ffffff; 
     border-color: transparent;
-    box-shadow: 0 8px 25px rgba(26, 26, 26, 0.3); 
+    box-shadow: 0 8px 25px rgba(26, 26, 26, 0.35); 
+}
+.main-nav.scrolled .nav-link-main {
+    color: var(--c-primary) !important;
 }
 
 .nav-links a::after {

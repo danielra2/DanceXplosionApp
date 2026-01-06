@@ -42,6 +42,22 @@ function HomePage({ openInscriere, openLogin }) {
     }
   }, []);
 
+  // Ține `isMuted` sincronizat cu elementul video și marchează interacțiunea utilizatorului
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleVolumeChange = () => {
+      setIsMuted(video.muted);
+      if (!video.muted) {
+        setUserUnmuted(true);
+      }
+    };
+
+    video.addEventListener('volumechange', handleVolumeChange);
+    return () => video.removeEventListener('volumechange', handleVolumeChange);
+  }, []);
+
   // Logica pentru Control Sound/Pause la Scroll (Intersection Observer)
   useEffect(() => {
     if (!heroSectionRef.current || !videoRef.current) return;
@@ -72,13 +88,14 @@ function HomePage({ openInscriere, openLogin }) {
 
   // Logica pentru Control Header (Scroll Event)
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
+  const handleScroll = () => {
+    // Schimbă de la 50 la 20 pentru un răspuns mai rapid
+    if (window.scrollY > 20) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  };
 
     handleScroll();
     window.addEventListener('scroll', handleScroll);
