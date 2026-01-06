@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Importăm stilurile dedicate
-import './KizombaPage.css'; 
+import './kizombaPage.css'; 
 
 // Datele pentru niveluri
 const levels = [

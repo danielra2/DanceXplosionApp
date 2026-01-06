@@ -1,7 +1,7 @@
 // danielra2/dancexplosionapp/DanceXplosionApp-cfe74b752bd0711afc34f894385243cbf4738075/dancexplosion/src/homepage/teamphotocarousel/CircularGallery.jsx
 
 import React, { useRef, useEffect } from 'react';
-import './CircularGalery.css';
+import './CircularGallery.css';
 
 // Importul pozei locale RĂMÂNE AICI
 import newMemberPhoto from '../../assets/photos/0E5A0411.JPG'; 

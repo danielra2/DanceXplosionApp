@@ -1,5 +1,5 @@
 import React from 'react';
-import './InstructorPage.css';
+import './instructorPage.css';
 import malePhoto from '../../assets/photos/0E5A0375.JPG'; 
 
 // Componentă: InstructorPage (Pagina de Profil Instructor)

@@ -9,7 +9,7 @@ import RobotCheck from "./homepage/robotCheck/RobotCheck.jsx";
 import CookieConsent from './homepage/cookieConsent/CookieConsent.jsx'; 
 import FormularInscriere from './homepage/formularInscriere/FormularInscriere.jsx';
 import LoginPage from './login/LoginPage.jsx'; 
-import './homepage/teamphotocarousel/CircularGalery.css';
+import './homepage/teamphotocarousel/CircularGallery.css';
 import DXAPromoVideo from './assets/mainvideo/DXA Promo.mp4'; 
 
 function App() {
