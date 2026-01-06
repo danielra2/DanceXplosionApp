@@ -208,9 +208,14 @@ const InfiniteMovingTeamCarousel = ({ items = teamMembersData, initialSpeed = '3
 
     // MODIFICAT: Logica de click reală pentru a folosi hash-ul
     const handleCardClick = (item) => {
-        // Navigare la pagina de instructor folosind slug-ul
-        window.location.hash = `#instructor/${item.slug}`;
-        console.log(`Navigare la pagina instructorului: ${item.name} (${item.slug})`);
+        // Doar Alex Lazar are pagina finalizată
+        if (item.slug === 'alex-lazar') {
+            window.location.hash = `#instructor/${item.slug}`;
+            console.log(`Navigare la pagina instructorului: ${item.name} (${item.slug})`);
+        } else {
+            // Alți instructori: momentan nu facem nimic
+            console.log(`Pagina pentru ${item.name} nu este disponibilă încă.`);
+        }
     };
 
     return (

@@ -69,6 +69,7 @@ function HomePage({ openInscriere, openLogin }) {
         if (entry.isIntersecting) {
           // Restore the user's mute preference
           videoElement.muted = !userUnmuted;
+          setIsMuted(!userUnmuted);
           videoElement.play().catch(() => {});
         } else {
           videoElement.pause();
@@ -146,7 +147,7 @@ function HomePage({ openInscriere, openLogin }) {
           autoPlay 
           loop 
           playsInline 
-          muted 
+          muted={isMuted}
           preload="auto" 
         >
           Browserul tău nu suportă elementul video.
