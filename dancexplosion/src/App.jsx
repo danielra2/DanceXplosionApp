@@ -10,7 +10,9 @@ import CookieConsent from './homepage/cookieConsent/CookieConsent.jsx';
 import FormularInscriere from './homepage/formularInscriere/FormularInscriere.jsx';
 import LoginPage from './login/LoginPage.jsx'; 
 import './homepage/teamphotocarousel/CircularGallery.css';
-import DXAPromoVideo from './assets/mainvideo/DXA Promo.mp4'; 
+
+// NOTĂ: Am eliminat importul DXAPromoVideo pentru a evita eroarea de mărime pe Vercel.
+// Videoclipul este acum încărcat prin streaming direct în HomePage.jsx din folderul public.
 
 function App() {
   const [route, setRoute] = useState(window.location.hash);
@@ -63,10 +65,9 @@ function App() {
       <FormularInscriere isVisible={showInscriere} onClose={closeInscriere} />
       <LoginPage isVisible={showLogin} onClose={closeLogin} /> 
 
-      {/* Pagina curentă. Transmitem funcțiile de deschidere ca props. */}
+      {/* Pagina curentă. */}
       {PageComponent === HomePage ? (
         <HomePage 
-          videoSource={DXAPromoVideo} 
           openInscriere={openInscriere}
           openLogin={openLogin}       
         />
