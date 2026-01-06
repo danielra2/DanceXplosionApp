@@ -632,3 +632,42 @@ h1, h2, h3 {
         height: 45px;
     }
 }
+
+/* === UNMUTE BUTTON === */
+.unmute-button {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 500;
+    background: rgba(255, 112, 51, 0.9);
+    color: white;
+    border: 2px solid white;
+    padding: 8px 18px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.unmute-button:hover {
+    background: rgba(255, 112, 51, 1);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 112, 51, 0.5);
+}
+
+.unmute-button:active {
+    transform: scale(0.98);
+}
+
+/* Mobile responsiveness for unmute button */
+@media (max-width: 768px) {
+    .unmute-button {
+        top: 80px;
+        bottom: auto;
+        right: 15px;
+        padding: 5px 12px;
+        font-size: 0.7rem;
+    }
+}

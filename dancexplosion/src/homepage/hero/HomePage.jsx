@@ -10,6 +10,8 @@ function HomePage({ openInscriere, openLogin }) {
   const heroSectionRef = useRef(null);
   const videoRef = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const [userUnmuted, setUserUnmuted] = useState(false);
 
   // Calea către fișierul generat de FFmpeg aflat în public/video/
   const hlsSource = "/video/playlist.m3u8"; 
@@ -49,7 +51,12 @@ function HomePage({ openInscriere, openLogin }) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          videoElement.muted = true; // Recomandat true pentru a evita blocarea autoplay-ului
+          // Restore the user's mute preference
+          if (userUnmuted) {
+            videoElement.muted = false;
+          } else {
+            videoElement.muted = true;
+          }
           videoElement.play().catch(() => {});
         } else {
           videoElement.pause();
@@ -65,7 +72,7 @@ function HomePage({ openInscriere, openLogin }) {
         observer.unobserve(heroSectionRef.current);
       }
     };
-  }, []); 
+  }, [userUnmuted]); 
 
   // Logica pentru Control Header (Scroll Event)
   useEffect(() => {
@@ -83,6 +90,14 @@ function HomePage({ openInscriere, openLogin }) {
   }, []);
 
   const headerClass = isScrolled ? 'main-nav scrolled' : 'main-nav';
+
+  const handleUnmute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = false;
+      setIsMuted(false);
+      setUserUnmuted(true); // Remember that user unmuted
+    }
+  };
 
   return (
     <div className="homepage-container">
@@ -118,10 +133,21 @@ function HomePage({ openInscriere, openLogin }) {
           autoPlay 
           loop 
           playsInline 
+          muted 
           preload="auto" 
         >
           Browserul tău nu suportă elementul video.
         </video>
+        
+        {isMuted && (
+          <button 
+            className="unmute-button"
+            onClick={handleUnmute}
+            aria-label="Unmute video"
+          >
+            🔊 Cu sunet
+          </button>
+        )}
         
         <div className="video-overlay"></div>
 
