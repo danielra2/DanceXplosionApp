@@ -6,7 +6,7 @@ import './CircularGallery.css';
 // Importul pozei locale RĂMÂNE AICI
 import newMemberPhoto from '../../assets/photos/0E5A0411.JPG'; 
 import malePhoto from '../../assets/photos/0E5A0375.JPG';
-import alexPhoto from '../../assets/photos/alexphoto.jpg';
+import alexPhoto from '../../assets/photos/alexphoto.JPG';
 import alexandraPhoto from '../../assets/photos/alexandraphoto.jpeg';
 import adrianPhoto from '../../assets/photos/adrianPhoto.jpeg';
 
