@@ -4,11 +4,11 @@ import HomePage from './homepage/hero/HomePage.jsx';
 import SalsaPage from './homepage/salsaPage/SalsaPage.jsx'; 
 import BachataPage from './homepage/BachataPage/BachataPage.jsx';
 import KizombaPage from './homepage/kizombaPage/kizombaPage.jsx'; 
-import InstructorPage from './homepage/instructorPage/InstructorPage.jsx';
+import InstructorPage from "./homepage/instructorPage/instructorPage.jsx";
 import RobotCheck from "./homepage/robotCheck/RobotCheck.jsx"; 
 import CookieConsent from './homepage/cookieConsent/CookieConsent.jsx'; 
 import FormularInscriere from './homepage/formularInscriere/FormularInscriere.jsx';
-import LoginPage from './login/LoginPage'; 
+import LoginPage from './login/LoginPage.jsx'; 
 import './homepage/teamphotocarousel/CircularGalery.css';
 import DXAPromoVideo from './assets/mainvideo/DXA Promo.mp4'; 
 
