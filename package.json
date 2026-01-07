@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@amplitude/analytics-browser": "^2.33.1",
+    "@amplitude/plugin-session-replay-browser": "^1.25.5",
     "hls.js": "^1.6.15",
     "ogl": "^1.0.11"
   }
