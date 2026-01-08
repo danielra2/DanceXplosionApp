@@ -9,7 +9,7 @@ const levels = [
     { name: "Intermediate", description: "Tehnică modernă și sensual, muzicalitate, variații de ritm și izolari avansate.", target: "#intermediate" },
 ];
 
-function BachataPage() {
+function BachataPage({ openInscriere }) {
     return (
         <div className="bachata-page-container">
             {/* === 1. HERO SECTION DEDICAT === */}
@@ -21,7 +21,9 @@ function BachataPage() {
                     <p className="bachata-pitch">
                         Stilul de dans social care pune accentul pe conexiunea cu partenerul, fluiditate și senzualitate.
                     </p>
-                    <a href="#levels" className="cta-page-main-bachata">Explorează Nivelurile</a>
+                    <button onClick={openInscriere} className="cta-page-main-bachata" style={{ border: 'none', cursor: 'pointer' }}>
+                        Rezervă prin WhatsApp
+                    </button>
                 </div>
             </section>
 
@@ -34,7 +36,9 @@ function BachataPage() {
                             <span className="level-number">{index + 1}</span>
                             <h3>{level.name}</h3>
                             <p>{level.description}</p>
-                            <button className="cta-level-bachata">Înscrie-te la {level.name}</button>
+                            <button className="cta-level-bachata" onClick={openInscriere}>
+                                Înscrie-te la {level.name}
+                            </button>
                         </div>
                     ))}
                 </div>
@@ -47,7 +51,7 @@ function BachataPage() {
                     <p className="mixt-description-bachata">
                         Combină bazele Salsa și Bachata într-un singur program accelerat. Excelent pentru un start rapid!
                     </p>
-                    <button className="cta-mixt-bachata">Detalii Clase Mixtă</button>
+                    <button className="cta-mixt-bachata" onClick={openInscriere}>Rezervă loc la Mixt</button>
                 </div>
             </section>
         </div>

@@ -1,32 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import DanceXplosionLogo from '../assets/photos/dancelogo.png';
 
 function Navbar({ openLogin }) {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // If scroll is more than 20px, add the background (scrolled class)
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-    handleScroll();
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Uses the .main-nav.scrolled CSS from your HomePage.css
-  const headerClass = isScrolled ? 'main-nav scrolled' : 'main-nav';
+  const headerClass = 'main-nav';
 
   return (
     <header className={headerClass}>
       <div className="logo">
-        <a href="#"><img src={DanceXplosionLogo} alt="Dance Xplosion Logo" className="logo-img" /></a>
+        {/* Logo pointing to the top anchor */}
+        <a href="#top">
+          <img src={DanceXplosionLogo} alt="Dance Xplosion Logo" className="logo-img" />
+        </a>
       </div>
+
       <nav className="nav-links">
+        {/* HOME button now works exactly like the LXF button below */}
+        <a href="#top" className="nav-link-home">
+          HOME
+        </a>
+
         <div className="dropdown-container">
           <a href="#clase" className="nav-link-main">CLASE</a>
           <div className="dropdown-menu simplified">
@@ -36,8 +28,13 @@ function Navbar({ openLogin }) {
             <a href="#mixed" className="class-type-main mixt-link">Clasă Mixtă (Beginner)</a>
           </div>
         </div>
+
+        {/* This is your working LXF button for reference */}
         <a href="#lxf">LXF</a>
-        <button className="cta-nav cta-primary-dark" onClick={openLogin}>LOG IN</button>
+        
+        <button className="cta-nav" onClick={openLogin}>
+          LOG IN
+        </button>
       </nav>
     </header>
   );

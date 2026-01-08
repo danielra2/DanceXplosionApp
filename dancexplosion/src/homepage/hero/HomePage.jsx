@@ -13,7 +13,7 @@ function HomePage({ openInscriere }) {
 
   const hlsSource = "/video/playlist.m3u8"; 
 
-  // Video Streaming Logic
+  // Logica pentru Streaming Video (HLS)
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -34,7 +34,7 @@ function HomePage({ openInscriere }) {
     }
   }, []);
 
-  // Mute Sync Logic
+  // Sincronizare stare Mute
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -48,7 +48,7 @@ function HomePage({ openInscriere }) {
     return () => video.removeEventListener('volumechange', handleVolumeChange);
   }, []);
 
-  // Video Play/Pause on Scroll
+  // Control Play/Pause la scroll (Intersection Observer)
   useEffect(() => {
     if (!heroSectionRef.current || !videoRef.current) return;
     
@@ -88,9 +88,9 @@ function HomePage({ openInscriere }) {
   };
 
   return (
-    <div className="homepage-container">
-      {/* HEADER REMOVED: Managed by Navbar.jsx in App.jsx */}
-
+    /* ID="top" adăugat pentru a permite scroll-ul de la butonul HOME din Navbar */
+    <div className="homepage-container" id="top">
+      
       <section className="hero-section" ref={heroSectionRef}>
         <video 
           ref={videoRef}
@@ -104,6 +104,7 @@ function HomePage({ openInscriere }) {
           Browserul tău nu suportă elementul video.
         </video>
         
+        {/* Buton Mute/Unmute */}
         <button 
           className="unmute-button" 
           onClick={toggleMute}
@@ -134,6 +135,7 @@ function HomePage({ openInscriere }) {
         </div>
       </section>
 
+      {/* Secțiunea Echipa */}
       <section className="circular-gallery-wrapper">
         <h2 className="section-heading-dark">Cunoaște Echipa Noastră</h2>
         <div className="circular-gallery-container">
@@ -141,12 +143,15 @@ function HomePage({ openInscriere }) {
         </div>
       </section>
 
+      {/* Secțiunea Detalii Clase */}
       <ClassDetails /> 
       
+      {/* Secțiunea Orar */}
       <section id="orarul-tau"> 
         <ScheduleTable />
       </section>
 
+      {/* Secțiunea LXF Promo / Footer */}
       <section className="lxf-promo-section" id="lxf">
         <div className="lxf-content-dark">
           <h2 className="lxf-title">LXF 2025</h2>

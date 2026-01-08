@@ -32,8 +32,15 @@ function App() {
 
   const currentHash = route.substring(1); 
 
-  // Funcții pentru a fi pasate ca props
-  const openInscriere = () => setShowInscriere(true);
+  // --- LOGICĂ ACTUALIZATĂ PENTRU WHATSAPP ---
+  const openInscriere = () => {
+    const numarTelefon = "40746089802"; // Numărul tău în format internațional
+    const mesaj = encodeURIComponent("Bună ziua! Doresc să rezerv o clasă de probă la Dance Xplosion Academy.");
+    const urlWhatsapp = `https://wa.me/${numarTelefon}?text=${mesaj}`;
+    
+    window.open(urlWhatsapp, '_blank');
+  };
+
   const closeInscriere = () => setShowInscriere(false);
   const openLogin = () => setShowLogin(true);
   const closeLogin = () => setShowLogin(false);
@@ -62,18 +69,22 @@ function App() {
       {/* NAVBAR GLOBAL - VIZIBIL PE TOATE PAGINILE */}
       <Navbar openLogin={openLogin} />
 
-      {/* Componentele Modale */}
-      <FormularInscriere isVisible={showInscriere} onClose={closeInscriere} />
+      {/* FORMULAR ARHIVAT: 
+          Am comentat componenta de mai jos pentru a păstra designul intact în cod, 
+          dar a preveni afișarea lui până când baza de date este gata.
+      */}
+      {/* <FormularInscriere isVisible={showInscriere} onClose={closeInscriere} /> */}
+      
       <LoginPage isVisible={showLogin} onClose={closeLogin} /> 
 
-      {/* Pagina curentă */}
+      {/* Pagina curentă - Pasăm openInscriere către toate paginile pentru a merge butoanele de WhatsApp */}
       {PageComponent === HomePage ? (
         <HomePage 
           openInscriere={openInscriere}
           openLogin={openLogin}       
         />
       ) : (
-        <PageComponent />
+        <PageComponent openInscriere={openInscriere} />
       )}
 
       {/* Banner Cookie */}

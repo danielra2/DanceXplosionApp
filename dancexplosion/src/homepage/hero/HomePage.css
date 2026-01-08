@@ -1,6 +1,18 @@
 /* src/homepage/hero/HomePage.css - Redesign Spectacular și Ultra-Smooth */
 
 /* RESETARE STILURI GLOBALE INTERFERENTE */
+/* Add this at the top of HomePage.css */
+html {
+    scroll-behavior: smooth;
+    /* This creates a 'buffer' so sections don't hide under your 80px navbar */
+    scroll-padding-top: 90px; 
+}
+
+/* Specific fix for the HOME link style */
+.nav-link-home {
+    cursor: pointer;
+    user-select: none;
+}
 #root {
     max-width: 100% !important;
     margin: 0 !important;
