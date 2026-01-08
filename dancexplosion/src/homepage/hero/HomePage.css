@@ -1,4 +1,4 @@
-/* src/homepage/hero/HomePage.css - Redesign Spectaculos și Ultra-Smooth */
+/* src/homepage/hero/HomePage.css - Redesign Spectacular și Ultra-Smooth */
 
 /* RESETARE STILURI GLOBALE INTERFERENTE */
 #root {
@@ -128,20 +128,16 @@ h1, h2, h3 {
     background-color: transparent;
     backdrop-filter: none; 
     box-shadow: none;
-    transition: background-color 0.4s ease, box-shadow 0.4s ease, height 0.4s ease, backdrop-filter 0.4s ease;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, height 0.4s ease, backdrop-filter 0.4s ease, padding 0.4s ease;
     height: 80px;
 }
 
 /* STAREA CÂND S-A FĂCUT SCROLL (.scrolled) */
 .main-nav.scrolled {
-    /* Starea când s-a făcut scroll (.scrolled) */
-.main-nav.scrolled {
-    padding: 10px 8%; /* Reducem puțin înălțimea pentru un aspect mai compact */
-    background-color: var(--c-white); /* Fundal alb solid */
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); /* Umbră pentru vizibilitate pe alb */
+    padding: 10px 8%;
+    background-color: var(--c-white);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     height: 70px;
-    transition: var(--transition-smooth); /* Asigură o trecere fluidă */
-}
 }
 
 .main-nav.scrolled .logo-img { 
@@ -184,8 +180,8 @@ h1, h2, h3 {
 
 /* Stil de bază pentru link-urile principale - ALBE pe video */
 .nav-links a {
-    color: var(--c-white);
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+    color: var(--c-secondary);
+    text-shadow: none;
     text-decoration: none;
     position: relative;
     font-weight: 600;
@@ -196,7 +192,8 @@ h1, h2, h3 {
 
 /* Link-urile devin NEGRE când scrolled */
 .main-nav.scrolled .nav-links a {
-    color: var(--c-primary) !important; /* Folosește culoarea neagră definită în variabile */
+    color: var(--c-primary) !important;
+    text-shadow: none;
 }
 
 /* Noul container pentru dropdown */
@@ -295,8 +292,10 @@ h1, h2, h3 {
     border-color: transparent;
     box-shadow: 0 8px 25px rgba(26, 26, 26, 0.35); 
 }
+
 .main-nav.scrolled .nav-link-main {
     color: var(--c-primary) !important;
+    text-shadow: none;
 }
 
 .nav-links a::after {

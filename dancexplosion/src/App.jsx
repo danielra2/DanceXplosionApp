@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css'; 
+import Navbar from './components/Navbar';
 import HomePage from './homepage/hero/HomePage.jsx'; 
 import SalsaPage from './homepage/salsaPage/SalsaPage.jsx'; 
 import BachataPage from './homepage/BachataPage/BachataPage.jsx';
@@ -10,9 +11,6 @@ import CookieConsent from './homepage/cookieConsent/CookieConsent.jsx';
 import FormularInscriere from './homepage/formularInscriere/FormularInscriere.jsx';
 import LoginPage from './login/LoginPage.jsx'; 
 import './homepage/teamphotocarousel/CircularGallery.css';
-
-// NOTĂ: Am eliminat importul DXAPromoVideo pentru a evita eroarea de mărime pe Vercel.
-// Videoclipul este acum încărcat prin streaming direct în HomePage.jsx din folderul public.
 
 function App() {
   const [route, setRoute] = useState(window.location.hash);
@@ -61,11 +59,14 @@ function App() {
 
   return (
     <div className="App">
+      {/* NAVBAR GLOBAL - VIZIBIL PE TOATE PAGINILE */}
+      <Navbar openLogin={openLogin} />
+
       {/* Componentele Modale */}
       <FormularInscriere isVisible={showInscriere} onClose={closeInscriere} />
       <LoginPage isVisible={showLogin} onClose={closeLogin} /> 
 
-      {/* Pagina curentă. */}
+      {/* Pagina curentă */}
       {PageComponent === HomePage ? (
         <HomePage 
           openInscriere={openInscriere}
