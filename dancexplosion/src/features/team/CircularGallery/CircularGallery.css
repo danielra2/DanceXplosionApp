@@ -1,9 +1,4 @@
-:root {
-    --c-primary: #1A1A1A; 
-    --c-secondary: #FF7033; 
-    --c-accent: #D4AF37;
-    --c-white: #FFFFFF;
-}
+
 
 .circular-gallery-wrapper {
     width: 100%; 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DanceXplosionLogo from '../../assets/images/dancelogo.png';
+import './Navbar.css';
 
 function Navbar({ openLogin }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,10 +18,8 @@ function Navbar({ openLogin }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const headerClass = isScrolled ? 'main-nav scrolled' : 'main-nav';
-
   return (
-    <header className={headerClass}>
+    <header className={`main-nav ${isScrolled ? 'scrolled' : ''}`}>
       <div className="logo">
         <a href="#top">
           <img src={DanceXplosionLogo} alt="Dance Xplosion Logo" className="logo-img" />
@@ -28,19 +27,22 @@ function Navbar({ openLogin }) {
       </div>
 
       <nav className="nav-links">
-        <a href="#top" className="nav-link-home">HOME</a>
+        <a href="#top" className="nav-item">HOME</a>
 
+        {}
         <div className="dropdown-container">
-          <a href="#clase" className="nav-link-main">CLASE</a>
-          <div className="dropdown-menu simplified">
-            <a href="#salsa" className="class-type-main">Salsa</a>
-            <a href="#bachata" className="class-type-main">Bachata</a>
-            <a href="#kizomba" className="class-type-main">Kizomba</a>
-            <a href="#mixed" className="class-type-main mixt-link">Clasă Mixtă (Beginner)</a>
+          <a href="#clase" className="nav-item dropdown-trigger">
+            CLASE 
+          </a>
+          <div className="dropdown-menu">
+            <a href="#salsa">Salsa</a>
+            <a href="#bachata">Bachata</a>
+            <a href="#kizomba">Kizomba</a>
+            <a href="#mixed" className="mixt-link">Clasă Mixtă</a>
           </div>
         </div>
 
-        <a href="#lxf">LXF</a>
+        <a href="#lxf" className="nav-item">LXF</a>
         
         <button className="cta-nav" onClick={openLogin}>
           LOG IN

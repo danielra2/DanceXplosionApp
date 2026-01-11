@@ -1,12 +1,4 @@
-:root {
-    --c-primary: #1A1A1A;
-    --c-secondary: #FF7033; 
-    --c-accent: #D4AF37;
-    --c-white: #FFFFFF;
-    --c-background: #F8F8F8;
-    --c-text-light: #f8f8f8;
-    --transition-smooth: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-}
+
 
 .schedule-section {
     padding: 100px 5%;
