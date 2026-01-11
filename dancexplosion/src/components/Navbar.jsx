@@ -1,23 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'; // Added useState and useEffect
 import DanceXplosionLogo from '../assets/photos/dancelogo.png';
 
 function Navbar({ openLogin }) {
-  const headerClass = 'main-nav';
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Logic: If scrolled more than 50px, add the background
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Use the isScrolled state to toggle the 'scrolled' class
+  const headerClass = isScrolled ? 'main-nav scrolled' : 'main-nav';
 
   return (
     <header className={headerClass}>
       <div className="logo">
-        {/* Logo pointing to the top anchor */}
         <a href="#top">
           <img src={DanceXplosionLogo} alt="Dance Xplosion Logo" className="logo-img" />
         </a>
       </div>
 
       <nav className="nav-links">
-        {/* HOME button now works exactly like the LXF button below */}
-        <a href="#top" className="nav-link-home">
-          HOME
-        </a>
+        <a href="#top" className="nav-link-home">HOME</a>
 
         <div className="dropdown-container">
           <a href="#clase" className="nav-link-main">CLASE</a>
@@ -29,7 +42,6 @@ function Navbar({ openLogin }) {
           </div>
         </div>
 
-        {/* This is your working LXF button for reference */}
         <a href="#lxf">LXF</a>
         
         <button className="cta-nav" onClick={openLogin}>

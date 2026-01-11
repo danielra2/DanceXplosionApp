@@ -147,7 +147,7 @@ h1, h2, h3 {
 /* STAREA CÂND S-A FĂCUT SCROLL (.scrolled) */
 .main-nav.scrolled {
     padding: 10px 8%;
-    background-color: var(--c-white);
+    background-color: var(--c-secondary);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     height: 70px;
 }
@@ -297,18 +297,6 @@ h1, h2, h3 {
     font-size: 0.9rem;
 }
 
-/* CTA LOG IN: STAREA CÂND S-A FĂCUT SCROLL (.scrolled) */
-.main-nav.scrolled .cta-nav.cta-primary-dark { 
-    background: linear-gradient(135deg, #1f1f1f 0%, #2d2d2d 100%);
-    color: #ffffff; 
-    border-color: transparent;
-    box-shadow: 0 8px 25px rgba(26, 26, 26, 0.35); 
-}
-
-.main-nav.scrolled .nav-link-main {
-    color: var(--c-primary) !important;
-    text-shadow: none;
-}
 
 .nav-links a::after {
     content: '';
