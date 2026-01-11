@@ -5,7 +5,7 @@ import InfiniteMovingTeamCarousel from '../../features/team/CircularGallery/Circ
 import ClassDetails from '../../features/classes/ClassDetails/ClassDetails'; 
 import ScheduleTable from '../../features/schedule/ScheduleTable/ScheduleTable'; 
 
-function HomePage({ openInscriere }) {
+function HomePage({ openInscriere, openWIP }) {
   const heroSectionRef = useRef(null);
   const videoRef = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
@@ -22,116 +22,45 @@ function HomePage({ openInscriere }) {
       hls.loadSource(hlsSource);
       hls.attachMedia(video);
       hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        video.play().catch(error => {
-          console.log("Autoplay blocat de browser:", error);
-        });
+        video.play().catch(() => {});
       });
-
       return () => hls.destroy();
     } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
       video.src = hlsSource;
     }
   }, []);
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const handleVolumeChange = () => {
-      setIsMuted(video.muted);
-      if (!video.muted) setUserUnmuted(true);
-    };
-
-    video.addEventListener('volumechange', handleVolumeChange);
-    return () => video.removeEventListener('volumechange', handleVolumeChange);
-  }, []);
-
-  useEffect(() => {
-    if (!heroSectionRef.current || !videoRef.current) return;
-    
-    const videoElement = videoRef.current;
-    
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          videoElement.muted = !userUnmuted;
-          setIsMuted(!userUnmuted);
-          videoElement.play().catch(() => {});
-        } else {
-          videoElement.pause();
-        }
-      },
-      { threshold: 0.5 } 
-    );
-
-    observer.observe(heroSectionRef.current);
-
-    return () => {
-      if (heroSectionRef.current) {
-        observer.unobserve(heroSectionRef.current);
-      }
-    };
-  }, [userUnmuted]);
-
   const toggleMute = () => {
     if (videoRef.current) {
       const newMutedState = !videoRef.current.muted;
       videoRef.current.muted = newMutedState;
       setIsMuted(newMutedState);
-      if (!newMutedState) {
-        setUserUnmuted(true);
-      }
+      if (!newMutedState) setUserUnmuted(true);
     }
   };
 
   return (
     <div className="homepage-container" id="top">
-      
       <section className="hero-section" ref={heroSectionRef}>
-        <video 
-          ref={videoRef}
-          className="hero-background-video"
-          autoPlay 
-          loop 
-          playsInline 
-          muted={isMuted} 
-          preload="auto" 
-        >
-          Browserul tău nu suportă elementul video.
-        </video>
-        
-        {}
-        <button 
-          className="unmute-button" 
-          onClick={toggleMute}
-          aria-label={isMuted ? "Unmute video" : "Mute video"}
-        >
+        <video ref={videoRef} className="hero-background-video" autoPlay loop playsInline muted={isMuted} preload="auto" />
+        <button className="unmute-button" onClick={toggleMute}>
           {isMuted ? '🔊 Cu sunet' : '🔇 Fără sunet'}
         </button>
-        
         <div className="video-overlay"></div>
-
         <div className="hero-content-wrapper">
           <h1 className="hero-title">
             <span className="title-word delay-1">ÎNCEPE</span>{' '}
             <span className="title-word accent-color-text delay-2">MIȘCAREA</span>{' '}
             <span className="title-word accent-color-text delay-3">TA.</span>
           </h1>
-          <p className="hero-pitch">
-            Academia ta de dans din Sibiu. De la primele mișcări la festivaluri naționale.
-          </p>
+          <p className="hero-pitch">Academia ta de dans din Sibiu. De la primele mișcări la festivaluri naționale.</p>
           <div className="hero-cta-group">
-            <button className="cta-primary-dark" onClick={openInscriere}>
-              REZERVĂ O CLASĂ DE PROBĂ
-            </button>
-            <a href="#orarul-tau" className="cta-secondary-accent button-as-link">
-              VEZI ORARUL
-            </a>
+            <button className="cta-primary-dark" onClick={openInscriere}>REZERVĂ O CLASĂ DE PROBĂ</button>
+            <a href="#orarul-tau" className="cta-secondary-accent button-as-link">VEZI ORARUL</a>
           </div>
         </div>
       </section>
 
-      {}
       <section className="circular-gallery-wrapper">
         <h2 className="section-heading-dark">Cunoaște Echipa Noastră</h2>
         <div className="circular-gallery-container">
@@ -139,22 +68,17 @@ function HomePage({ openInscriere }) {
         </div>
       </section>
 
-      {}
       <ClassDetails /> 
       
-      {}
       <section id="orarul-tau"> 
-        <ScheduleTable />
+        <ScheduleTable openInscriere={openInscriere} />
       </section>
 
-      {}
       <section className="lxf-promo-section" id="lxf">
         <div className="lxf-content-dark">
           <h2 className="lxf-title">LXF 2025</h2>
-          <p className="lxf-description">
-            Cel mai mare festival de dans din Transilvania. Pregătește-te pentru spectacol!
-          </p>
-          <button className="cta-lxf-gold">AFLĂ MAI MULTE</button>
+          <p className="lxf-description">Cel mai mare festival de dans din Transilvania. Pregătește-te pentru spectacol!</p>
+          <button className="cta-lxf-gold" onClick={openWIP}>AFLĂ MAI MULTE</button>
         </div>
       </section>
     </div>

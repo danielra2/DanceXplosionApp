@@ -8,8 +8,7 @@ import KizombaPage from './pages/Kizomba/kizombaPage.jsx';
 import InstructorPage from "./pages/Instructor/instructorPage.jsx"; 
 import RobotCheck from "./features/auth/components/RobotCheck.jsx"; 
 import CookieConsent from './components/ui/CookieConsent/CookieConsent.jsx'; 
-import FormularInscriere from './features/registration/FormularInscriere/FormularInscriere.jsx'; 
-import LoginPage from './features/auth/components/LoginPage.jsx'; 
+import WorkInProgress from './components/ui/WorkInProgress/WorkInProgress.jsx';
 import './features/team/CircularGallery/CircularGallery.css'; 
 
 function App() {
@@ -18,14 +17,10 @@ function App() {
     localStorage.getItem('isRobotVerified') === 'true'
   );
   
-  const [showInscriere, setShowInscriere] = useState(false);
-  const [showLogin, setShowLogin] = useState(false); 
+  const [showWIP, setShowWIP] = useState(false);
 
   useEffect(() => {
-    const handleHashChange = () => {
-      setRoute(window.location.hash);
-    };
-
+    const handleHashChange = () => setRoute(window.location.hash);
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
@@ -36,19 +31,19 @@ function App() {
     const numarTelefon = "40746089802"; 
     const mesaj = encodeURIComponent("Bună ziua! Doresc să rezerv o clasă de probă la Dance Xplosion Academy.");
     const urlWhatsapp = `https://wa.me/${numarTelefon}?text=${mesaj}`;
-    
     window.open(urlWhatsapp, '_blank');
   };
 
-  const closeInscriere = () => setShowInscriere(false);
-  const openLogin = () => setShowLogin(true);
-  const closeLogin = () => setShowLogin(false);
+  const openWIP = () => setShowWIP(true);
+  const closeWIP = () => setShowWIP(false);
   
   if (!isRobotVerified) {
     return <RobotCheck onVerified={setIsRobotVerified} />;
   }
 
   let PageComponent;
+  let isHome = false;
+
   if (currentHash === 'salsa') {
     PageComponent = SalsaPage;
   } else if (currentHash === 'bachata') {
@@ -59,29 +54,24 @@ function App() {
     PageComponent = InstructorPage;
   } else {
     PageComponent = HomePage;
+    isHome = true;
   }
 
   return (
     <div className="App">
-      {}
-      <Navbar openLogin={openLogin} />
+      <Navbar openLogin={openWIP} isHome={isHome} />
 
-      {}
-      {}
-      
-      <LoginPage isVisible={showLogin} onClose={closeLogin} /> 
+      <WorkInProgress isVisible={showWIP} onClose={closeWIP} onContact={openInscriere} />
 
-      {}
-      {PageComponent === HomePage ? (
+      {isHome ? (
         <HomePage 
           openInscriere={openInscriere}
-          openLogin={openLogin}       
+          openWIP={openWIP}       
         />
       ) : (
         <PageComponent openInscriere={openInscriere} />
       )}
 
-      {}
       <CookieConsent />
     </div>
   );

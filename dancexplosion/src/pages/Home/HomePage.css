@@ -29,7 +29,6 @@ html {
 
 body {
     background-color: var(--c-background);
-    font-family: 'Georgia', serif; 
     color: var(--c-text-primary);
     overflow-x: hidden; 
 }
@@ -481,5 +480,28 @@ h1, h2, h3 {
         right: 15px;
         padding: 5px 12px;
         font-size: 0.7rem;
+    }
+}
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    .hero-pitch {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.5rem;
+        line-height: 1.1;
+    }
+    .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+    .cta-primary-dark {
+        width: 100%;
     }
 }

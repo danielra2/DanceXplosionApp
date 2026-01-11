@@ -37,7 +37,7 @@ function ScheduleTable({ openInscriere }) {
                                 >
                                     <span className="class-time">{item.time}</span>
                                     <p className="class-name">{item.name}</p>
-                                    <span className={`class-level level-${item.level.toLowerCase()}`}>{item.level}</span>
+                                    <span className="class-level">{item.level}</span>
                                 </div>
                             ))}
                         </div>

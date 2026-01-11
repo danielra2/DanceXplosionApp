@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from 'react';
 import './CircularGallery.css';
 
@@ -7,7 +6,6 @@ import malePhoto from '../../../assets/images/0E5A0375.JPG';
 import alexPhoto from '../../../assets/images/alexphoto.JPG';
 import alexandraPhoto from '../../../assets/images/alexandraphoto.jpeg';
 import adrianPhoto from '../../../assets/images/adrianPhoto.jpeg';
-
 
 const getRunningTransformOffset = (element) => {
     const style = window.getComputedStyle(element);
@@ -22,7 +20,6 @@ const getRunningTransformOffset = (element) => {
     return 0;
 };
 
-
 const teamMembersData = [
     { id: 1, name: "Nicoleta Cristina", slug: "nicoleta-cristina", role: "Coregraf Salsa", image: newMemberPhoto },
     { id: 2, name: "Alex Lazar", slug: "alex-lazar", role: "Instructor Urban", image: malePhoto }, 
@@ -32,7 +29,6 @@ const teamMembersData = [
 ];
 
 const InfiniteMovingTeamCarousel = ({ items = teamMembersData, initialSpeed = '30s', slowedSpeed = '120s' }) => {
-    
     const duplicateItems = [...items, ...items];
     const trackRef = useRef(null);
     const containerRef = useRef(null);
@@ -43,50 +39,33 @@ const InfiniteMovingTeamCarousel = ({ items = teamMembersData, initialSpeed = '3
         const track = trackRef.current;
         if (!track) return;
         track.style.animationPlayState = 'paused';
-        
         const currentOffsetPx = getRunningTransformOffset(track);
-
         const totalTrackWidth = track.clientWidth / 2; 
-
         const offsetPercentage = Math.abs(currentOffsetPx) / totalTrackWidth;
-        
         const newDelay = parseFloat(slowedSpeed) * offsetPercentage; 
-
         track.style.animation = 'none';
-        
         track.style.transform = `translateX(${currentOffsetPx}px)`;
-        
         void track.offsetHeight;
-        
         track.style.animation = `infinite-scroll ${slowedSpeed} linear infinite`;
         track.style.animationDelay = `-${newDelay}s`;
         track.style.animationPlayState = 'running';
-        
         if (containerRef.current) containerRef.current.style.cursor = 'grab';
     };
 
     const handleMouseLeave = () => {
         const track = trackRef.current;
         if (!track) return;
-        
         track.style.animationPlayState = 'paused';
-        
         const currentOffsetPx = getRunningTransformOffset(track);
         const totalTrackWidth = track.clientWidth / 2; 
         const offsetPercentage = Math.abs(currentOffsetPx) / totalTrackWidth;
-
         const newDelay = parseFloat(initialSpeed) * offsetPercentage; 
-
         track.style.animation = 'none';
-        
         track.style.transform = `translateX(${currentOffsetPx}px)`;
-
         void track.offsetHeight;
-
         track.style.animation = `infinite-scroll ${initialSpeed} linear infinite`;
         track.style.animationDelay = `-${newDelay}s`;
         track.style.animationPlayState = 'running';
-        
         if (containerRef.current) containerRef.current.style.cursor = 'default';
     };
     
@@ -95,12 +74,9 @@ const InfiniteMovingTeamCarousel = ({ items = teamMembersData, initialSpeed = '3
     const handleStart = (e) => {
         const container = containerRef.current;
         if (!container || (e.touches && e.touches.length > 1)) return;
-
         isDragging.current = true;
-        
         const track = trackRef.current;
         if (track) track.style.animationPlayState = 'paused';
-
         startX.current = getPositionX(e) + container.scrollLeft;
         container.style.cursor = 'grabbing';
     };
@@ -108,54 +84,41 @@ const InfiniteMovingTeamCarousel = ({ items = teamMembersData, initialSpeed = '3
     const handleEnd = () => {
         if (!isDragging.current) return;
         isDragging.current = false;
-        
         const container = containerRef.current;
         const track = trackRef.current;
-        
         if (track) track.style.animationPlayState = 'running';
-        
         if (container) container.style.cursor = 'grab';
     };
 
     const handleMove = (e) => {
         if (!isDragging.current) return;
-        
         e.preventDefault();
-        
         const container = containerRef.current;
         const track = trackRef.current;
         if (!container || !track) return;
-        
         const currentX = getPositionX(e);
         const newScrollLeft = startX.current - currentX;
-        
         container.scrollLeft = newScrollLeft;
         const singleContentWidth = track.scrollWidth / 2;
-        
         if (container.scrollLeft >= singleContentWidth) {
             container.scrollLeft -= singleContentWidth;
             startX.current -= singleContentWidth;
         }
-
         if (container.scrollLeft < 0) {
             container.scrollLeft += singleContentWidth;
             startX.current += singleContentWidth;
         }
-        
     };
     
     useEffect(() => {
         const container = containerRef.current;
         if (!container) return;
-        
         container.addEventListener('mousedown', handleStart);
         container.addEventListener('touchstart', handleStart, { passive: false });
-        
         window.addEventListener('mouseup', handleEnd);
         window.addEventListener('touchend', handleEnd);
         window.addEventListener('mousemove', handleMove);
         window.addEventListener('touchmove', handleMove, { passive: false });
-
         return () => {
             container.removeEventListener('mousedown', handleStart);
             container.removeEventListener('touchstart', handleStart);
@@ -166,13 +129,9 @@ const InfiniteMovingTeamCarousel = ({ items = teamMembersData, initialSpeed = '3
         };
     }, []);
 
-
     const handleCardClick = (item) => {
         if (item.slug === 'alex-lazar') {
             window.location.hash = `#instructor/${item.slug}`;
-            console.log(`Navigare la pagina instructorului: ${item.name} (${item.slug})`);
-        } else {
-            console.log(`Pagina pentru ${item.name} nu este disponibilă încă.`);
         }
     };
 

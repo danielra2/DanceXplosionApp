@@ -1,0 +1,77 @@
+.modal-overlay-wip {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(26, 26, 26, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.wip-modal {
+    background-color: var(--c-white);
+    border-radius: 12px;
+    padding: 60px 40px;
+    position: relative;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+    animation: fadeInScaleWIP 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.close-btn-wip {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: var(--c-primary);
+    line-height: 1;
+}
+
+.modal-title-wip {
+    color: var(--c-primary);
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    font-family: 'Georgia', serif !important;
+}
+
+.modal-subtitle-wip {
+    color: var(--c-text-primary);
+    margin-bottom: 35px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    font-family: 'Georgia', serif !important;
+}
+
+.cta-wip-contact {
+    width: 100%;
+    padding: 16px;
+    background: var(--c-secondary);
+    color: var(--c-white);
+    border: none;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-family: 'Georgia', serif !important;
+    letter-spacing: 1px;
+}
+
+.cta-wip-contact:hover {
+    background: var(--c-primary);
+    transform: translateY(-2px);
+}
+
+@keyframes fadeInScaleWIP {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}

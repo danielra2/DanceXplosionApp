@@ -1,19 +1,21 @@
-
-
 .schedule-section {
     padding: 100px 5%;
     text-align: center;
     background-color: var(--c-white);
+    font-family: 'Georgia', serif !important;
 }
 
 .schedule-section .section-heading-dark {
-    margin-bottom: 30px; 
+    margin-bottom: 30px;
+    font-family: 'Georgia', serif !important;
+    color: var(--c-primary);
 }
 
 .schedule-subtitle {
     font-size: 1.2rem;
     color: var(--c-text-primary);
     margin-bottom: 50px;
+    font-family: 'Georgia', serif !important;
 }
 
 .schedule-table-container {
@@ -29,38 +31,14 @@
     flex-grow: 1; 
     flex-shrink: 1; 
     flex-basis: auto; 
-    
     width: calc(20% - 16px); 
     min-width: 180px; 
     max-width: 240px; 
-    
     background: var(--c-background);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
-
-@media (max-width: 1000px) {
-    .day-column {
-        min-width: 150px;
-    }
-}
-
-@media (max-width: 768px) {
-    .schedule-table-container {
-        flex-wrap: wrap; 
-        padding: 0 5%;
-    }
-    .day-column {
-        width: calc(50% - 10px); 
-    }
-}
-@media (max-width: 480px) {
-    .day-column {
-        width: 100%; 
-    }
-}
-
 
 .day-title {
     background: var(--c-primary);
@@ -69,6 +47,7 @@
     margin: 0;
     font-size: 1.4rem;
     font-weight: 700;
+    font-family: 'Georgia', serif !important;
 }
 
 .class-list {
@@ -102,6 +81,7 @@
     font-weight: 600;
     color: var(--c-secondary);
     margin-bottom: 5px;
+    font-family: 'Georgia', serif !important;
 }
 
 .class-name {
@@ -109,6 +89,7 @@
     font-weight: 700;
     color: var(--c-primary);
     margin: 0 0 5px 0;
+    font-family: 'Georgia', serif !important;
 }
 
 .class-level {
@@ -121,19 +102,14 @@
     border-radius: 5px;
     color: var(--c-white);
     white-space: nowrap;
+    background-color: var(--c-secondary);
+    font-family: 'Georgia', serif !important;
 }
-
-.level-beginner { background-color: #28a745; } 
-.level-improver { background-color: #007bff; } 
-.level-intermediate { background-color: var(--c-secondary); } 
-.level-open { background-color: #6c757d; } 
 
 .card-free {
-    background-color: #e9ecef;
+    background-color: #fdf2ee;
     border-style: dashed;
-}
-.card-free .class-name {
-    color: #495057;
+    border-color: var(--c-secondary);
 }
 
 .schedule-cta-wrapper {
@@ -150,10 +126,10 @@
     transition: var(--transition-smooth);
     letter-spacing: 0.08rem;
     text-transform: uppercase;
-    
     background: linear-gradient(135deg, var(--c-primary) 0%, #2d2d2d 100%);
     color: var(--c-white);
     box-shadow: 0 8px 25px rgba(26, 26, 26, 0.3);
+    font-family: 'Georgia', serif !important;
 }
 
 .cta-schedule-register:hover {
@@ -161,4 +137,17 @@
     color: var(--c-white);
     box-shadow: 0 12px 35px rgba(255, 112, 51, 0.6);
     transform: translateY(-3px) scale(1.05); 
+}
+
+@media (max-width: 1000px) {
+    .day-column { min-width: 150px; }
+}
+
+@media (max-width: 768px) {
+    .schedule-table-container { flex-wrap: wrap; padding: 0 5%; }
+    .day-column { width: calc(50% - 10px); }
+}
+
+@media (max-width: 480px) {
+    .day-column { width: 100%; }
 }
