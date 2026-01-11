@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './App.css'; 
-import Navbar from './components/Navbar';
-import HomePage from './homepage/hero/HomePage.jsx'; 
-import SalsaPage from './homepage/salsaPage/SalsaPage.jsx'; 
-import BachataPage from './homepage/BachataPage/BachataPage.jsx';
-import KizombaPage from './homepage/kizombaPage/kizombaPage.jsx'; 
-import InstructorPage from "./homepage/instructorPage/instructorPage.jsx";
-import RobotCheck from "./homepage/robotCheck/RobotCheck.jsx"; 
-import CookieConsent from './homepage/cookieConsent/CookieConsent.jsx'; 
-import FormularInscriere from './homepage/formularInscriere/FormularInscriere.jsx';
-import LoginPage from './login/LoginPage.jsx'; 
-import './homepage/teamphotocarousel/CircularGallery.css';
+import Navbar from './components/layout/Navbar'; 
+import HomePage from './pages/Home/HomePage.jsx'; 
+import SalsaPage from './pages/Salsa/SalsaPage.jsx';
+import BachataPage from './pages/Bachata/BachataPage.jsx'; 
+import KizombaPage from './pages/Kizomba/kizombaPage.jsx'; 
+import InstructorPage from "./pages/Instructor/instructorPage.jsx"; 
+import RobotCheck from "./features/auth/components/RobotCheck.jsx"; 
+import CookieConsent from './components/ui/CookieConsent/CookieConsent.jsx'; 
+import FormularInscriere from './features/registration/FormularInscriere/FormularInscriere.jsx'; 
+import LoginPage from './features/auth/components/LoginPage.jsx'; 
+import './features/team/CircularGallery/CircularGallery.css'; 
 
 function App() {
   const [route, setRoute] = useState(window.location.hash);
@@ -32,9 +32,8 @@ function App() {
 
   const currentHash = route.substring(1); 
 
-  // --- LOGICĂ ACTUALIZATĂ PENTRU WHATSAPP ---
   const openInscriere = () => {
-    const numarTelefon = "40746089802"; // Numărul tău în format internațional
+    const numarTelefon = "40746089802"; 
     const mesaj = encodeURIComponent("Bună ziua! Doresc să rezerv o clasă de probă la Dance Xplosion Academy.");
     const urlWhatsapp = `https://wa.me/${numarTelefon}?text=${mesaj}`;
     
@@ -45,12 +44,10 @@ function App() {
   const openLogin = () => setShowLogin(true);
   const closeLogin = () => setShowLogin(false);
   
-  // 1. Verificare Anti-Robot
   if (!isRobotVerified) {
     return <RobotCheck onVerified={setIsRobotVerified} />;
   }
 
-  // 2. Rutare
   let PageComponent;
   if (currentHash === 'salsa') {
     PageComponent = SalsaPage;
@@ -66,18 +63,15 @@ function App() {
 
   return (
     <div className="App">
-      {/* NAVBAR GLOBAL - VIZIBIL PE TOATE PAGINILE */}
+      {}
       <Navbar openLogin={openLogin} />
 
-      {/* FORMULAR ARHIVAT: 
-          Am comentat componenta de mai jos pentru a păstra designul intact în cod, 
-          dar a preveni afișarea lui până când baza de date este gata.
-      */}
-      {/* <FormularInscriere isVisible={showInscriere} onClose={closeInscriere} /> */}
+      {}
+      {}
       
       <LoginPage isVisible={showLogin} onClose={closeLogin} /> 
 
-      {/* Pagina curentă - Pasăm openInscriere către toate paginile pentru a merge butoanele de WhatsApp */}
+      {}
       {PageComponent === HomePage ? (
         <HomePage 
           openInscriere={openInscriere}
@@ -87,7 +81,7 @@ function App() {
         <PageComponent openInscriere={openInscriere} />
       )}
 
-      {/* Banner Cookie */}
+      {}
       <CookieConsent />
     </div>
   );

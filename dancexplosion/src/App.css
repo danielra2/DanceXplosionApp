@@ -1,4 +1,3 @@
-/* App.css - Resetare globală și stiluri de bază */
 
 * {
   margin: 0;
@@ -29,7 +28,6 @@ html, body {
   overflow-x: hidden;
 }
 
-/* Resetare pentru body */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -45,7 +43,6 @@ code {
     monospace;
 }
 
-/* Stiluri pentru componentele modale */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -91,7 +88,6 @@ code {
   }
 }
 
-/* Scroll bar personalizat pentru o experiență mai bună */
 ::-webkit-scrollbar {
   width: 10px;
 }

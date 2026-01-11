@@ -1,0 +1,130 @@
+:root {
+    --c-primary: #1A1A1A; 
+    --c-secondary: #FF7033; 
+    --c-accent: #D4AF37;
+    --c-white: #FFFFFF;
+}
+
+.circular-gallery-wrapper {
+    width: 100%; 
+    padding: 80px 0 120px; 
+    background: linear-gradient(180deg, var(--c-background) 0%, #FFFFFF 100%);
+    position: relative;
+    overflow: hidden; 
+}
+
+.infinite-carousel-container {
+    width: 100%; 
+    height: 550px; 
+    position: relative;
+    overflow-x: scroll; 
+    overflow-y: hidden;
+    white-space: nowrap; 
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+    cursor: grab; 
+    margin: 0; 
+    padding: 0 5vw; 
+}
+
+.infinite-carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+@keyframes infinite-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); } 
+}
+
+.infinite-carousel-track {
+    display: flex;
+    width: max-content; 
+    height: 100%;
+    animation: infinite-scroll linear infinite;
+    animation-duration: var(--animation-duration, 30s); 
+    animation-play-state: running;
+}
+
+.team-card-infinite {
+    width: 380px; 
+    height: 480px;
+    margin: 30px 25px; 
+    
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.95);
+    position: relative;
+    cursor: pointer;
+    
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: perspective(1000px) rotateY(0deg) scale(0.95);
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.team-card-infinite:hover {
+    transform: perspective(1000px) rotateY(0deg) scale(1.05);
+    box-shadow: 0 20px 40px rgba(255, 112, 51, 0.7);
+    border-color: var(--c-accent);
+}
+
+.member-photo-infinite {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(1);
+    transition: all 0.5s;
+}
+
+.team-card-infinite:hover .member-photo-infinite {
+    filter: brightness(1);
+    transform: scale(1.05);
+}
+
+.card-overlay-infinite {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 30px;
+    background: linear-gradient(180deg, rgba(26, 26, 26, 0.8) 0%, rgba(26, 26, 26, 0.1) 40%, transparent 100%);
+    color: var(--c-white);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.member-name-infinite {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--c-accent);
+    margin-bottom: 5px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+.member-role-infinite {
+    font-size: 1.1rem;
+    color: var(--c-white);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.cta-overlay-infinite {
+    display: block;
+    margin-top: 15px;
+    color: var(--c-secondary);
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.team-card-infinite:hover .cta-overlay-infinite {
+    text-decoration: underline;
+    color: var(--c-white);
+}

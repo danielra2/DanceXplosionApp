@@ -1,0 +1,30 @@
+:root {
+    --c-primary: #1A1A1A;
+    --c-secondary: #FF7033;
+    --c-background: #F8F8F8;
+    --c-accent: #D4AF37;
+    --c-text-primary: #767676;
+    --c-white: #FFFFFF;
+    
+    --transition-smooth: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    --transition-fast: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
