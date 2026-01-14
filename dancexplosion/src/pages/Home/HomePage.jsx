@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'; 
 import Hls from 'hls.js';
 import './HomePage.css';
-import InfiniteMovingTeamCarousel from '../../features/team/CircularGallery/CircularGallery'; 
+import InfiniteMovingTeamCarousel from '../../features/CircularGallery/CircularGallery'; 
 import ClassDetails from '../../features/classes/ClassDetails/ClassDetails'; 
 import ScheduleTable from '../../features/schedule/ScheduleTable/ScheduleTable'; 
 

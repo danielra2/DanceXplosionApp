@@ -9,7 +9,7 @@ import InstructorPage from "./pages/Instructor/instructorPage.jsx";
 import RobotCheck from "./features/auth/components/RobotCheck.jsx"; 
 import CookieConsent from './components/ui/CookieConsent/CookieConsent.jsx'; 
 import WorkInProgress from './components/ui/WorkInProgress/WorkInProgress.jsx';
-import './features/team/CircularGallery/CircularGallery.css'; 
+import './features/CircularGallery/CircularGallery.css'; 
 
 function App() {
   const [route, setRoute] = useState(window.location.hash);
@@ -28,7 +28,7 @@ function App() {
   const currentHash = route.substring(1); 
 
   const openInscriere = () => {
-    const numarTelefon = "40746089802"; 
+    const numarTelefon = "40751327415"; 
     const mesaj = encodeURIComponent("Bună ziua! Doresc să rezerv o clasă de probă la Dance Xplosion Academy.");
     const urlWhatsapp = `https://wa.me/${numarTelefon}?text=${mesaj}`;
     window.open(urlWhatsapp, '_blank');

@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 import './CircularGallery.css';
 
-import newMemberPhoto from '../../../assets/images/0E5A0411.JPG'; 
-import malePhoto from '../../../assets/images/0E5A0375.JPG';
-import alexPhoto from '../../../assets/images/alexphoto.JPG';
-import alexandraPhoto from '../../../assets/images/alexandraphoto.jpeg';
-import adrianPhoto from '../../../assets/images/adrianPhoto.jpeg';
+import newMemberPhoto from '../../assets/images/0E5A0411.JPG'; 
+import malePhoto from '../../assets/images/AlexLazarPhoto.jpg';
+import alexPhoto from '../../assets/images/alexphoto.JPG';
+import alexandraPhoto from '../../assets/images/alexandraphoto.jpeg';
+import adrianPhoto from '../../assets/images/adrianPhoto.jpeg';
 
 const getRunningTransformOffset = (element) => {
     const style = window.getComputedStyle(element);

@@ -1,153 +1,140 @@
 .schedule-section {
-    padding: 100px 5%;
+    padding: 80px 5%;
     text-align: center;
     background-color: var(--c-white);
     font-family: 'Georgia', serif !important;
 }
 
-.schedule-section .section-heading-dark {
-    margin-bottom: 30px;
-    font-family: 'Georgia', serif !important;
-    color: var(--c-primary);
+.hall-container {
+    margin-bottom: 60px;
 }
 
-.schedule-subtitle {
-    font-size: 1.2rem;
-    color: var(--c-text-primary);
-    margin-bottom: 50px;
-    font-family: 'Georgia', serif !important;
+.hall-header {
+    background: var(--c-secondary);
+    color: var(--c-white);
+    padding: 15px;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 10px 10px 0 0;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
 .schedule-table-container {
     display: flex;
     flex-wrap: nowrap; 
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
     max-width: 1300px;
     margin: 0 auto;
+    background: #f1f1f1;
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
 }
 
 .day-column {
-    flex-grow: 1; 
-    flex-shrink: 1; 
-    flex-basis: auto; 
-    width: calc(20% - 16px); 
-    min-width: 180px; 
-    max-width: 240px; 
-    background: var(--c-background);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    min-width: 180px;
+    background: var(--c-white);
+    border-radius: 8px;
 }
 
 .day-title {
     background: var(--c-primary);
     color: var(--c-white);
-    padding: 15px 0;
+    padding: 10px 0;
     margin: 0;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    font-family: 'Georgia', serif !important;
 }
 
 .class-list {
-    padding: 15px;
+    padding: 10px;
+    min-height: 100px;
 }
 
 .class-card {
-    display: block;
-    background: var(--c-white);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    margin-bottom: 10px;
-    padding: 15px;
-    text-align: left;
-    transition: var(--transition-smooth);
+    background: var(--c-background);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    margin-bottom: 8px;
+    padding: 12px;
+    text-align: center;
+    transition: var(--transition-fast);
     position: relative;
-    text-decoration: none;
-    cursor: pointer;
-    overflow: hidden;
 }
 
 .class-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(255, 112, 51, 0.2);
+    transform: scale(1.02);
     border-color: var(--c-secondary);
+    box-shadow: 0 5px 15px rgba(255, 112, 51, 0.2);
 }
 
 .class-time {
     display: block;
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 800;
     color: var(--c-secondary);
-    margin-bottom: 5px;
-    font-family: 'Georgia', serif !important;
 }
 
 .class-name {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--c-primary);
-    margin: 0 0 5px 0;
-    font-family: 'Georgia', serif !important;
+    margin: 5px 0;
 }
 
-.class-level {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    padding: 4px 10px;
-    font-size: 0.6rem;
-    font-weight: 800;
-    border-radius: 5px;
-    color: var(--c-white);
-    white-space: nowrap;
-    background-color: var(--c-secondary);
-    font-family: 'Georgia', serif !important;
+.class-instr {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--c-text-primary);
+    font-style: italic;
 }
 
-.card-free {
-    background-color: #fdf2ee;
-    border-style: dashed;
-    border-color: var(--c-secondary);
+.class-level-tag {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.65rem;
+    font-weight: 900;
+    background: var(--c-accent);
+    color: var(--c-primary);
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.empty-day {
+    color: #ccc;
+    font-size: 0.8rem;
+    padding-top: 20px;
 }
 
 .schedule-cta-wrapper {
-    margin-top: 50px;
+    margin-top: 40px;
 }
 
-.cta-schedule-register {
-    padding: 18px 45px;
-    font-size: 1.05rem;
-    font-weight: 700;
-    border: 3px solid transparent;
-    cursor: pointer;
-    border-radius: 50px; 
-    transition: var(--transition-smooth);
-    letter-spacing: 0.08rem;
-    text-transform: uppercase;
-    background: linear-gradient(135deg, var(--c-primary) 0%, #2d2d2d 100%);
-    color: var(--c-white);
-    box-shadow: 0 8px 25px rgba(26, 26, 26, 0.3);
-    font-family: 'Georgia', serif !important;
-}
-
-.cta-schedule-register:hover {
-    background: linear-gradient(135deg, var(--c-secondary) 0%, #ff8c5a 100%);
-    color: var(--c-white);
-    box-shadow: 0 12px 35px rgba(255, 112, 51, 0.6);
-    transform: translateY(-3px) scale(1.05); 
-}
-
-@media (max-width: 1000px) {
-    .day-column { min-width: 150px; }
+@media (max-width: 1024px) {
+    .schedule-table-container {
+        flex-wrap: wrap;
+    }
+    .day-column {
+        width: calc(33.33% - 10px);
+        flex: none;
+    }
 }
 
 @media (max-width: 768px) {
-    .schedule-table-container { flex-wrap: wrap; padding: 0 5%; }
-    .day-column { width: calc(50% - 10px); }
+    .day-column {
+        width: calc(50% - 10px);
+    }
 }
 
 @media (max-width: 480px) {
-    .day-column { width: 100%; }
+    .day-column {
+        width: 100%;
+    }
+    .hall-header {
+        font-size: 1.4rem;
+    }
 }
