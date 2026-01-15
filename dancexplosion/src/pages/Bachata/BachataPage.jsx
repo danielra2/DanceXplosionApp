@@ -5,7 +5,7 @@ import './BachataPage.css';
 const levels = [
     { name: "Beginner", description: "Învață ritmul, pașii de bază și mișcarea șoldului, esențiale pentru dansul social.", target: "#beginner" },
     { name: "Improver", description: "Stăpânirea figurilor simple, valuri corporale (body waves) și styling de bază.", target: "#improver" },
-    { name: "Intermediate", description: "Tehnică modernă și sensual, muzicalitate, variații de ritm și izolari avansate.", target: "#intermediate" },
+    { name: "Intermediar", description: "Tehnică modernă și sensual, muzicalitate, variații de ritm și izolari avansate.", target: "#intermediate" },
 ];
 
 function BachataPage({ openInscriere }) {

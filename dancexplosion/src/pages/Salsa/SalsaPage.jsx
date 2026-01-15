@@ -12,7 +12,7 @@ function SalsaPage({ openInscriere }) {
         <div className="salsa-page-container">
             <section className="salsa-hero-section">
                 <div className="hero-content-salsa">
-                    <h1 className="salsa-title">Salsa <span className="accent-text">Începe Ritmul Latin.</span></h1>
+                    <h1 className="salsa-title">Salsa <span className="accent-text">Ritmul Latin de care te vei îndrăgosti.</span></h1>
                     <button onClick={openInscriere} className="cta-page-main" style={{ border: 'none', cursor: 'pointer' }}>Rezervă prin WhatsApp</button>
                 </div>
             </section>

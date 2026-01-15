@@ -4,7 +4,7 @@ import './kizombaPage.css';
 const levels = [
     { name: "Beginner", description: "Baza esențială: înțelegerea ritmului, pași de bază (saída, basic 1, 2, 3), și conexiunea cu partenerul.", target: "#beginner" },
     { name: "Improver", description: "Consolidarea flow-ului și a conexiunii, introducerea mișcărilor laterale (laterals), block-uri și inversiuni simple.", target: "#improver" },
-    { name: "Intermediate", description: "Muzicalitate avansată, mișcări complexe de Urban Kizz (isolation, tricks), și fluiditate în social dance.", target: "#intermediate" },
+    { name: "Intermediar", description: "Muzicalitate avansată, mișcări complexe de Urban Kizz (isolation, tricks), și fluiditate în social dance.", target: "#intermediate" },
 ];
 
 function KizombaPage({ openInscriere }) {

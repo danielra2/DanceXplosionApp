@@ -5,7 +5,7 @@ const WHATSAPP_LINK = "https://wa.me/40751327415"; // Înlocuiește cu numărul 
 
 const scheduleData = [
     {
-        hall: "Sala Mare - Scenă",
+        hall: "Sala Mare - 1",
         days: {
             "Luni": [
                 { time: "18:00", name: "Kizomba Beginner", instr: "Cris", level: "Începători" },
@@ -34,7 +34,7 @@ const scheduleData = [
         }
     },
     {
-        hall: "Sala Mare - Bar",
+        hall: "Sala Mare - 2",
         days: {
             "Luni": [],
             "Marți": [

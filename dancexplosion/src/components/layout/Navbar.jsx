@@ -28,22 +28,25 @@ function Navbar({ openLogin, isHome }) {
 
         <div className="dropdown-container">
           <a href="#clase" className="dropdown-trigger">
-            CLASE <span className="arrow-icon">▾</span>
+            CURSURI <span className="arrow-icon">▾</span>
           </a>
           <div className="dropdown-menu">
             <a href="#salsa">Salsa</a>
             <a href="#bachata">Bachata</a>
             <a href="#kizomba">Kizomba</a>
             <div className="dropdown-divider"></div>
-            <a href="#mixed" className="mixt-link">Clasă Mixtă</a>
+            <a href="#mixed" className="mixt-link">Curs Mixt</a>
           </div>
         </div>
 
         <a href="#lxf">LXF</a>
         
         <button className="cta-nav" onClick={openLogin}>
-          LOG IN
+          AUTENTIFICARE
         </button>
+        <button className="cta-nav" onClick={openLogin}> 
+          ÎNREGISTRARE 
+          </button>  
       </nav>
     </header>
   );

@@ -53,16 +53,16 @@ function HomePage({ openInscriere, openWIP }) {
             <span className="title-word accent-color-text delay-2">MIȘCAREA</span>{' '}
             <span className="title-word accent-color-text delay-3">TA.</span>
           </h1>
-          <p className="hero-pitch">Academia ta de dans din Sibiu. De la primele mișcări la festivaluri naționale.</p>
+          <p className="hero-pitch">Academia ta de dans din Sibiu.</p>
           <div className="hero-cta-group">
-            <button className="cta-primary-dark" onClick={openInscriere}>REZERVĂ O CLASĂ DE PROBĂ</button>
-            <a href="#orarul-tau" className="cta-secondary-accent button-as-link">VEZI ORARUL</a>
+            <button className="cta-primary-dark" onClick={openInscriere}>REZERVĂ UN CURS DE PROBĂ</button>
+            <a href="#orarul-tau" className="cta-secondary-accent button-as-link">ORARUL NOSTRU</a>
           </div>
         </div>
       </section>
 
       <section className="circular-gallery-wrapper">
-        <h2 className="section-heading-dark">Cunoaște Echipa Noastră</h2>
+        <h2 className="section-heading-dark">Faceți cunoștință cu echipa Dance Explosion</h2>
         <div className="circular-gallery-container">
           <InfiniteMovingTeamCarousel />
         </div>

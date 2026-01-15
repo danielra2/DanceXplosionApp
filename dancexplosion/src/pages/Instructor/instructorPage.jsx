@@ -6,14 +6,14 @@ function InstructorPage() {
     const instructor = {
         name: "Alex Lazar",
         role: "Instructor Salsa & Bachata",
-        bio: "Cu 21 de ani de experiență în dans și 16 ani de predare, Alex a început cu dans sportiv și a concurat timp de 8 ani în competiții naționale și internaționale. A obținut o diplomă de antrenor pentru dans sportiv în 2014 și una de coregraf profesionist în 2022. Și-a găsit noua pasiune în dansul social în 2019, când a început Bachata și Salsa la Dance Xplosion Academy, predând din 2023. Clasele lui sunt foarte antrenante și veți învăța mereu ceva nou. Citatul său favorit este: 'Anyone can learn how to dance, you just need to be patient with you and your rhythm of learning.'",
-        quote: "Anyone can learn how to dance, you just need to be patient with you and your rhythm of learning.",
+        bio: "Cu 21 de ani de experiență în dans și 16 ani de predare, Alex a început cu dans sportiv și a concurat timp de 8 ani în competiții naționale și internaționale. A obținut o diplomă de antrenor pentru dans sportiv în 2014 și una de coregraf profesionist în 2022. Și-a găsit noua pasiune în dansul social în 2019, când a început Bachata și Salsa la Dance Xplosion Academy, predând din 2023. Clasele lui sunt foarte antrenante și veți învăța mereu ceva nou.",
+        quote: "Oricine poate învața să danseze, trebuie doar sa fii răbdător cu tine și cu ritmul tău de învățare.",
         stats: [
             { label: "Experiență Dans", value: "21 Ani" },
             { label: "Experiență Predare", value: "16 Ani" },
             { label: "Specializare", value: "Salsa, Bachata, Dans Sportiv" },
         ],
-        classes: ["Bachata Beginner", "Salsa Improver", "Clasă Mixtă"],
+        classes: ["Bachata Începător", "Salsa Intermediar", "Clasă Mixtă"],
         photo: malePhoto,
     };
 
