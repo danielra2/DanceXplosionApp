@@ -5,7 +5,7 @@ import newMemberPhoto from '../../assets/images/0E5A0408.JPG';
 import malePhoto from '../../assets/images/AlexLazarPhoto.jpg';
 import alexPhoto from '../../assets/images/alexphoto.JPG';
 import alexandraPhoto from '../../assets/images/alexandraphoto2.jpeg';
-import adrianPhoto from '../../assets/images/adrianPhoto2.jpeg';
+import adrianPhoto from '../../assets/images/adrianphoto2.jpeg';
 
 const getRunningTransformOffset = (element) => {
     const style = window.getComputedStyle(element);
