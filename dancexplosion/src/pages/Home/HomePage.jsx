@@ -4,18 +4,41 @@ import './HomePage.css';
 import InfiniteMovingTeamCarousel from '../../features/CircularGallery/CircularGallery'; 
 import ClassDetails from '../../features/classes/ClassDetails/ClassDetails'; 
 import ScheduleTable from '../../features/schedule/ScheduleTable/ScheduleTable'; 
+import DXPLogo from '../../assets/icons/DXPlogo.png';
 
 function HomePage({ openInscriere, openWIP }) {
   const heroSectionRef = useRef(null);
   const videoRef = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
   const [userUnmuted, setUserUnmuted] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const hlsSource = "/video/playlist.m3u8"; 
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+
+    // Check if video is already ready (instant load)
+    if (video.readyState >= 3) {
+      setIsLoading(false);
+    } else {
+      // If not ready instantly, enforce a minimum display time for the animation (full pulse)
+      const minLoadTimePromise = new Promise(resolve => setTimeout(resolve, 2000));
+      const videoLoadPromise = new Promise(resolve => {
+        const handleLoad = () => {
+          resolve();
+          video.removeEventListener('loadeddata', handleLoad);
+        };
+        video.addEventListener('loadeddata', handleLoad);
+        // Fallback if event misses
+        if (video.readyState >= 3) resolve();
+      });
+
+      Promise.all([minLoadTimePromise, videoLoadPromise]).then(() => {
+        setIsLoading(false);
+      });
+    }
 
     if (Hls.isSupported()) {
       const hls = new Hls();
@@ -41,8 +64,22 @@ function HomePage({ openInscriere, openWIP }) {
 
   return (
     <div className="homepage-container" id="top">
+      {isLoading && (
+        <div className="loading-overlay">
+          <img src={DXPLogo} alt="Loading..." className="loading-logo" />
+        </div>
+      )}
+
       <section className="hero-section" ref={heroSectionRef}>
-        <video ref={videoRef} className="hero-background-video" autoPlay loop playsInline muted={isMuted} preload="auto" />
+        <video 
+          ref={videoRef} 
+          className="hero-background-video" 
+          autoPlay 
+          loop 
+          playsInline 
+          muted={isMuted} 
+          preload="auto" 
+        />
         <button className="unmute-button" onClick={toggleMute}>
           {isMuted ? '🔊 Cu sunet' : '🔇 Fără sunet'}
         </button>
@@ -85,4 +122,4 @@ function HomePage({ openInscriere, openWIP }) {
   );
 }
 
-export default HomePage;
+export default HomePage;  
