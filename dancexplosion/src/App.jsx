@@ -4,19 +4,15 @@ import Navbar from './components/layout/Navbar';
 import HomePage from './pages/Home/HomePage.jsx'; 
 import SalsaPage from './pages/Salsa/SalsaPage.jsx';
 import BachataPage from './pages/Bachata/BachataPage.jsx'; 
+import Footer from './components/layout/Footer';
 import KizombaPage from './pages/Kizomba/kizombaPage.jsx'; 
 import InstructorPage from "./pages/Instructor/instructorPage.jsx"; 
-import RobotCheck from "./features/auth/components/RobotCheck.jsx"; 
 import CookieConsent from './components/ui/CookieConsent/CookieConsent.jsx'; 
 import WorkInProgress from './components/ui/WorkInProgress/WorkInProgress.jsx';
 import './features/CircularGallery/CircularGallery.css'; 
 
 function App() {
   const [route, setRoute] = useState(window.location.hash);
-  const [isRobotVerified, setIsRobotVerified] = useState(
-    localStorage.getItem('isRobotVerified') === 'true'
-  );
-  
   const [showWIP, setShowWIP] = useState(false);
 
   useEffect(() => {
@@ -37,10 +33,6 @@ function App() {
   const openWIP = () => setShowWIP(true);
   const closeWIP = () => setShowWIP(false);
   
-  if (!isRobotVerified) {
-    return <RobotCheck onVerified={setIsRobotVerified} />;
-  }
-
   let PageComponent;
   let isHome = false;
 
@@ -72,6 +64,7 @@ function App() {
         <PageComponent openInscriere={openInscriere} />
       )}
 
+      <Footer />
       <CookieConsent />
     </div>
   );

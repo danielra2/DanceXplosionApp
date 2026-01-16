@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import './CookieConsent.css';
+// MODIFICARE: Importăm funcția de inițializare
+import { initAmplitude } from '../../../services/analytics';
 
 function CookieConsent() {
     const [isVisible, setIsVisible] = useState(localStorage.getItem('cookiesAccepted') !== 'true');
 
     const handleAccept = () => {
         localStorage.setItem('cookiesAccepted', 'true');
+        
+        // MODIFICARE: Pornim tracking-ul imediat ce a dat accept
+        initAmplitude();
+        
         setIsVisible(false);
     };
     

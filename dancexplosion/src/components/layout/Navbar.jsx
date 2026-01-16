@@ -39,6 +39,16 @@ function Navbar({ openLogin, isHome }) {
           </div>
         </div>
 
+        {/* Buton nou Wedding Dances - Link Direct WhatsApp */}
+        <a 
+          href="https://wa.me/40751327415?text=Buna!%20Sunt%20interesat%20de%20pachetul%20pentru%20Wedding%20Dances" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="wedding-link"
+        >
+          WEDDING
+        </a>
+
         <a href="#lxf">LXF</a>
         
         <button className="cta-nav" onClick={openLogin}>

@@ -210,6 +210,7 @@
     }
     .instructor-main-photo {
         max-height: 100%;
+        object-position: center top;
     }
 }
 @media (max-width: 576px) {

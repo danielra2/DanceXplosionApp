@@ -104,6 +104,7 @@
     margin: 8px 20px;
 }
 
+/* Stiluri generale Desktop */
 .cta-nav {
     padding: 12px 28px;
     border-radius: 50px;
@@ -124,23 +125,65 @@
     color: white;
 }
 
+/* Tabletă */
 @media (max-width: 768px) {
     .main-nav { height: 80px; }
     .main-nav.scrolled { height: 70px; }
-    .nav-links { gap: 20px; }
-    .nav-links a { font-size: 0.8rem; letter-spacing: 0.05rem; }
-    .cta-nav { padding: 8px 18px; font-size: 0.75rem; }
+    
+    .nav-links { 
+        gap: 15px; 
+    }
+    
+    .nav-links a { 
+        font-size: 0.8rem; 
+        letter-spacing: 0.05rem; 
+    }
+    
+    .cta-nav { 
+        padding: 0; 
+        width: 110px;
+        height: 36px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.75rem !important; 
+        text-align: center;
+    }
 }
 
+/* Mobil - Aici sunt modificările critice */
 @media (max-width: 480px) {
     .main-nav { height: 70px; }
     .main-nav.scrolled { height: 60px; }
-    .nav-links { gap: 10px; }
-    .nav-links a { font-size: 0.65rem; }
-    .cta-nav { 
-        padding: 4px 10px; 
-        font-size: 0.55rem; 
-        letter-spacing: 0.02rem;
+    
+    .nav-links { 
+        width: 100%;
+        justify-content: space-evenly; 
+        gap: 2px;
+        padding: 0 2px;
     }
+    
+    .nav-links a { 
+        font-size: 0.6rem; 
+        letter-spacing: 0;
+    }
+    
+    /* Forțăm dimensiunea textului și a butonului */
+    .cta-nav { 
+        width: 90px !important;  /* Lățime fixă pentru oval */
+        height: 30px !important; /* Înălțime fixă */
+        padding: 0 !important;   /* Fără padding intern care să împingă textul */
+        
+        font-size: 9px !important; /* Text foarte mic, forțat */
+        letter-spacing: -0.5px !important; /* Literele mai apropiate */
+        
+        border-width: 1px;
+        white-space: nowrap;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+    
     .arrow-icon { display: none; }
 }

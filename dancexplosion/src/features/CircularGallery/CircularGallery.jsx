@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 import './CircularGallery.css';
 
-import newMemberPhoto from '../../assets/images/0E5A0411.JPG'; 
+import newMemberPhoto from '../../assets/images/0E5A0408.JPG'; 
 import malePhoto from '../../assets/images/AlexLazarPhoto.jpg';
 import alexPhoto from '../../assets/images/alexphoto.JPG';
-import alexandraPhoto from '../../assets/images/alexandraphoto.jpeg';
-import adrianPhoto from '../../assets/images/adrianPhoto.jpeg';
+import alexandraPhoto from '../../assets/images/alexandraphoto2.jpeg';
+import adrianPhoto from '../../assets/images/adrianPhoto2.jpeg';
 
 const getRunningTransformOffset = (element) => {
     const style = window.getComputedStyle(element);
@@ -21,11 +21,11 @@ const getRunningTransformOffset = (element) => {
 };
 
 const teamMembersData = [
-    { id: 1, name: "Nicoleta Cristina", slug: "nicoleta-cristina", role: "Coregraf Salsa", image: newMemberPhoto },
-    { id: 2, name: "Alex Lazar", slug: "alex-lazar", role: "Instructor Urban", image: malePhoto }, 
-    { id: 3, name: "Alex Magnusson", slug: "alex-magnusson", role: "Manager Studio", image: alexPhoto },
-    { id: 4, name: "Alexandra Ivan", slug: "alexandra-ivan", role: "Profesor Balet", image: alexandraPhoto },
-    { id: 5, name: "Adrian Rașinariu", slug: "adrian-rasinariu", role: "Asistent Coregraf", image: adrianPhoto },
+    { id: 1, name: "Nicoleta Cristina", slug: "nicoleta-cristina", image: newMemberPhoto },
+    { id: 2, name: "Alex Lazar", slug: "alex-lazar",  image: malePhoto }, 
+    { id: 3, name: "Alex Magnusson", slug: "alex-magnusson", image: alexPhoto },
+    { id: 4, name: "Alexandra Ivan", slug: "alexandra-ivan", image: alexandraPhoto },
+    { id: 5, name: "Adrian Rașinariu", slug: "adrian-rasinariu", image: adrianPhoto },
 ];
 
 const InfiniteMovingTeamCarousel = ({ items = teamMembersData, initialSpeed = '30s', slowedSpeed = '120s' }) => {
@@ -139,34 +139,39 @@ const InfiniteMovingTeamCarousel = ({ items = teamMembersData, initialSpeed = '3
         <div 
             className="infinite-carousel-container" 
             ref={containerRef}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            // Am șters onMouseEnter și onMouseLeave de aici pentru a menține viteza constantă
         >
             <div 
                 className="infinite-carousel-track" 
                 ref={trackRef} 
                 style={{ animationDuration: initialSpeed }}
             >
-                {duplicateItems.map((item, index) => (
-                    <div 
-                        key={`${item.id}-${index}`} 
-                        className="team-card-infinite"
-                        onClick={() => handleCardClick(item)}
-                    >
-                        <div className="card-photo-wrapper">
-                            <img 
-                                src={item.image} 
-                                alt={item.name} 
-                                className="member-photo-infinite" 
-                            />
+                {duplicateItems.map((item, index) => {
+                    const photoClass =
+                        item.slug === 'alexandra-ivan' ? 'photo-align-top' :
+                        item.slug === 'adrian-rasinariu' ? 'photo-align-upper' : '';
+
+                    return (
+                        <div 
+                            key={`${item.id}-${index}`} 
+                            className="team-card-infinite"
+                            onClick={() => handleCardClick(item)}
+                        >
+                            <div className="card-photo-wrapper">
+                                <img 
+                                    src={item.image} 
+                                    alt={item.name} 
+                                    className={`member-photo-infinite ${photoClass}`}
+                                />
+                            </div>
+                            <div className="card-overlay-infinite">
+                                <h3 className="member-name-infinite">{item.name}</h3>
+                                <p className="member-role-infinite">{item.role}</p>
+                                <span className="cta-overlay-infinite">Detalii & Orar</span>
+                            </div>
                         </div>
-                        <div className="card-overlay-infinite">
-                            <h3 className="member-name-infinite">{item.name}</h3>
-                            <p className="member-role-infinite">{item.role}</p>
-                            <span className="cta-overlay-infinite">Detalii & Orar</span>
-                        </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
         </div>
     );

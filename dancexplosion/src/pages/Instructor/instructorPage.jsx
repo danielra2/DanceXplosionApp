@@ -13,7 +13,7 @@ function InstructorPage() {
             { label: "Experiență Predare", value: "16 Ani" },
             { label: "Specializare", value: "Salsa, Bachata, Dans Sportiv" },
         ],
-        classes: ["Bachata Începător", "Salsa Intermediar", "Clasă Mixtă"],
+        classes: ["Bachata Improver", "Incepatori mixt"],
         photo: malePhoto,
     };
 

@@ -4,7 +4,7 @@ import './ClassDetails.css';
 import SalsaPhoto from '../../../assets/images/salsaphoto.jpg';
 import BachataPhoto from '../../../assets/images/bachataphoto.jpg';
 import KizombaPhoto from '../../../assets/images/kizomba.jpg'; 
-import MixPhoto from '../../../assets/images/salsabachata.jpg';
+import MixPhoto from '../../../assets/images/salsabachata2.jpg';
 
 
 function ClassDetails() {
