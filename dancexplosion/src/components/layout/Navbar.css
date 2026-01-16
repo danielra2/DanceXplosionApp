@@ -104,7 +104,7 @@
     margin: 8px 20px;
 }
 
-/* Stiluri generale Desktop */
+/* --- Stiluri Generale Desktop --- */
 .cta-nav {
     padding: 12px 28px;
     border-radius: 50px;
@@ -125,7 +125,7 @@
     color: white;
 }
 
-/* Tabletă */
+/* --- Tabletă --- */
 @media (max-width: 768px) {
     .main-nav { height: 80px; }
     .main-nav.scrolled { height: 70px; }
@@ -151,7 +151,7 @@
     }
 }
 
-/* Mobil - Aici sunt modificările critice */
+/* --- Mobil --- */
 @media (max-width: 480px) {
     .main-nav { height: 70px; }
     .main-nav.scrolled { height: 60px; }
@@ -168,15 +168,13 @@
         letter-spacing: 0;
     }
     
-    /* Forțăm dimensiunea textului și a butonului */
+    /* Butoanele Autentificare/Înregistrare */
     .cta-nav { 
-        width: 90px !important;  /* Lățime fixă pentru oval */
-        height: 30px !important; /* Înălțime fixă */
-        padding: 0 !important;   /* Fără padding intern care să împingă textul */
-        
-        font-size: 9px !important; /* Text foarte mic, forțat */
-        letter-spacing: -0.5px !important; /* Literele mai apropiate */
-        
+        width: 90px !important;
+        height: 30px !important;
+        padding: 0 !important;
+        font-size: 9px !important;
+        letter-spacing: -0.5px !important;
         border-width: 1px;
         white-space: nowrap;
         display: flex;
@@ -186,4 +184,28 @@
     }
     
     .arrow-icon { display: none; }
+
+    /* --- FIX PENTRU DROPDOWN MOBIL --- */
+    .dropdown-container {
+        /* Permitem copilului absolut (meniul) să se poziționeze față de .main-nav (bara fixă), nu față de text */
+        position: static; 
+    }
+
+    .dropdown-menu {
+        width: 90vw !important; /* Aproape cât tot ecranul */
+        min-width: unset !important;
+        
+        /* Centrare pe ecran */
+        left: 50% !important;
+        top: 60px !important; /* Imediat sub navbar (înălțimea scrollată) */
+        transform: translateX(-50%) !important;
+        
+        text-align: center;
+        border-top: 2px solid var(--c-secondary);
+    }
+
+    /* Ascundem săgeata text (dacă e cazul) */
+    .dropdown-container:hover .dropdown-menu {
+        transform: translateX(-50%) !important; /* Păstrăm centrarea la hover */
+    }
 }
