@@ -510,13 +510,28 @@ h1, h2, h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.5s ease-out;
 }
 
 .loading-logo {
     width: 150px;
     height: auto;
     animation: pulseLogo 2s infinite ease-in-out;
+    transform-origin: center center;
+    will-change: transform, opacity;
+}
+
+/* Exit Animation States */
+.loading-overlay.exit {
+    background-color: rgba(255, 255, 255, 0);
+    pointer-events: none;
+    transition: background-color 1s ease-in-out;
+}
+
+.loading-overlay.exit .loading-logo {
+    animation: none;
+    transform: scale(30); /* Massive scale to create "fly through" effect */
+    opacity: 0;
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s ease-in-out;
 }
 
 @keyframes pulseLogo {

@@ -12,6 +12,7 @@ function HomePage({ openInscriere, openWIP }) {
   const [isMuted, setIsMuted] = useState(true);
   const [userUnmuted, setUserUnmuted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isExiting, setIsExiting] = useState(false);
 
   const hlsSource = "/video/playlist.m3u8"; 
 
@@ -19,11 +20,19 @@ function HomePage({ openInscriere, openWIP }) {
     const video = videoRef.current;
     if (!video) return;
 
+    const handleTransition = () => {
+      setIsExiting(true);
+      // Wait for the exit animation (1.2s) to finish before removing from DOM
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1200);
+    };
+
     // Check if video is already ready (instant load)
     if (video.readyState >= 3) {
-      setIsLoading(false);
+      handleTransition();
     } else {
-      // If not ready instantly, enforce a minimum display time for the animation (full pulse)
+      // Enforce a minimum display time for the initial pulse, then transition
       const minLoadTimePromise = new Promise(resolve => setTimeout(resolve, 2000));
       const videoLoadPromise = new Promise(resolve => {
         const handleLoad = () => {
@@ -31,12 +40,12 @@ function HomePage({ openInscriere, openWIP }) {
           video.removeEventListener('loadeddata', handleLoad);
         };
         video.addEventListener('loadeddata', handleLoad);
-        // Fallback if event misses
+        // Fallback if event misses but readyState updates
         if (video.readyState >= 3) resolve();
       });
 
       Promise.all([minLoadTimePromise, videoLoadPromise]).then(() => {
-        setIsLoading(false);
+        handleTransition();
       });
     }
 
@@ -65,7 +74,7 @@ function HomePage({ openInscriere, openWIP }) {
   return (
     <div className="homepage-container" id="top">
       {isLoading && (
-        <div className="loading-overlay">
+        <div className={`loading-overlay ${isExiting ? 'exit' : ''}`}>
           <img src={DXPLogo} alt="Loading..." className="loading-logo" />
         </div>
       )}
@@ -122,4 +131,4 @@ function HomePage({ openInscriere, openWIP }) {
   );
 }
 
-export default HomePage;  
+export default HomePage;
