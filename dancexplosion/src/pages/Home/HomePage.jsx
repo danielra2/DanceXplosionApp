@@ -99,7 +99,7 @@ function HomePage({ openInscriere, openWIP }) {
             <span className="title-word accent-color-text delay-2">MIȘCAREA</span>{' '}
             <span className="title-word accent-color-text delay-3">TA.</span>
           </h1>
-          <p className="hero-pitch">Academia ta de dans din Sibiu.</p>
+          <p className="hero-pitch">ACADEMIA TA DE DANS DIN SIBIU.</p>
           <div className="hero-cta-group">
             <button className="cta-primary-dark" onClick={openInscriere}>REZERVĂ UN CURS DE PROBĂ</button>
             <a href="#orarul-tau" className="cta-secondary-accent button-as-link">ORARUL NOSTRU</a>
