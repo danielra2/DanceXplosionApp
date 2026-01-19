@@ -18,7 +18,7 @@ function Footer() {
 
                 {/* Secțiunea Contact */}
                 <div className="footer-section contact-section">
-                    <h3 className="footer-heading">Contact Us</h3>
+                    <h3 className="footer-heading">Contactează-ne</h3>
                     
                     <div className="contact-item">
                         <span className="icon">📞</span>

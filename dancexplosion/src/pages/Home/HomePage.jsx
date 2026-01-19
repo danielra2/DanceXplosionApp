@@ -122,7 +122,7 @@ function HomePage({ openInscriere, openWIP }) {
 
       <section className="lxf-promo-section" id="lxf">
         <div className="lxf-content-dark">
-          <h2 className="lxf-title">LXF 2025</h2>
+          <h2 className="lxf-title">LXF 2027</h2>
           <p className="lxf-description">Cel mai mare festival de dans din Transilvania. Pregătește-te pentru spectacol!</p>
           <button className="cta-lxf-gold" onClick={openWIP}>AFLĂ MAI MULTE</button>
         </div>

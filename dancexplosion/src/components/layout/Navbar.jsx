@@ -24,7 +24,7 @@ function Navbar({ openLogin, isHome }) {
   return (
     <header className={headerClass}>
       <nav className="nav-links">
-        <a href="#top">HOME</a>
+        <a href="#top">ACASĂ</a>
 
         <div className="dropdown-container">
           <a href="#clase" className="dropdown-trigger">
@@ -46,7 +46,7 @@ function Navbar({ openLogin, isHome }) {
           rel="noopener noreferrer"
           className="wedding-link"
         >
-          WEDDING
+          DANSUL MIRILOR
         </a>
 
         <a href="#lxf">LXF</a>
