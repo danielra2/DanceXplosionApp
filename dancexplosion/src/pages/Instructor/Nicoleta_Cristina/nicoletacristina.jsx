@@ -1,5 +1,3 @@
-// File: src/pages/Instructor/Nicoleta_Cristina/nicoletacristina.jsx
-
 import React from 'react';
 import './nicoletacristina.css';
 import instructorPhoto from '../../../assets/images/nicoleta_cristina.png';
@@ -31,7 +29,6 @@ function NicoletaCristiana({ openInscriere }) {
     };
 
     return (
-        /* ADDED "nicoleta-style" CLASS HERE TO PREVENT CONFLICTS */
         <div className="instructor-page-container nicoleta-style">
             <div className="profile-card">
                 <div className="profile-image-section">

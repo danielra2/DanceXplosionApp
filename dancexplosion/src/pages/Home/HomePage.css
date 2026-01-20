@@ -468,13 +468,14 @@ h1, h2, h3 {
 
 @media (max-width: 768px) {
     .unmute-button {
-        top: 80px;
-        bottom: auto;
-        right: 15px;
+        top: auto;        
+        bottom: 30px;     
+        right: 15px;     
         padding: 5px 12px;
         font-size: 0.7rem;
     }
 }
+
 @media (max-width: 768px) {
     .hero-title {
         font-size: 3.5rem;
@@ -520,7 +521,6 @@ h1, h2, h3 {
     will-change: transform, opacity;
 }
 
-/* Exit Animation States */
 .loading-overlay.exit {
     background-color: rgba(255, 255, 255, 0);
     pointer-events: none;
@@ -529,7 +529,7 @@ h1, h2, h3 {
 
 .loading-overlay.exit .loading-logo {
     animation: none;
-    transform: scale(30); /* Massive scale to create "fly through" effect */
+    transform: scale(30); 
     opacity: 0;
     transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s ease-in-out;
 }

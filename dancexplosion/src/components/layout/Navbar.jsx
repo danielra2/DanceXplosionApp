@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
+import DXPLogo from '../../assets/icons/DXPlogo.png';
 
 function Navbar({ openLogin, isHome }) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,40 +21,113 @@ function Navbar({ openLogin, isHome }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHome]);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isMobileMenuOpen]);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   const headerClass = isScrolled ? 'main-nav scrolled' : 'main-nav';
 
   return (
     <header className={headerClass}>
-      <nav className="nav-links">
-        <a href="#top">ACASĂ</a>
-
-        <div className="dropdown-container">
-          <a href="#clase" className="dropdown-trigger">
-            CURSURI <span className="arrow-icon">▾</span>
-          </a>
-          <div className="dropdown-menu">
-            <a href="#salsa">Salsa</a>
-            <a href="#bachata">Bachata</a>
-            <a href="#kizomba">Kizomba</a>
-            <div className="dropdown-divider"></div>
-            <a href="#mixed" className="mixt-link">Curs Mixt</a>
-          </div>
+      <div className="nav-content">
+        
+        {/* LEFT: Logo & Brand Name */}
+        <div className="navbar-brand">
+          <img src={DXPLogo} alt="DXP Logo" className="brand-logo" />
+          <span className="brand-text">DANCE XPLOSION ACADEMY</span>
         </div>
 
-        {/* UPDATED LINK: Points to the internal page */}
-        <a href="#dansul-mirilor" className="wedding-link">
-          DANSUL MIRILOR
-        </a>
+        {/* CENTER: Desktop Navigation */}
+        <nav className="nav-links-center desktop-only">
+          <a href="#top" className="nav-link">ACASĂ</a>
 
-        <a href="#lxf">LXF</a>
-        
-        <button className="cta-nav" onClick={openLogin}>
-          AUTENTIFICARE
+          <div className="dropdown-container">
+            <a href="#clase" className="nav-link dropdown-trigger">
+              CURSURI 
+              {/* Rounded SVG Arrow */}
+              <span className="arrow-icon">
+                <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span>
+            </a>
+            <div className="dropdown-menu">
+              <a href="#salsa">Salsa</a>
+              <a href="#bachata">Bachata</a>
+              <a href="#kizomba">Kizomba</a>
+              <div className="dropdown-divider"></div>
+              <a href="#mixed" className="mixt-link">Curs Mixt</a>
+            </div>
+          </div>
+
+          <a href="#dansul-mirilor" className="nav-link wedding-link">
+            DANSUL MIRILOR
+          </a>
+
+          <a href="#lxf" className="nav-link">LXF</a>
+        </nav>
+
+        {/* RIGHT: Desktop Auth Buttons */}
+        <div className="navbar-actions desktop-only">
+           <button className="nav-link text-btn login-btn" onClick={openLogin}>
+            AUTENTIFICARE
+          </button>
+
+          <button className="cta-nav" onClick={openLogin}> 
+            ÎNREGISTRARE 
+          </button>  
+        </div>
+
+        {/* MOBILE HAMBURGER BUTTON */}
+        <button className={`hamburger-btn ${isMobileMenuOpen ? 'active' : ''}`} onClick={toggleMobileMenu}>
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
         </button>
-        <button className="cta-nav" onClick={openLogin}> 
-          ÎNREGISTRARE 
-        </button>  
-      </nav>
+
+      </div>
+
+      {/* MOBILE MENU OVERLAY */}
+      <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+          
+          {/* Top Section: Auth Buttons aligned right */}
+          <div className="mobile-auth-section">
+            <button className="nav-link text-btn mobile-login" onClick={() => { openLogin(); closeMobileMenu(); }}>
+                AUTENTIFICARE
+            </button>
+            <button className="cta-nav mobile-signup" onClick={() => { openLogin(); closeMobileMenu(); }}>
+                ÎNREGISTRARE
+            </button>
+          </div>
+
+          {/* Bottom Section: Navigation Links */}
+          <nav className="mobile-nav-links">
+            {/* Removed 'ACASĂ' link from here as requested */}
+            
+            <span className="mobile-category">CURSURI</span>
+            <a href="#salsa" onClick={closeMobileMenu} className="sub-link">Salsa</a>
+            <a href="#bachata" onClick={closeMobileMenu} className="sub-link">Bachata</a>
+            <a href="#kizomba" onClick={closeMobileMenu} className="sub-link">Kizomba</a>
+            <a href="#mixed" onClick={closeMobileMenu} className="sub-link highlight">Curs Mixt</a>
+            
+            <div className="mobile-divider"></div>
+            <a href="#dansul-mirilor" onClick={closeMobileMenu} className="special-link">DANSUL MIRILOR</a>
+            <a href="#lxf" onClick={closeMobileMenu}>LXF</a>
+          </nav>
+      </div>
     </header>
   );
 }
