@@ -7,7 +7,9 @@ import BachataPage from './pages/Bachata/BachataPage.jsx';
 import Footer from './components/layout/Footer';
 import KizombaPage from './pages/Kizomba/kizombaPage.jsx'; 
 
-// 1. IMPORT ALL INSTRUCTORS
+// --- NEW IMPORT ---
+import WeddingDancePage from './pages/WeddingDance/WeddingDancePage.jsx';
+
 import AlexLazar from "./pages/Instructor/Alex_Lazar/alexlazar.jsx"; 
 import NicoletaCristiana from "./pages/Instructor/Nicoleta_Cristina/nicoletacristina.jsx";
 import AlexMagnusson from "./pages/Instructor/Alex_Magnusson/alexmag.jsx";
@@ -25,7 +27,6 @@ function App() {
 
   useEffect(() => {
     const setSmartFavicon = (src) => {
-      // ... (Your existing favicon code remains here) ...
       const img = new Image();
       img.src = src;
       img.onload = () => {
@@ -74,18 +75,19 @@ function App() {
   let PageComponent;
   let isHome = false;
 
-  // 2. UPDATED ROUTING LOGIC
+  // ROUTING LOGIC
   if (currentHash === 'salsa') {
     PageComponent = SalsaPage;
   } else if (currentHash === 'bachata') {
     PageComponent = BachataPage;
   } else if (currentHash === 'kizomba') {
     PageComponent = KizombaPage;
+  } else if (currentHash === 'dansul-mirilor') {
+    // --- NEW ROUTE ---
+    PageComponent = WeddingDancePage;
   } else if (currentHash.startsWith('instructor/')) {
-    // Extract the slug (e.g., 'nicoleta-cristina') from the string
     const slug = currentHash.split('/')[1];
     
-    // Switch between components based on the slug
     switch(slug) {
         case 'nicoleta-cristina':
             PageComponent = NicoletaCristiana;
@@ -103,7 +105,6 @@ function App() {
             PageComponent = AdrianRasinariu;
             break;
         default:
-            // Fallback to Alex Lazar or a 404 page if slug is unknown
             PageComponent = AlexLazar; 
     }
   } else {

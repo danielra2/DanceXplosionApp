@@ -1,0 +1,198 @@
+.wedding-page-container {
+    padding-top: 70px;
+}
+
+/* --- Hero Section --- */
+.wedding-hero-section {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    
+    /* BACKGROUND IMAGE UPDATE HERE */
+    /* Using linear-gradient to darken the image slightly for text readability */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('../../assets/images/wedding_dance.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    color: var(--c-white);
+    isolation: isolate;
+}
+
+.hero-content-wedding {
+    padding: 80px 5%;
+    max-width: 900px;
+}
+
+.wedding-title {
+    font-size: 4.5rem;
+    color: var(--c-white);
+    margin-bottom: 20px;
+    font-family: 'Georgia', serif;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.accent-text-wedding {
+    color: #D4AF37; /* Gold color */
+    display: block;
+    font-size: 2.2rem;
+    margin-top: 10px;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+}
+
+.wedding-pitch {
+    font-size: 1.2rem;
+    font-weight: 300;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+
+.cta-page-main-wedding {
+    padding: 15px 45px;
+    background: linear-gradient(90deg, #D4AF37, #F2C94C);
+    color: #1a1a1a;
+    border: none;
+    border-radius: 50px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+}
+
+.cta-page-main-wedding:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+    background: #fff;
+}
+
+/* --- Packages Section --- */
+.wedding-levels-section {
+    padding: 100px 5%;
+    text-align: center;
+    background-color: #fcfcfc; 
+}
+
+.section-heading-wedding {
+    font-size: 3rem;
+    color: var(--c-primary);
+    margin-bottom: 60px;
+}
+
+.levels-card-container-wedding {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.level-card-wedding {
+    background: var(--c-white);
+    border-radius: 15px;
+    padding: 40px 30px;
+    width: 320px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.4s, box-shadow 0.4s;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.level-card-wedding:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15);
+    border-color: #D4AF37;
+}
+
+.level-card-wedding .level-number {
+    position: absolute;
+    top: -15px;
+    right: -10px;
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(212, 175, 55, 0.1);
+}
+
+.level-card-wedding h3 {
+    font-size: 1.8rem;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+}
+
+.level-card-wedding p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.cta-level-wedding {
+    padding: 12px 30px;
+    background: #1a1a1a;
+    color: #D4AF37;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cta-level-wedding:hover {
+    background: #D4AF37;
+    color: #1a1a1a;
+}
+
+/* --- Promo Section --- */
+.mixt-promo-section-wedding {
+    background: linear-gradient(90deg, #1a1a1a 0%, #333 100%);
+    padding: 80px 5%;
+    text-align: center;
+    color: var(--c-white);
+}
+
+.mixt-title-wedding {
+    font-size: 2.5rem;
+    color: #D4AF37;
+    margin-bottom: 15px;
+}
+
+.mixt-description-wedding {
+    font-size: 1.1rem;
+    font-weight: 300;
+    margin-bottom: 30px;
+    color: #ddd;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-mixt-wedding {
+    padding: 15px 40px;
+    background: #D4AF37;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 50px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cta-mixt-wedding:hover {
+    background: #fff;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .wedding-title {
+        font-size: 3rem;
+    }
+    .accent-text-wedding {
+        font-size: 1.5rem;
+    }
+}

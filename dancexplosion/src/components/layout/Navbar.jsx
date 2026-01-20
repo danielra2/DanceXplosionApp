@@ -39,13 +39,8 @@ function Navbar({ openLogin, isHome }) {
           </div>
         </div>
 
-        {/* Buton nou Wedding Dances - Link Direct WhatsApp */}
-        <a 
-          href="https://wa.me/40751327415?text=Buna!%20Sunt%20interesat%20de%20pachetul%20pentru%20Wedding%20Dances" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="wedding-link"
-        >
+        {/* UPDATED LINK: Points to the internal page */}
+        <a href="#dansul-mirilor" className="wedding-link">
           DANSUL MIRILOR
         </a>
 
@@ -56,7 +51,7 @@ function Navbar({ openLogin, isHome }) {
         </button>
         <button className="cta-nav" onClick={openLogin}> 
           ÎNREGISTRARE 
-          </button>  
+        </button>  
       </nav>
     </header>
   );
