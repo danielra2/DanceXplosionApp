@@ -1,0 +1,244 @@
+.instructor-page-container {
+    padding-top: 0;
+    min-height: 100vh;
+    background-color: white; /* Force Dark Background for whole page */
+    display: block;
+    padding-bottom: 80px;
+}
+
+.profile-card {
+    background: transparent; /* Remove white background */
+    border-radius: 0;
+    box-shadow: none;        /* Remove shadow */
+    max-width: 100%;
+    width: 100%;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;  /* Stack Image on Top, Text Below */
+    overflow: visible;
+}
+
+/* --- Hero Image Section --- */
+.profile-image-section {
+    position: relative;
+    width: 100%;
+    height: 70vh;            /* Tall hero section */
+    min-height: 500px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.instructor-main-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;       /* Cover the area */
+    object-position: center top;
+    display: block;
+    border-radius: 0;
+    filter: brightness(0.9);
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%); /* Fade out bottom */
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+.name-tag {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px 20px 20px;
+    background: transparent;
+    text-align: center;
+    z-index: 10;
+}
+
+.name-tag h2 {
+    color: #D4AF37;          /* Gold Accent */
+    font-size: 4rem;
+    margin: 0;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+    font-family: 'Georgia', serif;
+}
+
+.role-title {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+/* --- Details Section (Dark Mode Text) --- */
+.profile-details-section {
+    padding: 40px 5%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background: transparent; /* Transparent */
+    color: #ffffff;          /* White Text */
+    position: relative;
+    z-index: 5;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: #FF7033;          /* Orange Accent */
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.bio-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #e0e0e0;          /* Light Grey for readability */
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+/* --- Dark Quote Box --- */
+.quote-box {
+    margin: 50px 0;
+    padding: 30px;
+    border-left: 4px solid #D4AF37;
+    background-color: white;
+    border-radius: 0 10px 10px 0;
+    position: relative;
+}
+
+.instructor-quote {
+    font-style: italic;
+    font-size: 1.3rem;
+    color: #fff;
+    margin: 0;
+}
+
+.quote-icon {
+    color: #D4AF37;
+    opacity: 0.4;
+    font-size: 3rem;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.quote-end {
+    top: auto;
+    bottom: -10px;
+    right: 10px;
+    left: auto;
+    transform: rotate(180deg);
+}
+
+/* --- Dark Stats Grid --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    background: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    transition: transform 0.3s;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    border-color: #FF7033;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #FF7033;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #bbb;
+    text-transform: uppercase;
+}
+
+/* --- Classes Tags --- */
+.classes-section {
+    margin-bottom: 50px;
+}
+
+.classes-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.class-tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.class-tag-item {
+    padding: 10px 25px;
+    background-color: transparent;
+    border: 1px solid #D4AF37;
+    color: #D4AF37;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.class-tag-item:hover {
+    background-color: #D4AF37;
+    color: #1A1A1A;
+}
+
+/* --- Buttons --- */
+.cta-contact-instructor {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(90deg, #FF7033, #ff9e66);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-contact-instructor:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 112, 51, 0.4);
+}
+
+.back-link {
+    display: block;
+    margin-top: 40px;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+    text-align: center;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: #fff;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .name-tag h2 { font-size: 3rem; }
+    .profile-image-section { height: 60vh; }
+    .profile-details-section { padding: 40px 20px; }
+}

@@ -1,11 +1,12 @@
 import React, { useRef, useEffect } from 'react';
 import './CircularGallery.css';
 
-import newMemberPhoto from '../../assets/images/0E5A0408.JPG'; 
-import malePhoto from '../../assets/images/AlexLazarPhoto.jpg';
-import alexPhoto from '../../assets/images/alexphoto.JPG';
-import alexandraPhoto from '../../assets/images/alexandraphoto2.jpeg';
-import adrianPhoto from '../../assets/images/adrianphoto2.jpeg';
+// Using the correct relative paths to your uploaded images
+import nicoletaPhoto from '../../assets/images/nicoleta_cristina.png';
+import alexLazarPhoto from '../../assets/images/alex_lazar.jpg';
+import alexMagPhoto from '../../assets/images/alex_magnusson.JPG';
+import alexandraPhoto from '../../assets/images/alexandra_ivan.jpeg';
+import adrianPhoto from '../../assets/images/adrian_rasinariu.jpeg';
 
 const getRunningTransformOffset = (element) => {
     const style = window.getComputedStyle(element);
@@ -20,12 +21,13 @@ const getRunningTransformOffset = (element) => {
     return 0;
 };
 
+// Added 'slug' to all members to enable navigation
 const teamMembersData = [
-    { id: 1, name: "Nicoleta Cristina", slug: "nicoleta-cristina", image: newMemberPhoto },
-    { id: 2, name: "Alex Lazar", slug: "alex-lazar",  image: malePhoto }, 
-    { id: 3, name: "Alex Magnusson", slug: "alex-magnusson", image: alexPhoto },
-    { id: 4, name: "Alexandra Ivan", slug: "alexandra-ivan", image: alexandraPhoto },
-    { id: 5, name: "Adrian Rașinariu", slug: "adrian-rasinariu", image: adrianPhoto },
+    { id: 1, name: "Nicoleta Cristina", role: "Instructor", slug: "nicoleta-cristina", image: nicoletaPhoto },
+    { id: 2, name: "Alex Lazar", role: "Instructor", slug: "alex-lazar",  image: alexLazarPhoto }, 
+    { id: 3, name: "Alex Magnusson", role: "Instructor", slug: "alex-magnusson", image: alexMagPhoto },
+    { id: 4, name: "Alexandra Ivan", role: "Instructor", slug: "alexandra-ivan", image: alexandraPhoto },
+    { id: 5, name: "Adrian Rașinariu", role: "Instructor", slug: "adrian-rasinariu", image: adrianPhoto },
 ];
 
 const InfiniteMovingTeamCarousel = ({ items = teamMembersData, initialSpeed = '30s', slowedSpeed = '120s' }) => {
@@ -129,8 +131,9 @@ const InfiniteMovingTeamCarousel = ({ items = teamMembersData, initialSpeed = '3
         };
     }, []);
 
+    // Updated click handler to support all instructors
     const handleCardClick = (item) => {
-        if (item.slug === 'alex-lazar') {
+        if (item.slug) {
             window.location.hash = `#instructor/${item.slug}`;
         }
     };
@@ -139,7 +142,8 @@ const InfiniteMovingTeamCarousel = ({ items = teamMembersData, initialSpeed = '3
         <div 
             className="infinite-carousel-container" 
             ref={containerRef}
-            // Am șters onMouseEnter și onMouseLeave de aici pentru a menține viteza constantă
+            // onMouseEnter={handleMouseEnter} // Optional: uncomment if you want slow-down on hover
+            // onMouseLeave={handleMouseLeave}
         >
             <div 
                 className="infinite-carousel-track" 
@@ -147,6 +151,7 @@ const InfiniteMovingTeamCarousel = ({ items = teamMembersData, initialSpeed = '3
                 style={{ animationDuration: initialSpeed }}
             >
                 {duplicateItems.map((item, index) => {
+                    // Keeping your existing specific photo alignment
                     const photoClass =
                         item.slug === 'alexandra-ivan' ? 'photo-align-top' :
                         item.slug === 'adrian-rasinariu' ? 'photo-align-upper' : '';

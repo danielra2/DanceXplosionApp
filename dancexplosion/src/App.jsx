@@ -6,7 +6,14 @@ import SalsaPage from './pages/Salsa/SalsaPage.jsx';
 import BachataPage from './pages/Bachata/BachataPage.jsx'; 
 import Footer from './components/layout/Footer';
 import KizombaPage from './pages/Kizomba/kizombaPage.jsx'; 
-import InstructorPage from "./pages/Instructor/instructorPage.jsx"; 
+
+// 1. IMPORT ALL INSTRUCTORS
+import AlexLazar from "./pages/Instructor/Alex_Lazar/alexlazar.jsx"; 
+import NicoletaCristiana from "./pages/Instructor/Nicoleta_Cristina/nicoletacristina.jsx";
+import AlexMagnusson from "./pages/Instructor/Alex_Magnusson/alexmag.jsx";
+import AlexandraIvan from "./pages/Instructor/Alexandra_Ivan/alexandraivan.jsx";
+import AdrianRasinariu from "./pages/Instructor/Adrian_Rasinariu/adrianrasinariu.jsx";
+
 import CookieConsent from './components/ui/CookieConsent/CookieConsent.jsx'; 
 import WorkInProgress from './components/ui/WorkInProgress/WorkInProgress.jsx';
 import './features/CircularGallery/CircularGallery.css'; 
@@ -17,44 +24,26 @@ function App() {
   const [showWIP, setShowWIP] = useState(false);
 
   useEffect(() => {
-    // Functie pentru a seta favicon-ul corect (fara deformare) si marit
     const setSmartFavicon = (src) => {
+      // ... (Your existing favicon code remains here) ...
       const img = new Image();
       img.src = src;
       img.onload = () => {
-        // Determinam latura patratului (cea mai mare dimensiune a imaginii)
         const size = Math.max(img.width, img.height);
-        
-        // Cream un canvas patrat
         const canvas = document.createElement('canvas');
         canvas.width = size;
         canvas.height = size;
         const ctx = canvas.getContext('2d');
-        
-        // --- MODIFICARE: Factor de scalare pentru a mări logo-ul ---
-        // 1.0 = dimensiune originală. 1.3 = 30% mai mare.
-        // Ajustează acest număr dacă vrei să fie și mai mare sau mai mic.
         const scaleFactor = 2.5; 
-        
         const scaledWidth = img.width * scaleFactor;
         const scaledHeight = img.height * scaleFactor;
-
-        // Calculam pozitia pentru a centra imaginea scalata
-        // (Dacă imaginea nu are margini transparente, asta ar putea tăia puțin din ea)
         const x = (size - scaledWidth) / 2;
         const y = (size - scaledHeight) / 2;
-        
-        // Curatam canvas-ul pentru transparenta
         ctx.clearRect(0, 0, size, size);
-
-        // Desenam imaginea centrata si scalata
         ctx.drawImage(img, x, y, scaledWidth, scaledHeight);
-        
-        // Actualizam tag-ul <link rel="icon">
         let link = document.querySelector("link[rel*='icon']");
         if (!link) {
             link = document.createElement('link');
-            // Dacă nu există, îl adăugăm
             document.head.appendChild(link);
         }
         link.type = 'image/x-icon';
@@ -85,6 +74,7 @@ function App() {
   let PageComponent;
   let isHome = false;
 
+  // 2. UPDATED ROUTING LOGIC
   if (currentHash === 'salsa') {
     PageComponent = SalsaPage;
   } else if (currentHash === 'bachata') {
@@ -92,7 +82,30 @@ function App() {
   } else if (currentHash === 'kizomba') {
     PageComponent = KizombaPage;
   } else if (currentHash.startsWith('instructor/')) {
-    PageComponent = InstructorPage;
+    // Extract the slug (e.g., 'nicoleta-cristina') from the string
+    const slug = currentHash.split('/')[1];
+    
+    // Switch between components based on the slug
+    switch(slug) {
+        case 'nicoleta-cristina':
+            PageComponent = NicoletaCristiana;
+            break;
+        case 'alex-lazar':
+            PageComponent = AlexLazar;
+            break;
+        case 'alex-magnusson':
+            PageComponent = AlexMagnusson;
+            break;
+        case 'alexandra-ivan':
+            PageComponent = AlexandraIvan;
+            break;
+        case 'adrian-rasinariu':
+            PageComponent = AdrianRasinariu;
+            break;
+        default:
+            // Fallback to Alex Lazar or a 404 page if slug is unknown
+            PageComponent = AlexLazar; 
+    }
   } else {
     PageComponent = HomePage;
     isHome = true;
