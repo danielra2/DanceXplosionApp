@@ -466,11 +466,12 @@ h1, h2, h3 {
     transform: scale(0.98);
 }
 
+/* Mobile placement for Unmute Button */
 @media (max-width: 768px) {
     .unmute-button {
-        top: auto;        
-        bottom: 30px;     
-        right: 15px;     
+        top: auto;        /* Remove top positioning */
+        bottom: 30px;     /* Place at bottom */
+        right: 15px;      /* Right alignment */
         padding: 5px 12px;
         font-size: 0.7rem;
     }
@@ -498,6 +499,15 @@ h1, h2, h3 {
     .cta-primary-dark {
         width: 100%;
     }
+    
+    /* MODIFIED: Reduced padding and font-size for mobile buttons */
+    .cta-primary-dark, 
+    .cta-secondary-accent {
+        padding: 12px 30px;
+        font-size: 0.9rem;
+        width: auto !important; /* Allow buttons to size to content instead of full width if desired, or keep full width but smaller height */
+        min-width: 200px; /* Optional: ensures they aren't too small */
+    }
 }
 
 .loading-overlay {
@@ -521,6 +531,7 @@ h1, h2, h3 {
     will-change: transform, opacity;
 }
 
+/* Exit Animation States */
 .loading-overlay.exit {
     background-color: rgba(255, 255, 255, 0);
     pointer-events: none;
@@ -529,7 +540,7 @@ h1, h2, h3 {
 
 .loading-overlay.exit .loading-logo {
     animation: none;
-    transform: scale(30); 
+    transform: scale(30); /* Massive scale to create "fly through" effect */
     opacity: 0;
     transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s ease-in-out;
 }
