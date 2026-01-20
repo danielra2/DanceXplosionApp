@@ -8,13 +8,13 @@ function WorkInProgress({ isVisible, onClose, onContact }) {
         <div className="modal-overlay-wip" onClick={onClose}>
             <div className="wip-modal" onClick={(e) => e.stopPropagation()}>
                 <button className="close-btn-wip" onClick={onClose}>&times;</button>
-                <h2 className="modal-title-wip">Coming Soon</h2>
+                <h2 className="modal-title-wip">În curănd!</h2>
                 <p className="modal-subtitle-wip">
-                    Sorry, we're working on this! Contact us here for more details.
+                    Ne cerem scuze, lucram la această secțiune.Apasă butonul de mai jos pentru a ne contacta pe Whatsapp
                 </p>
                 <div className="wip-cta-container">
                     <button className="cta-wip-contact" onClick={onContact}>
-                        Contact us on WhatsApp
+                        Apasă aici!
                     </button>
                 </div>
             </div>
