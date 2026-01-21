@@ -6,9 +6,10 @@ import SalsaPage from './pages/Salsa/SalsaPage.jsx';
 import BachataPage from './pages/Bachata/BachataPage.jsx'; 
 import Footer from './components/layout/Footer';
 import KizombaPage from './pages/Kizomba/kizombaPage.jsx'; 
+import WeddingDancePage from './pages/WeddingDance/WeddingDancePage.jsx';
 
 // --- NEW IMPORT ---
-import WeddingDancePage from './pages/WeddingDance/WeddingDancePage.jsx';
+import KidsPage from './pages/Kids/KidsPage.jsx';
 
 import AlexLazar from "./pages/Instructor/Alex_Lazar/alexlazar.jsx"; 
 import NicoletaCristiana from "./pages/Instructor/Nicoleta_Cristina/nicoletacristina.jsx";
@@ -83,8 +84,10 @@ function App() {
   } else if (currentHash === 'kizomba') {
     PageComponent = KizombaPage;
   } else if (currentHash === 'dansul-mirilor') {
-    // --- NEW ROUTE ---
     PageComponent = WeddingDancePage;
+  } else if (currentHash === 'copii') {
+    // --- NEW ROUTE ---
+    PageComponent = KidsPage;
   } else if (currentHash.startsWith('instructor/')) {
     const slug = currentHash.split('/')[1];
     

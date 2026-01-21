@@ -45,15 +45,14 @@ function Navbar({ openLogin, isHome }) {
       <div className="nav-content">
         
         {/* LEFT: Logo & Brand Name */}
-        <div className="navbar-brand">
+        <a href="#top" className="navbar-brand">
           <img src={DXPLogo} alt="DXP Logo" className="brand-logo" />
           <span className="brand-text">DANCE XPLOSION ACADEMY</span>
-        </div>
+        </a>
 
         {/* CENTER: Desktop Navigation */}
         <nav className="nav-links-center desktop-only">
-          <a href="#top" className="nav-link">ACASĂ</a>
-
+          
           <div className="dropdown-container">
             <a href="#clase" className="nav-link dropdown-trigger">
               CURSURI 
@@ -72,6 +71,11 @@ function Navbar({ openLogin, isHome }) {
               <a href="#mixed" className="mixt-link">Curs Mixt</a>
             </div>
           </div>
+
+          {/* NEW OPTION */}
+          <a href="#copii" className="nav-link">
+            PENTRU COPII
+          </a>
 
           <a href="#dansul-mirilor" className="nav-link wedding-link">
             DANSUL MIRILOR
@@ -115,7 +119,6 @@ function Navbar({ openLogin, isHome }) {
 
           {/* Bottom Section: Navigation Links */}
           <nav className="mobile-nav-links">
-            {/* Removed 'ACASĂ' link from here as requested */}
             
             <span className="mobile-category">CURSURI</span>
             <a href="#salsa" onClick={closeMobileMenu} className="sub-link">Salsa</a>
@@ -123,8 +126,15 @@ function Navbar({ openLogin, isHome }) {
             <a href="#kizomba" onClick={closeMobileMenu} className="sub-link">Kizomba</a>
             <a href="#mixed" onClick={closeMobileMenu} className="sub-link highlight">Curs Mixt</a>
             
+            {/* NEW MOBILE LINK */}
+            <div className="mobile-divider"></div>
+            <a href="#copii" onClick={closeMobileMenu} className="special-link">PENTRU COPII</a>
+
             <div className="mobile-divider"></div>
             <a href="#dansul-mirilor" onClick={closeMobileMenu} className="special-link">DANSUL MIRILOR</a>
+
+            {/* Added Divider Here */}
+            <div className="mobile-divider"></div>
             <a href="#lxf" onClick={closeMobileMenu}>LXF</a>
           </nav>
       </div>

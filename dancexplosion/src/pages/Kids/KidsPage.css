@@ -1,0 +1,215 @@
+.kids-page-container {
+    padding-top: 70px;
+}
+
+/* --- Hero Section --- */
+.kids-hero-section {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    
+    /* Playful but elegant background */
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c54 100%);
+    color: var(--c-white);
+    isolation: isolate;
+}
+
+.kids-hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: radial-gradient(circle at 20% 80%, rgba(255, 112, 51, 0.15) 0%, transparent 40%),
+                      radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 40%);
+    opacity: 0.8;
+}
+
+.hero-content-kids {
+    padding: 80px 5%;
+    max-width: 900px;
+}
+
+.kids-title {
+    font-size: 4rem;
+    color: var(--c-white);
+    margin-bottom: 20px;
+    font-family: 'Georgia', serif;
+}
+
+.accent-text-kids {
+    color: #FF7033; /* Orange accent for energy */
+    display: block;
+    font-size: 2rem;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.kids-pitch {
+    font-size: 1.2rem;
+    font-weight: 300;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-page-main-kids {
+    padding: 16px 45px;
+    background: linear-gradient(90deg, #FF7033, #FF9E66);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 0 5px 20px rgba(255, 112, 51, 0.4);
+}
+
+.cta-page-main-kids:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 112, 51, 0.6);
+}
+
+/* --- Groups Cards --- */
+.kids-groups-section {
+    padding: 100px 5%;
+    text-align: center;
+    background-color: var(--c-background);
+}
+
+.section-heading-kids {
+    font-size: 3rem;
+    color: var(--c-primary);
+    margin-bottom: 60px;
+}
+
+.groups-card-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.group-card {
+    background: var(--c-white);
+    border-radius: 20px;
+    padding: 50px 30px 40px;
+    width: 320px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    transition: transform 0.4s;
+    position: relative;
+    border-top: 5px solid #FF7033;
+}
+
+.group-card:hover {
+    transform: translateY(-10px);
+}
+
+.group-age-badge {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--c-primary);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.group-card h3 {
+    font-size: 1.8rem;
+    color: var(--c-primary);
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.group-card p {
+    color: var(--c-text-primary);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.cta-group {
+    padding: 10px 25px;
+    background: transparent;
+    color: var(--c-secondary);
+    border: 2px solid var(--c-secondary);
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cta-group:hover {
+    background: var(--c-secondary);
+    color: #fff;
+}
+
+/* --- Benefits Section --- */
+.kids-benefits-section {
+    background: var(--c-white);
+    padding: 80px 5%;
+    text-align: center;
+}
+
+.benefits-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.benefits-title {
+    font-size: 2.5rem;
+    color: var(--c-primary);
+    margin-bottom: 40px;
+}
+
+.benefits-list {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 40px;
+    display: grid;
+    gap: 20px;
+}
+
+.benefits-list li {
+    font-size: 1.1rem;
+    color: var(--c-text-primary);
+    padding: 15px;
+    background: #fcfcfc;
+    border-radius: 10px;
+    border-left: 4px solid var(--c-accent);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+
+.cta-benefits {
+    padding: 15px 40px;
+    background: var(--c-primary);
+    color: var(--c-accent);
+    border: none;
+    border-radius: 50px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cta-benefits:hover {
+    background: var(--c-accent);
+    color: var(--c-primary);
+}
+
+@media (max-width: 768px) {
+    .kids-title {
+        font-size: 3rem;
+    }
+    .accent-text-kids {
+        font-size: 1.5rem;
+    }
+}
