@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './alexandraivan.css';
 import instructorPhoto from '../../../assets/images/alexandra_ivan.jpeg';
 
 function AlexandraIvan() {
-    // Content placeholder from Alex Lazar
+    const [isExpanded, setIsExpanded] = useState(false);
+
     const instructor = {
-        name: "Alexandra Ivan", // Updated Name
+        name: "Alexandra Ivan",
         role: "Instructor Salsa & Bachata",
         bio: [
             "Cu o experiență de peste 10 ani în dans, parcursul meu a început încă din copilărie, prin dansuri moderne, continuând cu dansuri de societate, pentru ca mai târziu să mă dedic în totalitate dansurilor latino: salsa, bachata și kizomba. Bachata a devenit, în timp o parte importantă din parcursul vieții mele ca dansatoare și o parte din sufletul meu. Sunt dublă campioană națională la Bachata Partner Work, titluri obținute alături de Adi, partenerul meu de dans, acesta fiind fondatul școlii Dance Xplosion. În 2018 am câștigat primul meu campionat național la categoria Partnerwork Coreography, iar în 2019 am reconfirmat acest titlu, devenind din nou campioană națională. Pe lângă aceste rezultate, am obținut locul I în opt competiții naționale, performanțe care au contribuit la consolidarea parcursului meu competițional.\n",
@@ -26,28 +27,47 @@ function AlexandraIvan() {
         photo: instructorPhoto,
     };
 
+    const visibleBio = isExpanded ? instructor.bio : [instructor.bio[0]];
+
     return (
         <div className="instructor-page-container">
-            <div className="profile-card">
-                <div className="profile-image-section">
-                    <img 
-                        src={instructor.photo} 
-                        alt={`Portret ${instructor.name}`} 
-                        className="instructor-main-photo" 
-                    />
-                    <div className="name-tag">
+            {/* Updated class name to avoid conflict */}
+            <div className="profile-card-alexandra">
+                
+                {/* Left Side: Unique Class Name */}
+                <div className="profile-image-section-alexandra">
+                    
+                    <div className="image-wrapper-alexandra">
+                        <img 
+                            src={instructor.photo} 
+                            alt={`Portret ${instructor.name}`} 
+                            className="instructor-photo-alexandra" 
+                        />
+                    </div>
+
+                    {/* Name Tag: Unique Class Name */}
+                    <div className="name-tag-alexandra">
                         <h2>{instructor.name}</h2>
-                        <p className="role-title">{instructor.role}</p>
+                        <p className="role-title-alexandra">{instructor.role}</p>
                     </div>
                 </div>
                 
+                {/* Right Side */}
                 <div className="profile-details-section">
                     <h3 className="section-title">Despre Instructor</h3>
-                    {instructor.bio.map((paragraf, index) => (
+                    
+                    {visibleBio.map((paragraf, index) => (
                         <p key={index} className="bio-text">
                             {paragraf}
                         </p>
                     ))}
+
+                    <button 
+                        className="read-more-btn" 
+                        onClick={() => setIsExpanded(!isExpanded)}
+                    >
+                        {isExpanded ? "Citește mai puțin" : "Citește mai mult"}
+                    </button>
 
                     <div className="quote-box">
                         <span className="quote-icon">“</span>

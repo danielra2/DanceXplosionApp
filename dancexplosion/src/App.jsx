@@ -26,6 +26,11 @@ function App() {
   const [route, setRoute] = useState(window.location.hash);
   const [showWIP, setShowWIP] = useState(false);
 
+  // --- FIX: Scroll to top whenever the route changes ---
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [route]);
+
   useEffect(() => {
     const setSmartFavicon = (src) => {
       const img = new Image();

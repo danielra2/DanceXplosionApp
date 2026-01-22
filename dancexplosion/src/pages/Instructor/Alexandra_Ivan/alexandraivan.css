@@ -1,244 +1,282 @@
 .instructor-page-container {
-    padding-top: 0;
+    padding-top: 70px;
     min-height: 100vh;
-    background-color: white; /* Force Dark Background for whole page */
-    display: block;
+    background-color: var(--c-background);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     padding-bottom: 80px;
 }
 
-.profile-card {
-    background: transparent; /* Remove white background */
-    border-radius: 0;
-    box-shadow: none;        /* Remove shadow */
-    max-width: 100%;
-    width: 100%;
-    margin-top: 0;
-    display: flex;
-    flex-direction: column;  /* Stack Image on Top, Text Below */
-    overflow: visible;
+/* Unique Class for Card */
+.profile-card-alexandra {
+    background: var(--c-white);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    width: 90%;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 450px 1fr; 
+    overflow: hidden; 
+    align-items: stretch;
 }
 
-/* --- Hero Image Section --- */
-.profile-image-section {
+/* --- Image Section (Left) --- */
+.profile-image-section-alexandra {
+    background-color: #1a1a1a; 
+    height: 100%;
+    
+    /* CRITICAL: Align to TOP */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center; 
+    
+    padding-top: 60px;
+    padding-bottom: 40px;
     position: relative;
+}
+
+/* Wrapper for the image */
+.image-wrapper-alexandra {
     width: 100%;
-    height: 70vh;            /* Tall hero section */
-    min-height: 500px;
-    padding: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
-}
-
-.instructor-main-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;       /* Cover the area */
-    object-position: center top;
-    display: block;
-    border-radius: 0;
-    filter: brightness(0.9);
-    mask-image: linear-gradient(to bottom, black 80%, transparent 100%); /* Fade out bottom */
-    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-}
-
-.name-tag {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 40px 20px 20px;
-    background: transparent;
-    text-align: center;
-    z-index: 10;
-}
-
-.name-tag h2 {
-    color: #D4AF37;          /* Gold Accent */
-    font-size: 4rem;
-    margin: 0;
-    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
-    font-family: 'Georgia', serif;
-}
-
-.role-title {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1.3rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-top: 10px;
-}
-
-/* --- Details Section (Dark Mode Text) --- */
-.profile-details-section {
-    padding: 40px 5%;
-    max-width: 1000px;
-    margin: 0 auto;
-    background: transparent; /* Transparent */
-    color: #ffffff;          /* White Text */
+    padding: 0 40px;
     position: relative;
-    z-index: 5;
+    z-index: 1;
+}
+
+/* The Image Itself */
+.instructor-photo-alexandra {
+    width: 100%;
+    height: auto; 
+    object-fit: cover; 
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+/* Name Tag - Overlaying the bottom of the image */
+.name-tag-alexandra {
+    width: 100%;
+    text-align: center;
+    color: var(--c-white);
+    padding: 60px 20px 30px;
+    margin-top: -80px; /* Pull up to overlay the image */
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(to bottom, transparent 0%, rgba(26, 26, 26, 0.7) 40%, #1a1a1a 100%);
+}
+
+.name-tag-alexandra h2 {
+    color: #D4AF37;
+    font-size: 2.2rem;
+    margin: 0 0 10px 0;
+    font-family: 'Georgia', serif;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+.role-title-alexandra {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+/* --- Details Section (Right) --- */
+.profile-details-section {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
 }
 
 .section-title {
-    font-size: 2rem;
-    color: #FF7033;          /* Orange Accent */
-    margin-bottom: 30px;
+    font-size: 1.8rem;
+    color: var(--c-secondary);
+    margin-bottom: 25px;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 2px solid #f0f0f0;
 }
 
 .bio-text {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     line-height: 1.8;
-    color: #e0e0e0;          /* Light Grey for readability */
-    margin-bottom: 40px;
-    font-weight: 300;
+    color: var(--c-text-primary);
+    margin-bottom: 20px;
 }
 
-/* --- Dark Quote Box --- */
+/* Read More Button */
+.read-more-btn {
+    background: none;
+    border: none;
+    color: var(--c-secondary);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 30px;
+    align-self: flex-start;
+    text-decoration: underline;
+    transition: color 0.3s;
+    font-family: 'Georgia', serif;
+}
+
+.read-more-btn:hover {
+    color: var(--c-primary);
+}
+
+/* Quote Box */
 .quote-box {
-    margin: 50px 0;
-    padding: 30px;
-    border-left: 4px solid #D4AF37;
-    background-color: white;
+    margin: 20px 0 40px;
+    padding: 25px;
+    border-left: 5px solid #D4AF37;
+    background-color: #fffcf5;
     border-radius: 0 10px 10px 0;
     position: relative;
 }
 
 .instructor-quote {
     font-style: italic;
-    font-size: 1.3rem;
-    color: #fff;
+    font-size: 1.2rem;
+    color: var(--c-primary);
     margin: 0;
 }
 
 .quote-icon {
-    color: #D4AF37;
-    opacity: 0.4;
-    font-size: 3rem;
     position: absolute;
-    top: 10px;
+    top: 5px;
     left: 10px;
+    font-size: 3rem;
+    color: #D4AF37;
+    opacity: 0.3;
+    line-height: 1;
 }
 
 .quote-end {
     top: auto;
-    bottom: -10px;
+    bottom: -15px;
     right: 10px;
     left: auto;
     transform: rotate(180deg);
 }
 
-/* --- Dark Stats Grid --- */
+/* Stats */
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
-    margin-bottom: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 40px;
 }
 
 .stat-item {
     text-align: center;
-    padding: 20px;
-    background: white;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    transition: transform 0.3s;
-}
-
-.stat-item:hover {
-    transform: translateY(-5px);
-    border-color: #FF7033;
+    padding: 15px;
+    background: var(--c-white);
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
 }
 
 .stat-value {
     display: block;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 800;
-    color: #FF7033;
-    margin-bottom: 5px;
+    color: var(--c-secondary);
 }
 
 .stat-label {
     display: block;
-    font-size: 0.9rem;
-    color: #bbb;
-    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 5px;
 }
 
-/* --- Classes Tags --- */
+/* Classes Tags */
 .classes-section {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .classes-title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    color: #fff;
-    margin-bottom: 20px;
+    color: var(--c-primary);
+    margin-bottom: 15px;
     display: block;
 }
 
 .class-tags-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 10px;
 }
 
 .class-tag-item {
-    padding: 10px 25px;
+    padding: 8px 20px;
     background-color: transparent;
     border: 1px solid #D4AF37;
     color: #D4AF37;
     border-radius: 50px;
-    font-weight: 600;
-    transition: all 0.3s;
+    font-size: 0.9rem;
+    font-weight: 700;
 }
 
-.class-tag-item:hover {
-    background-color: #D4AF37;
-    color: #1A1A1A;
-}
-
-/* --- Buttons --- */
 .cta-contact-instructor {
-    display: block;
     width: 100%;
-    padding: 20px;
-    background: linear-gradient(90deg, #FF7033, #ff9e66);
-    color: #fff;
+    padding: 18px;
+    background: linear-gradient(90deg, var(--c-secondary), #ff9e66);
+    color: var(--c-white);
     border: none;
     border-radius: 50px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    transition: transform 0.3s;
+    box-shadow: 0 10px 25px rgba(255, 112, 51, 0.3);
 }
 
 .cta-contact-instructor:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(255, 112, 51, 0.4);
+    box-shadow: 0 15px 35px rgba(255, 112, 51, 0.5);
 }
 
 .back-link {
     display: block;
-    margin-top: 40px;
-    color: rgba(255, 255, 255, 0.5);
+    margin-top: 25px;
+    color: #999;
     font-weight: 600;
     text-align: center;
     transition: color 0.3s;
 }
 
 .back-link:hover {
-    color: #fff;
+    color: var(--c-secondary);
 }
 
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-    .name-tag h2 { font-size: 3rem; }
-    .profile-image-section { height: 60vh; }
-    .profile-details-section { padding: 40px 20px; }
+/* Responsive */
+@media (max-width: 992px) {
+    .profile-card-alexandra {
+        grid-template-columns: 1fr; 
+    }
+    
+    .profile-image-section-alexandra {
+        padding: 40px 20px;
+    }
+
+    .image-wrapper-alexandra {
+        padding: 0;
+        max-width: 400px;
+    }
+
+    .name-tag-alexandra {
+        margin-top: -60px; /* Less overlap on mobile */
+    }
+
+    .profile-details-section {
+        padding: 30px;
+    }
 }

@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './adrianrasinariu.css';
-// Updated import to match your uploaded file
 import instructorPhoto from '../../../assets/images/adrian_rasinariu.jpeg';
 
-function AdrianRasinariu() {
-    // Content is currently copied from Alex Lazar as requested placeholder
+function AdrianRasinariu({ openInscriere }) {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    // Placeholder bio text split for "Read More" demo
+    const bioText = "Cu 21 de ani de experiență în dans și 16 ani de predare, Adrian a început cu dans sportiv și a concurat timp de 8 ani în competiții naționale și internaționale. A obținut o diplomă de antrenor pentru dans sportiv în 2014 și una de coregraf profesionist în 2022. Și-a găsit noua pasiune în dansul social în 2019, când a început Bachata și Salsa la Dance Xplosion Academy, predând din 2023. Clasele lui sunt foarte antrenante și veți învăța mereu ceva nou.";
+    
+    const bioParts = [
+        bioText.substring(0, bioText.indexOf("2022.") + 5),
+        bioText.substring(bioText.indexOf("2022.") + 5)
+    ];
+
     const instructor = {
-        name: "Adrian Rașinariu", // Updated Name
-        role: "Instructor Salsa & Bachata", // Placeholder
-        bio: "Cu 21 de ani de experiență în dans și 16 ani de predare, Alex a început cu dans sportiv și a concurat timp de 8 ani în competiții naționale și internaționale. A obținut o diplomă de antrenor pentru dans sportiv în 2014 și una de coregraf profesionist în 2022. Și-a găsit noua pasiune în dansul social în 2019, când a început Bachata și Salsa la Dance Xplosion Academy, predând din 2023. Clasele lui sunt foarte antrenante și veți învăța mereu ceva nou.",
+        name: "Adrian Rașinariu",
+        role: "Instructor Salsa & Bachata",
+        bio: bioParts,
         quote: "Oricine poate învața să danseze, trebuie doar sa fii răbdător cu tine și cu ritmul tău de învățare.",
         stats: [
             { label: "Experiență Dans", value: "21 Ani" },
@@ -19,25 +27,42 @@ function AdrianRasinariu() {
         photo: instructorPhoto,
     };
 
+    const visibleBio = isExpanded ? instructor.bio : [instructor.bio[0]];
+
     return (
         <div className="instructor-page-container">
-            <div className="profile-card">
+            <div className="profile-card-adrian">
                 
-                <div className="profile-image-section">
-                    <img 
-                        src={instructor.photo} 
-                        alt={`Portret ${instructor.name}`} 
-                        className="instructor-main-photo" 
-                    />
-                    <div className="name-tag">
+                {/* Left Side: Image & Name */}
+                <div className="profile-image-section-adrian">
+                    <div className="image-wrapper-adrian">
+                        <img 
+                            src={instructor.photo} 
+                            alt={`Portret ${instructor.name}`} 
+                            className="instructor-photo-adrian" 
+                        />
+                    </div>
+                    <div className="name-tag-adrian">
                         <h2>{instructor.name}</h2>
-                        <p className="role-title">{instructor.role}</p>
+                        <p className="role-title-adrian">{instructor.role}</p>
                     </div>
                 </div>
                 
+                {/* Right Side: Details */}
                 <div className="profile-details-section">
                     <h3 className="section-title">Despre Instructor</h3>
-                    <p className="bio-text">{instructor.bio}</p>
+                    {visibleBio.map((paragraf, index) => (
+                        <p key={index} className="bio-text">
+                            {paragraf}
+                        </p>
+                    ))}
+
+                    <button 
+                        className="read-more-btn" 
+                        onClick={() => setIsExpanded(!isExpanded)}
+                    >
+                        {isExpanded ? "Citește mai puțin" : "Citește mai mult"}
+                    </button>
 
                     <div className="quote-box">
                         <span className="quote-icon">“</span>
@@ -64,7 +89,9 @@ function AdrianRasinariu() {
                         </div>
                     </div>
                     
-                    <button className="cta-contact-instructor">Înscrie-te la Cursuri</button>
+                    <button className="cta-contact-instructor" onClick={openInscriere}>
+                        Înscrie-te la Cursurile lui Adrian
+                    </button>
                     <a href="#" className="back-link">← Înapoi la Pagină Principală</a>
                 </div>
             </div>

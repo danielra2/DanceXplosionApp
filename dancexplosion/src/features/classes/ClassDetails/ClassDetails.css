@@ -43,6 +43,11 @@
     transition: var(--transition-smooth);
     position: relative;
     border: 1px solid rgba(0, 0, 0, 0.05);
+
+    /* MODIFIED: Flex properties to ensure equal height */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .class-showcase-card:hover {
@@ -53,6 +58,7 @@
 .card-image-placeholder {
     height: 280px;
     overflow: hidden;
+    flex-shrink: 0; /* Ensures image area doesn't shrink */
 }
 
 .card-image-placeholder img {
@@ -70,6 +76,12 @@
 .card-info {
     padding: 35px;
     z-index: 2;
+
+    /* MODIFIED: Flex to fill space and align items */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .card-info h3 {
@@ -80,7 +92,10 @@
 
 .class-tag {
     display: inline-block;
-    margin-top: 20px;
+    
+    /* MODIFIED: Pushes the button to the bottom of the card */
+    margin-top: auto;
+    
     padding: 8px 20px;
     background: linear-gradient(135deg, var(--c-accent) 0%, #e6c350 100%);
     color: var(--c-primary);
@@ -94,6 +109,9 @@
     text-decoration: none;
     color: inherit;
     display: block;
+    
+    /* MODIFIED: Ensures the anchor link fills the grid cell height */
+    height: 100%;
 }
 
 @media (max-width: 1024px) {
