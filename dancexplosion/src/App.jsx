@@ -7,9 +7,10 @@ import BachataPage from './pages/Bachata/BachataPage.jsx';
 import Footer from './components/layout/Footer';
 import KizombaPage from './pages/Kizomba/kizombaPage.jsx'; 
 import WeddingDancePage from './pages/WeddingDance/WeddingDancePage.jsx';
+import KidsPage from './pages/Kids/KidsPage.jsx';
 
 // --- NEW IMPORT ---
-import KidsPage from './pages/Kids/KidsPage.jsx';
+import MixedPage from './pages/Mixed/MixedPage.jsx';
 
 import AlexLazar from "./pages/Instructor/Alex_Lazar/alexlazar.jsx"; 
 import NicoletaCristiana from "./pages/Instructor/Nicoleta_Cristina/nicoletacristina.jsx";
@@ -26,7 +27,6 @@ function App() {
   const [route, setRoute] = useState(window.location.hash);
   const [showWIP, setShowWIP] = useState(false);
 
-  // --- FIX: Scroll to top whenever the route changes ---
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [route]);
@@ -91,8 +91,10 @@ function App() {
   } else if (currentHash === 'dansul-mirilor') {
     PageComponent = WeddingDancePage;
   } else if (currentHash === 'copii') {
-    // --- NEW ROUTE ---
     PageComponent = KidsPage;
+  } else if (currentHash === 'mixed') {
+    // --- NEW ROUTE ---
+    PageComponent = MixedPage;
   } else if (currentHash.startsWith('instructor/')) {
     const slug = currentHash.split('/')[1];
     

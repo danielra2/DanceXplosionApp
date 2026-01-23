@@ -1,0 +1,173 @@
+.mixed-page-container {
+    padding-top: 70px;
+}
+
+/* --- Hero Section --- */
+.mixed-hero-section {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    
+    /* Unique gradient for Mixed: Dark Gray/Blue to Primary Black */
+    background: linear-gradient(135deg, #2c3e50 0%, #000000 100%);
+    color: var(--c-white);
+    isolation: isolate;
+}
+
+.mixed-hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    /* Overlay pattern */
+    background-image: radial-gradient(circle at 50% 50%, rgba(255, 112, 51, 0.1) 0%, transparent 60%);
+    opacity: 0.8;
+}
+
+.hero-content-mixed {
+    padding: 80px 5%;
+    max-width: 900px;
+}
+
+.mixed-title {
+    font-size: 4rem;
+    color: var(--c-white);
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.accent-text-mixed {
+    color: #FF7033; /* Brand Orange */
+    display: block;
+    font-size: 2.5rem;
+    margin-top: 15px;
+    text-shadow: 0 0 20px rgba(255, 112, 51, 0.4);
+}
+
+.mixed-pitch {
+    font-size: 1.2rem;
+    font-weight: 300;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-page-main-mixed {
+    padding: 16px 45px;
+    background: linear-gradient(90deg, #FF7033, #D4AF37);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 0 5px 20px rgba(255, 112, 51, 0.3);
+}
+
+.cta-page-main-mixed:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 112, 51, 0.5);
+    background: #fff;
+    color: var(--c-primary);
+}
+
+/* --- Benefits Section --- */
+.mixed-benefits-section {
+    padding: 100px 5%;
+    text-align: center;
+    background-color: var(--c-background);
+}
+
+.section-heading-mixed {
+    font-size: 3rem;
+    color: var(--c-primary);
+    margin-bottom: 60px;
+}
+
+.benefits-card-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.benefit-card {
+    background: var(--c-white);
+    border-radius: 20px;
+    padding: 50px 30px;
+    width: 320px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    transition: transform 0.4s;
+    border-bottom: 4px solid var(--c-secondary);
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+}
+
+.benefit-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.benefit-card h3 {
+    font-size: 1.5rem;
+    color: var(--c-primary);
+    margin-bottom: 15px;
+}
+
+.benefit-card p {
+    color: var(--c-text-primary);
+    line-height: 1.6;
+}
+
+/* --- Promo Section --- */
+.mixed-promo-section {
+    background: linear-gradient(to right, #1a1a1a, #333);
+    padding: 80px 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.promo-title-mixed {
+    font-size: 2.5rem;
+    color: var(--c-accent); /* Gold */
+    margin-bottom: 15px;
+}
+
+.promo-description-mixed {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    color: rgba(255,255,255,0.8);
+}
+
+.cta-final-mixed {
+    padding: 15px 40px;
+    background: transparent;
+    border: 2px solid var(--c-accent);
+    color: var(--c-accent);
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cta-final-mixed:hover {
+    background: var(--c-accent);
+    color: var(--c-primary);
+}
+
+@media (max-width: 768px) {
+    .mixed-title {
+        font-size: 3rem;
+    }
+    .accent-text-mixed {
+        font-size: 2rem;
+    }
+}
