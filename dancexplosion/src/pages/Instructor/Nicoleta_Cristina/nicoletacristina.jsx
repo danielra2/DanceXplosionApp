@@ -8,20 +8,21 @@ function NicoletaCristiana({ openInscriere }) {
     const instructor = {
         name: "Nicoleta Cristina",
         role: "Instructor Salsa & Bachata",
-        bio: [
-            "Dobrin Nicoleta Cristina este instructor de dans la Dance Xplosion Academy din Sibiu, unde predă cu pasiune și dedicare salsa, bachata și kizomba. Cu o experiență solidă în predare din 2016, Cris îmbină tehnica corectă cu o abordare prietenoasă, adaptată fiecărui cursant.",
-            "Orele ei sunt structurate, clare și accesibile, fiind potrivite atât pentru începători, cât și pentru cei care doresc să își perfecționeze stilul și expresivitatea. Prin răbdare, energie pozitivă și atenție la detalii, Cris creează un mediu de învățare în care fiecare cursant se poate dezvolta în propriul ritm.",
-            "Atmosfera creată la cursurile ei este una relaxată și prietenoasă, unde greșelile sunt parte din proces, iar progresul vine natural. Cris pune accent pe încredere, comunicare și plăcerea de a dansa, transformând fiecare oră într-o experiență plină de energie pozitivă.",
-            "În ceea ce privește kizomba, Cris se remarcă printr-o pregătire constant actualizată, aducând la Sibiu concepte și tehnici moderne ale acestui stil, fiind una dintre puținele instructoare din Sibiu cu metode de predare moderne și o perspectivă actuală asupra kizombei. Cris aduce această artă dansului local printr-un mix echilibrat de structură, tehnică și emoție.",
-            "Prin formarea continuă și atenția acordată autenticității dansului, ea contribuie la dezvoltarea și înțelegerea corectă a kizombei în orașul nostru.",
-            "Pe lângă salsa, bachata și kizomba, Cris susține cursuri pentru copii, lecții private, coregrafii personalizate și pregătirea dansului mirilor, adaptând stilul de predare fiecărui tip de cursant."
+       bio: [
+            "Bună, sunt Cris, instructor de dans la Dance Xplosion Academy din Sibiu. Predau cu pasiune și dedicare salsa, bachata și kizomba. Cu o experiență solidă în predare din 2016, reusesc sa îmbin tehnica corectă cu o abordare prietenoasă, adaptată fiecărui cursant. Orele mele sunt structurate, clare și accesibile, fiind potrivite atât pentru începători, cât și pentru cei care doresc să își perfecționeze stilul și expresivitatea. Prin răbdare, energie pozitivă și atenție la detalii, creez un mediu de învățare în care fiecare cursant se poate dezvolta în propriul ritm.",
+            "Atmosfera creată la cursuri este una relaxată și detașată, unde greșelile sunt parte din proces, iar progresul vine natural. De asemenea, pun accent pe încredere, comunicare și plăcerea de a dansa, transformând fiecare oră într-o experiență plină de energie pozitivă.",
+            
+            "În ceea ce privește kizomba, mă remarc printr-o pregătire constant actualizată, aducând la Sibiu concepte și tehnici moderne ale acestui stil. Mă diferențiez astfel, fiind una dintre puținele instructoare din orașul nostru cu metode de predare moderne și o perspectivă actuală asupra kizombei. Consider dansul o artă și încerc sa aduc un aer nou în lumea acestui sport printr-un mix echilibrat de structură, tehnică și emoție.",
+            "Prin formarea continuă și atenția acordată autenticității dansului, contribui la dezvoltarea și înțelegerea corectă a kizombei.Pe lângă salsa, bachata și kizomba, susțin cursuri pentru copii, lecții private, coregrafii personalizate și pregătirea dansului mirilor, adaptând stilul de predare fiecărui tip de cursant.",
+            
+            "Vă așteptăm cu brațele deschise să încercați o noua abordare și sa explorați viziunea mea asupra dansului modern."
         ],
         stats: [
             { label: "Experiență Dans", value: "21 Ani" },
             { label: "Experiență Predare", value: "16 Ani" },
             { label: "Specializare", value: "Salsa, Bachata, Dans Sportiv" },
         ],
-        classes: ["Bachata Improver", "Incepatori mixt"],
+        classes: ["Kizomba Beginner", "Kizomba Avansati", "Kizomba Improver", "Salsa Intermediari - Avansati", "Incepatori mixt", "Copii 4-6 Ani"],
         photo: instructorPhoto,
     };
 

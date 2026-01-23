@@ -23,7 +23,7 @@ function AlexMagnusson() {
             { label: "Experiență Predare", value: "16 Ani" },
             { label: "Specializare", value: "Salsa, Bachata, Dans Sportiv" },
         ],
-        classes: ["Bachata Improver", "Incepatori mixt"],
+        classes: ["Salsa Intermediari - Avansati", "Incepatori mixt"],
         photo: instructorPhoto,
     };
 

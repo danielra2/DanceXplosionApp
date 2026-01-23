@@ -23,7 +23,7 @@ function AdrianRasinariu({ openInscriere }) {
             { label: "Experiență Predare", value: "16 Ani" },
             { label: "Specializare", value: "Salsa, Bachata, Dans Sportiv" },
         ],
-        classes: ["Bachata Improver", "Incepatori mixt"],
+        classes: ["Copii 7-14 Ani", "Bachata Intermediari"],
         photo: instructorPhoto,
     };
 
